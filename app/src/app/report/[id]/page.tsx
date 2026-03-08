@@ -1,14 +1,44 @@
 "use client";
 
-import { useState, useCallback, use } from "react";
+import { useState, useCallback, useEffect, use } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import {
   placeholderReportRelationship,
   placeholderReportSingle,
 } from "@/lib/placeholder-report";
+import { Report } from "@/lib/types";
 import { ReportSectionCard } from "@/components/report-section-card";
 import { exportReportToPDF } from "@/lib/pdf-export";
+
+function useReport(id: string): Report | null {
+  const [report, setReport] = useState<Report | null>(null);
+
+  useEffect(() => {
+    if (id === "latest") {
+      // Read from sessionStorage
+      try {
+        const stored = sessionStorage.getItem("pairscope_report");
+        if (stored) {
+          const parsed = JSON.parse(stored) as Report;
+          setReport(parsed);
+          return;
+        }
+      } catch (err) {
+        console.error("Failed to parse stored report:", err);
+      }
+      // Fallback to placeholder if nothing in sessionStorage
+      setReport(placeholderReportRelationship);
+    } else if (id === "rpt_demo_002") {
+      setReport(placeholderReportSingle);
+    } else {
+      // For any other ID (including rpt_demo_001), use relationship placeholder
+      setReport(placeholderReportRelationship);
+    }
+  }, [id]);
+
+  return report;
+}
 
 export default function ReportPage({
   params,
@@ -16,17 +46,13 @@ export default function ReportPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = use(params);
+  const report = useReport(id);
   const [isExporting, setIsExporting] = useState(false);
   const [email, setEmail] = useState("");
   const [emailSaved, setEmailSaved] = useState(false);
 
-  // Select report based on ID
-  const report =
-    id === "rpt_demo_002"
-      ? placeholderReportSingle
-      : placeholderReportRelationship;
-
   const handleExportPDF = useCallback(async () => {
+    if (!report) return;
     setIsExporting(true);
     try {
       await exportReportToPDF(report);
@@ -49,6 +75,18 @@ export default function ReportPage({
     },
     [email]
   );
+
+  // Loading state
+  if (!report) {
+    return (
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-8 h-8 border-2 border-coral border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-sm text-slate-500">Loading your report...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-slate-50">

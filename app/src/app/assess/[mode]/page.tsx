@@ -7,7 +7,7 @@ import Link from "next/link";
 import {
   relationshipQuestions,
   singleQuestions,
-} from "@/lib/placeholder-questions";
+} from "@/data/questions";
 import { Question, AssessmentMode } from "@/lib/types";
 
 const slideVariants = {

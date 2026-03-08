@@ -23,6 +23,9 @@ export type Dimension =
   | "love_maps"
   | "fondness"
   | "turning_toward"
+  | "positive_sentiment"
+  | "conflict_management"
+  | "shared_meaning"
   | "anxiety"
   | "avoidance"
   | "neuroticism"
@@ -33,7 +36,9 @@ export type Dimension =
   | "quality_time"
   | "physical_touch"
   | "acts_of_service"
-  | "gifts";
+  | "gifts"
+  | "primary_love_language"
+  | "giving_love_language";
 
 export interface LikertOption {
   value: number;

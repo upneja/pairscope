@@ -9,20 +9,20 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Pairscope — Understand Yourself as a Partner",
+  title: "Pairscope — Free, Science-Backed Relationship Assessment",
   description:
-    "A free, research-backed relationship health diagnostic grounded in 50+ years of relationship science. Take the assessment and receive a personalized report with actionable insights.",
+    "Free 10-minute relationship assessment based on 50+ years of science. Get a personalized report with insights and conversation scripts. For singles and couples.",
   openGraph: {
-    title: "Pairscope — Understand Yourself as a Partner",
+    title: "Pairscope — See Your Relationship Clearly",
     description:
-      "A free, research-backed diagnostic grounded in 50 years of relationship science.",
+      "A free, research-backed relationship diagnostic grounded in Gottman, attachment theory, and Big Five personality science. 10 minutes. No signup. Real insights.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pairscope — Understand Yourself as a Partner",
+    title: "Pairscope — See Your Relationship Clearly",
     description:
-      "A free, research-backed diagnostic grounded in 50 years of relationship science.",
+      "Free 10-min relationship diagnostic based on Gottman's research, attachment theory & Big Five personality science. Real insights, not a quiz. For singles and couples.",
   },
 };
 

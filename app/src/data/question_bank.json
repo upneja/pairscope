@@ -1,0 +1,1526 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "product": "Pairscope",
+    "total_mode_a": 46,
+    "total_mode_b": 36,
+    "shared_question_count": 20,
+    "mode_a_only_count": 26,
+    "mode_b_only_count": 16,
+    "estimated_completion_minutes": "8-12",
+    "note": "Mode A total = shared (20) + mode_a_only (26) = 46. Mode B total = shared (20) + mode_b_only (16) = 36."
+  },
+  "shared_questions": [
+    {
+      "id": "s1",
+      "framework": "gottman_horsemen",
+      "dimension": "criticism",
+      "format": "scenario",
+      "text_mode_a": "Your partner forgot something you asked them to do for the third time this month. What's your gut reaction?",
+      "text_mode_b": "Someone you were dating kept forgetting things you asked them to do. What was your usual gut reaction?",
+      "options": [
+        {"value": "a", "label": "\"You never listen to me. You clearly don't care.\""},
+        {"value": "b", "label": "\"Hey, this keeps happening and it's starting to bug me. Can we figure out a system?\""},
+        {"value": "c", "label": "You don't say anything but mentally add it to the list of grievances."},
+        {"value": "d", "label": "You do it yourself and make sure they know you had to."}
+      ],
+      "scoring": {
+        "dimension": "criticism",
+        "mapping": {"a": 7, "b": 1, "c": 5, "d": 6},
+        "score_range": [1, 7],
+        "interpretation": "Higher scores indicate greater tendency toward criticism vs. constructive complaint"
+      },
+      "source_instrument": "Gottman Four Horsemen Questionnaire, Items 1-8 (Criticism subscale), adapted",
+      "sequence_order_a": 1,
+      "sequence_order_b": 1
+    },
+    {
+      "id": "s2",
+      "framework": "gottman_horsemen",
+      "dimension": "contempt",
+      "format": "likert",
+      "text_mode_a": "When we argue, I sometimes think my partner is just being ridiculous or pathetic.",
+      "text_mode_b": "In past relationships, when we argued I sometimes thought the other person was just being ridiculous or pathetic.",
+      "options": [
+        {"value": 1, "label": "Never — I don't go there"},
+        {"value": 2, "label": "Rarely"},
+        {"value": 3, "label": "Occasionally"},
+        {"value": 4, "label": "Sometimes"},
+        {"value": 5, "label": "Fairly often"},
+        {"value": 6, "label": "Often"},
+        {"value": 7, "label": "Very often — it's hard not to"}
+      ],
+      "scoring": {
+        "dimension": "contempt",
+        "mapping": "direct",
+        "score_range": [1, 7],
+        "interpretation": "Higher scores indicate greater contempt tendency"
+      },
+      "source_instrument": "Gottman Four Horsemen Questionnaire, Items 9-16 (Contempt subscale), adapted",
+      "sequence_order_a": 4,
+      "sequence_order_b": 4
+    },
+    {
+      "id": "s3",
+      "framework": "gottman_horsemen",
+      "dimension": "defensiveness",
+      "format": "scenario",
+      "text_mode_a": "Your partner says, \"You've been really distracted lately and it's affecting us.\" Your first instinct is to:",
+      "text_mode_b": "Imagine someone you're dating says, \"You've been really distracted lately and it's affecting us.\" Your first instinct would be to:",
+      "options": [
+        {"value": "a", "label": "Explain all the reasons you've been busy — they don't see the full picture."},
+        {"value": "b", "label": "Say \"You're right, I have been. I'm sorry — let's talk about it.\""},
+        {"value": "c", "label": "Counter with something they've been doing wrong too."},
+        {"value": "d", "label": "Feel attacked and go quiet for a while."}
+      ],
+      "scoring": {
+        "dimension": "defensiveness",
+        "mapping": {"a": 5, "b": 1, "c": 6, "d": 4},
+        "score_range": [1, 7],
+        "interpretation": "Higher scores indicate greater defensiveness tendency"
+      },
+      "source_instrument": "Gottman Four Horsemen Questionnaire, Items 17-24 (Defensiveness subscale), adapted",
+      "sequence_order_a": 7,
+      "sequence_order_b": 7
+    },
+    {
+      "id": "s4",
+      "framework": "gottman_horsemen",
+      "dimension": "stonewalling",
+      "format": "likert",
+      "text_mode_a": "During a heated argument, I tend to shut down completely — go silent, leave the room, or just stop engaging.",
+      "text_mode_b": "During heated arguments in past relationships, I tended to shut down completely — go silent, leave the room, or just stop engaging.",
+      "options": [
+        {"value": 1, "label": "Never — I stay in it"},
+        {"value": 2, "label": "Rarely"},
+        {"value": 3, "label": "Occasionally"},
+        {"value": 4, "label": "Sometimes"},
+        {"value": 5, "label": "Fairly often"},
+        {"value": 6, "label": "Often"},
+        {"value": 7, "label": "Almost always — I need to escape"}
+      ],
+      "scoring": {
+        "dimension": "stonewalling",
+        "mapping": "direct",
+        "score_range": [1, 7],
+        "interpretation": "Higher scores indicate greater stonewalling tendency"
+      },
+      "source_instrument": "Gottman Four Horsemen Questionnaire, Items 25-33 (Stonewalling subscale), adapted",
+      "sequence_order_a": 5,
+      "sequence_order_b": 5
+    },
+    {
+      "id": "s5",
+      "framework": "gottman_horsemen",
+      "dimension": "contempt",
+      "format": "scenario",
+      "text_mode_a": "Your partner tries to explain something at a dinner party but gets the facts wrong. You:",
+      "text_mode_b": "Someone you were dating tried to explain something at a dinner party but got the facts wrong. You would most likely:",
+      "options": [
+        {"value": "a", "label": "Correct them in front of everyone — accuracy matters."},
+        {"value": "b", "label": "Let it go in the moment and maybe mention it later, privately."},
+        {"value": "c", "label": "Roll your eyes or exchange a look with someone else."},
+        {"value": "d", "label": "Jump in to gently help them finish the story."}
+      ],
+      "scoring": {
+        "dimension": "contempt",
+        "mapping": {"a": 5, "b": 2, "c": 7, "d": 1},
+        "score_range": [1, 7],
+        "interpretation": "Higher scores indicate greater contempt tendency"
+      },
+      "source_instrument": "Gottman Four Horsemen Questionnaire, Items 9-16 (Contempt subscale), adapted",
+      "sequence_order_a": 10,
+      "sequence_order_b": 10
+    },
+    {
+      "id": "s6",
+      "framework": "attachment",
+      "dimension": "anxiety",
+      "format": "likert",
+      "text_mode_a": "When my partner doesn't text back for a few hours, I start wondering if something is wrong between us.",
+      "text_mode_b": "When someone I'm dating doesn't text back for a few hours, I start wondering if something is wrong between us.",
+      "options": [
+        {"value": 1, "label": "Not at all like me"},
+        {"value": 2, "label": "Slightly like me"},
+        {"value": 3, "label": "Somewhat like me"},
+        {"value": 4, "label": "Moderately like me"},
+        {"value": 5, "label": "Quite like me"},
+        {"value": 6, "label": "Very much like me"},
+        {"value": 7, "label": "Exactly like me"}
+      ],
+      "scoring": {
+        "dimension": "attachment_anxiety",
+        "mapping": "direct",
+        "score_range": [1, 7],
+        "interpretation": "Higher scores indicate greater attachment anxiety"
+      },
+      "source_instrument": "ECR-R (Experiences in Close Relationships — Revised), Anxiety subscale, Items 1-18 adapted",
+      "sequence_order_a": 12,
+      "sequence_order_b": 12
+    },
+    {
+      "id": "s7",
+      "framework": "attachment",
+      "dimension": "anxiety",
+      "format": "likert",
+      "text_mode_a": "I need a lot of reassurance that my partner really loves me.",
+      "text_mode_b": "In relationships, I tend to need a lot of reassurance that the other person really cares about me.",
+      "options": [
+        {"value": 1, "label": "Not at all like me"},
+        {"value": 2, "label": "Slightly like me"},
+        {"value": 3, "label": "Somewhat like me"},
+        {"value": 4, "label": "Moderately like me"},
+        {"value": 5, "label": "Quite like me"},
+        {"value": 6, "label": "Very much like me"},
+        {"value": 7, "label": "Exactly like me"}
+      ],
+      "scoring": {
+        "dimension": "attachment_anxiety",
+        "mapping": "direct",
+        "score_range": [1, 7],
+        "interpretation": "Higher scores indicate greater attachment anxiety"
+      },
+      "source_instrument": "ECR-R, Anxiety subscale, adapted",
+      "sequence_order_a": 13,
+      "sequence_order_b": 13
+    },
+    {
+      "id": "s8",
+      "framework": "attachment",
+      "dimension": "avoidance",
+      "format": "likert",
+      "text_mode_a": "I find it uncomfortable when my partner wants to be really emotionally close.",
+      "text_mode_b": "I generally find it uncomfortable when someone I'm dating wants to be really emotionally close.",
+      "options": [
+        {"value": 1, "label": "Not at all like me"},
+        {"value": 2, "label": "Slightly like me"},
+        {"value": 3, "label": "Somewhat like me"},
+        {"value": 4, "label": "Moderately like me"},
+        {"value": 5, "label": "Quite like me"},
+        {"value": 6, "label": "Very much like me"},
+        {"value": 7, "label": "Exactly like me"}
+      ],
+      "scoring": {
+        "dimension": "attachment_avoidance",
+        "mapping": "direct",
+        "score_range": [1, 7],
+        "interpretation": "Higher scores indicate greater attachment avoidance"
+      },
+      "source_instrument": "ECR-R, Avoidance subscale, Items 1-18 adapted",
+      "sequence_order_a": 14,
+      "sequence_order_b": 14
+    },
+    {
+      "id": "s9",
+      "framework": "attachment",
+      "dimension": "avoidance",
+      "format": "scenario",
+      "text_mode_a": "After a really stressful day, your partner reaches out to comfort you. You:",
+      "text_mode_b": "After a really stressful day, imagine someone you're dating reaches out to comfort you. You would most likely:",
+      "options": [
+        {"value": "a", "label": "Welcome it — you want them close right now."},
+        {"value": "b", "label": "Appreciate the thought but prefer to handle it alone first."},
+        {"value": "c", "label": "Feel slightly smothered — you need space to process."},
+        {"value": "d", "label": "Depend on it — their comfort is the main thing that helps."}
+      ],
+      "scoring": {
+        "dimension": "attachment_avoidance",
+        "mapping": {"a": 2, "b": 4, "c": 6, "d": 1},
+        "score_range": [1, 7],
+        "interpretation": "Higher scores indicate greater avoidance; very low with option d may indicate anxious dependency"
+      },
+      "source_instrument": "ECR-R, Avoidance subscale, adapted",
+      "sequence_order_a": 17,
+      "sequence_order_b": 17
+    },
+    {
+      "id": "s10",
+      "framework": "big_five",
+      "dimension": "neuroticism",
+      "format": "likert",
+      "text_mode_a": "I get stressed easily and tend to worry about things that might go wrong in my relationship.",
+      "text_mode_b": "I get stressed easily and tend to worry about things that might go wrong in my life and relationships.",
+      "options": [
+        {"value": 1, "label": "Not at all like me"},
+        {"value": 2, "label": "Slightly like me"},
+        {"value": 3, "label": "Somewhat like me"},
+        {"value": 4, "label": "Moderately like me"},
+        {"value": 5, "label": "Quite like me"},
+        {"value": 6, "label": "Very much like me"},
+        {"value": 7, "label": "Exactly like me"}
+      ],
+      "scoring": {
+        "dimension": "neuroticism",
+        "mapping": "direct",
+        "score_range": [1, 7],
+        "interpretation": "Higher scores indicate greater neuroticism"
+      },
+      "source_instrument": "BFI-K (Big Five Inventory — Short Form), Neuroticism subscale, adapted",
+      "sequence_order_a": 20,
+      "sequence_order_b": 19
+    },
+    {
+      "id": "s11",
+      "framework": "big_five",
+      "dimension": "neuroticism",
+      "format": "scenario",
+      "text_mode_a": "You and your partner have a small disagreement before bed. An hour later, you're:",
+      "text_mode_b": "You have a small disagreement with someone you're dating before bed. An hour later, you're:",
+      "options": [
+        {"value": "a", "label": "Already moved on — it wasn't a big deal."},
+        {"value": "b", "label": "Still thinking about it a bit, but you'll sleep fine."},
+        {"value": "c", "label": "Replaying the conversation and wishing you'd said something differently."},
+        {"value": "d", "label": "Wide awake, anxious, wondering if this is a sign of a bigger problem."}
+      ],
+      "scoring": {
+        "dimension": "neuroticism",
+        "mapping": {"a": 1, "b": 3, "c": 5, "d": 7},
+        "score_range": [1, 7],
+        "interpretation": "Higher scores indicate greater neuroticism and emotional reactivity"
+      },
+      "source_instrument": "BFI-K, Neuroticism subscale, adapted",
+      "sequence_order_a": 23,
+      "sequence_order_b": 22
+    },
+    {
+      "id": "s12",
+      "framework": "big_five",
+      "dimension": "conscientiousness",
+      "format": "forced_choice",
+      "text_mode_a": "Which sounds more like you in your relationship?",
+      "text_mode_b": "Which sounds more like you generally?",
+      "options": [
+        {"value": "a", "label": "I'm the planner — I keep track of dates, logistics, and follow through on things I said I'd do."},
+        {"value": "b", "label": "I'm more spontaneous — I go with the flow and sometimes things slip through the cracks."}
+      ],
+      "scoring": {
+        "dimension": "conscientiousness",
+        "mapping": {"a": 6, "b": 2},
+        "score_range": [1, 7],
+        "interpretation": "Higher scores indicate greater conscientiousness"
+      },
+      "source_instrument": "BFI-K, Conscientiousness subscale, adapted",
+      "sequence_order_a": 25,
+      "sequence_order_b": 24
+    },
+    {
+      "id": "s13",
+      "framework": "big_five",
+      "dimension": "conscientiousness",
+      "format": "likert",
+      "text_mode_a": "When I make a promise to my partner, I follow through even if it becomes inconvenient.",
+      "text_mode_b": "When I make a promise, I follow through even if it becomes inconvenient.",
+      "options": [
+        {"value": 1, "label": "Rarely"},
+        {"value": 2, "label": "Sometimes"},
+        {"value": 3, "label": "About half the time"},
+        {"value": 4, "label": "Usually"},
+        {"value": 5, "label": "Almost always"},
+        {"value": 6, "label": "Always"},
+        {"value": 7, "label": "Without exception — my word is my word"}
+      ],
+      "scoring": {
+        "dimension": "conscientiousness",
+        "mapping": "direct",
+        "score_range": [1, 7],
+        "interpretation": "Higher scores indicate greater conscientiousness"
+      },
+      "source_instrument": "BFI-K, Conscientiousness subscale, adapted",
+      "sequence_order_a": 26,
+      "sequence_order_b": 25
+    },
+    {
+      "id": "s14",
+      "framework": "big_five",
+      "dimension": "agreeableness",
+      "format": "scenario",
+      "text_mode_a": "Your partner suggests a vacation plan you're not excited about. You:",
+      "text_mode_b": "Someone you're dating suggests a plan you're not excited about. You:",
+      "options": [
+        {"value": "a", "label": "Go along with it — keeping them happy is worth it."},
+        {"value": "b", "label": "Suggest a compromise that works for both of you."},
+        {"value": "c", "label": "Say honestly that you're not into it and propose an alternative."},
+        {"value": "d", "label": "Agree in the moment but quietly resent it later."}
+      ],
+      "scoring": {
+        "dimension": "agreeableness",
+        "mapping": {"a": 6, "b": 5, "c": 3, "d": 4},
+        "score_range": [1, 7],
+        "interpretation": "Higher scores indicate greater agreeableness; note option d blends agreeableness with suppression"
+      },
+      "source_instrument": "BFI-K, Agreeableness subscale, adapted",
+      "sequence_order_a": 28,
+      "sequence_order_b": 27
+    },
+    {
+      "id": "s15",
+      "framework": "big_five",
+      "dimension": "agreeableness",
+      "format": "likert",
+      "text_mode_a": "I tend to see the best in my partner, even when they frustrate me.",
+      "text_mode_b": "I tend to see the best in people I date, even when they frustrate me.",
+      "options": [
+        {"value": 1, "label": "Not at all like me"},
+        {"value": 2, "label": "Slightly like me"},
+        {"value": 3, "label": "Somewhat like me"},
+        {"value": 4, "label": "Moderately like me"},
+        {"value": 5, "label": "Quite like me"},
+        {"value": 6, "label": "Very much like me"},
+        {"value": 7, "label": "Exactly like me"}
+      ],
+      "scoring": {
+        "dimension": "agreeableness",
+        "mapping": "direct",
+        "score_range": [1, 7],
+        "interpretation": "Higher scores indicate greater agreeableness"
+      },
+      "source_instrument": "BFI-K, Agreeableness subscale, adapted",
+      "sequence_order_a": 29,
+      "sequence_order_b": 28
+    },
+    {
+      "id": "s16",
+      "framework": "love_languages",
+      "dimension": "primary_love_language",
+      "format": "forced_choice",
+      "text_mode_a": "Which makes you feel more loved?",
+      "text_mode_b": "Which would make you feel more loved in a relationship?",
+      "options": [
+        {"value": "a", "label": "Hearing \"I'm so proud of you\" after a tough week."},
+        {"value": "b", "label": "Having them handle the dishes without being asked."}
+      ],
+      "scoring": {
+        "dimension": "love_language_ranking",
+        "mapping": {"a": "words_of_affirmation", "b": "acts_of_service"},
+        "score_type": "categorical_tally",
+        "interpretation": "Tallied across love language items to determine ranked preferences"
+      },
+      "source_instrument": "Chapman Love Languages Assessment, adapted forced-choice format",
+      "sequence_order_a": 33,
+      "sequence_order_b": 30
+    },
+    {
+      "id": "s17",
+      "framework": "love_languages",
+      "dimension": "primary_love_language",
+      "format": "forced_choice",
+      "text_mode_a": "Which means more to you?",
+      "text_mode_b": "Which would mean more to you in a relationship?",
+      "options": [
+        {"value": "a", "label": "A long, uninterrupted evening together — no phones, no distractions."},
+        {"value": "b", "label": "A thoughtful gift that shows they really get you."}
+      ],
+      "scoring": {
+        "dimension": "love_language_ranking",
+        "mapping": {"a": "quality_time", "b": "gifts"},
+        "score_type": "categorical_tally",
+        "interpretation": "Tallied across love language items to determine ranked preferences"
+      },
+      "source_instrument": "Chapman Love Languages Assessment, adapted forced-choice format",
+      "sequence_order_a": 35,
+      "sequence_order_b": 31
+    },
+    {
+      "id": "s18",
+      "framework": "love_languages",
+      "dimension": "primary_love_language",
+      "format": "forced_choice",
+      "text_mode_a": "Which recharges you more?",
+      "text_mode_b": "Which would recharge you more in a relationship?",
+      "options": [
+        {"value": "a", "label": "A back rub or long hug at the end of the day."},
+        {"value": "b", "label": "Hearing them brag about you to their friends."}
+      ],
+      "scoring": {
+        "dimension": "love_language_ranking",
+        "mapping": {"a": "physical_touch", "b": "words_of_affirmation"},
+        "score_type": "categorical_tally",
+        "interpretation": "Tallied across love language items to determine ranked preferences"
+      },
+      "source_instrument": "Chapman Love Languages Assessment, adapted forced-choice format",
+      "sequence_order_a": 37,
+      "sequence_order_b": 32
+    },
+    {
+      "id": "s19",
+      "framework": "love_languages",
+      "dimension": "primary_love_language",
+      "format": "forced_choice",
+      "text_mode_a": "Which would make a harder day better?",
+      "text_mode_b": "Which would make a harder day better in a relationship?",
+      "options": [
+        {"value": "a", "label": "Coming home to find they cooked your favorite meal."},
+        {"value": "b", "label": "An afternoon doing something fun together, just the two of you."}
+      ],
+      "scoring": {
+        "dimension": "love_language_ranking",
+        "mapping": {"a": "acts_of_service", "b": "quality_time"},
+        "score_type": "categorical_tally",
+        "interpretation": "Tallied across love language items to determine ranked preferences"
+      },
+      "source_instrument": "Chapman Love Languages Assessment, adapted forced-choice format",
+      "sequence_order_a": 39,
+      "sequence_order_b": 33
+    },
+    {
+      "id": "s20",
+      "framework": "love_languages",
+      "dimension": "primary_love_language",
+      "format": "forced_choice",
+      "text_mode_a": "Which gesture would you appreciate more?",
+      "text_mode_b": "Which gesture would you appreciate more from a partner?",
+      "options": [
+        {"value": "a", "label": "A surprise gift — something small but meaningful that reminded them of you."},
+        {"value": "b", "label": "Cuddling on the couch while watching a movie together."}
+      ],
+      "scoring": {
+        "dimension": "love_language_ranking",
+        "mapping": {"a": "gifts", "b": "physical_touch"},
+        "score_type": "categorical_tally",
+        "interpretation": "Tallied across love language items to determine ranked preferences"
+      },
+      "source_instrument": "Chapman Love Languages Assessment, adapted forced-choice format",
+      "sequence_order_a": 41,
+      "sequence_order_b": 34
+    }
+  ],
+  "mode_a_only": {
+    "questions": [
+      {
+        "id": "a1",
+        "framework": "gottman_srh",
+        "dimension": "love_maps",
+        "format": "likert",
+        "text": "I could name my partner's two closest friends and what they're currently stressed about.",
+        "options": [
+          {"value": 1, "label": "Definitely not"},
+          {"value": 2, "label": "Probably not"},
+          {"value": 3, "label": "Unsure"},
+          {"value": 4, "label": "Probably yes"},
+          {"value": 5, "label": "Definitely yes"},
+          {"value": 6, "label": "Yes, and I know the backstory"},
+          {"value": 7, "label": "Yes — I know their world inside and out"}
+        ],
+        "scoring": {
+          "dimension": "love_maps",
+          "mapping": "direct",
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate stronger love maps / knowledge of partner's inner world"
+        },
+        "source_instrument": "Gottman Love Maps Questionnaire (SRH), adapted",
+        "sequence_order": 2
+      },
+      {
+        "id": "a2",
+        "framework": "gottman_srh",
+        "dimension": "love_maps",
+        "format": "likert",
+        "text": "I know what my partner would say is their biggest dream right now — the thing they think about but rarely talk about.",
+        "options": [
+          {"value": 1, "label": "I have no idea"},
+          {"value": 2, "label": "I could guess but I'm not confident"},
+          {"value": 3, "label": "I have a general sense"},
+          {"value": 4, "label": "I know roughly"},
+          {"value": 5, "label": "I know this well"},
+          {"value": 6, "label": "We've talked about it in depth"},
+          {"value": 7, "label": "I know this — we talk about it regularly"}
+        ],
+        "scoring": {
+          "dimension": "love_maps",
+          "mapping": "direct",
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate stronger love maps"
+        },
+        "source_instrument": "Gottman Love Maps Questionnaire (SRH), adapted",
+        "sequence_order": 3
+      },
+      {
+        "id": "a3",
+        "framework": "gottman_srh",
+        "dimension": "fondness_admiration",
+        "format": "likert",
+        "text": "When I think about my partner, feelings of respect and admiration come easily.",
+        "options": [
+          {"value": 1, "label": "Not at all"},
+          {"value": 2, "label": "Rarely"},
+          {"value": 3, "label": "Occasionally"},
+          {"value": 4, "label": "Sometimes"},
+          {"value": 5, "label": "Often"},
+          {"value": 6, "label": "Very often"},
+          {"value": 7, "label": "Always — I genuinely admire them"}
+        ],
+        "scoring": {
+          "dimension": "fondness_admiration",
+          "mapping": "direct",
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate stronger fondness and admiration"
+        },
+        "source_instrument": "Gottman Fondness & Admiration Questionnaire (SRH), adapted",
+        "sequence_order": 6
+      },
+      {
+        "id": "a4",
+        "framework": "gottman_srh",
+        "dimension": "turning_toward",
+        "format": "scenario",
+        "text": "You're scrolling your phone and your partner says, \"Oh wow, look at this sunset.\" You:",
+        "options": [
+          {"value": "a", "label": "Look up, walk over, and check it out together."},
+          {"value": "b", "label": "Glance up, say \"nice,\" and go back to your phone."},
+          {"value": "c", "label": "Don't really register it — you're deep in something."},
+          {"value": "d", "label": "Say \"hm\" without looking up."}
+        ],
+        "scoring": {
+          "dimension": "turning_toward",
+          "mapping": {"a": 7, "b": 4, "c": 2, "d": 1},
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate greater tendency to turn toward bids for connection"
+        },
+        "source_instrument": "Gottman Turning Toward Scale (SRH), adapted",
+        "sequence_order": 8
+      },
+      {
+        "id": "a5",
+        "framework": "gottman_srh",
+        "dimension": "turning_toward",
+        "format": "likert",
+        "text": "When my partner tries to tell me about their day, I genuinely engage — even if I'm tired.",
+        "options": [
+          {"value": 1, "label": "Rarely"},
+          {"value": 2, "label": "Sometimes"},
+          {"value": 3, "label": "About half the time"},
+          {"value": 4, "label": "Usually"},
+          {"value": 5, "label": "Most of the time"},
+          {"value": 6, "label": "Almost always"},
+          {"value": 7, "label": "Always — it matters to me"}
+        ],
+        "scoring": {
+          "dimension": "turning_toward",
+          "mapping": "direct",
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate greater engagement with partner's bids"
+        },
+        "source_instrument": "Gottman Turning Toward Scale (SRH), adapted",
+        "sequence_order": 9
+      },
+      {
+        "id": "a6",
+        "framework": "gottman_srh",
+        "dimension": "positive_sentiment",
+        "format": "scenario",
+        "text": "Your partner comes home and seems a bit off. Your first thought is:",
+        "options": [
+          {"value": "a", "label": "\"They probably had a rough day — I should check in.\""},
+          {"value": "b", "label": "\"Great, they're in a mood again.\""},
+          {"value": "c", "label": "\"I wonder what I did wrong.\""},
+          {"value": "d", "label": "You don't really notice — you're doing your own thing."}
+        ],
+        "scoring": {
+          "dimension": "positive_sentiment",
+          "mapping": {"a": 7, "b": 2, "c": 3, "d": 1},
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate stronger positive sentiment override"
+        },
+        "source_instrument": "Gottman Positive Sentiment Override concept (SRH), adapted",
+        "sequence_order": 11
+      },
+      {
+        "id": "a7",
+        "framework": "gottman_srh",
+        "dimension": "conflict_management",
+        "format": "scenario",
+        "text": "You and your partner disagree about something important — say, finances or how to spend a holiday. How does it usually go?",
+        "options": [
+          {"value": "a", "label": "We talk it through and find a compromise, even if it takes a while."},
+          {"value": "b", "label": "One of us usually gives in to avoid the fight."},
+          {"value": "c", "label": "It escalates — we both dig in and it gets heated."},
+          {"value": "d", "label": "We avoid the topic and it lingers unresolved."}
+        ],
+        "scoring": {
+          "dimension": "conflict_management",
+          "mapping": {"a": 7, "b": 3, "c": 2, "d": 1},
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate healthier conflict management"
+        },
+        "source_instrument": "Gottman Conflict Management Scale (SRH), adapted",
+        "sequence_order": 15
+      },
+      {
+        "id": "a8",
+        "framework": "gottman_srh",
+        "dimension": "shared_meaning",
+        "format": "likert",
+        "text": "My partner and I share a sense of purpose — we're building something together, not just coexisting.",
+        "options": [
+          {"value": 1, "label": "Not at all"},
+          {"value": 2, "label": "A little"},
+          {"value": 3, "label": "Somewhat"},
+          {"value": 4, "label": "Moderately"},
+          {"value": 5, "label": "Quite a bit"},
+          {"value": 6, "label": "Very much"},
+          {"value": 7, "label": "Completely — we're on the same page about our future"}
+        ],
+        "scoring": {
+          "dimension": "shared_meaning",
+          "mapping": "direct",
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate stronger shared meaning"
+        },
+        "source_instrument": "Gottman Shared Meaning Scale (SRH), adapted",
+        "sequence_order": 16
+      },
+      {
+        "id": "a9",
+        "framework": "gottman_horsemen",
+        "dimension": "criticism",
+        "format": "likert",
+        "text": "When I bring up an issue, I tend to focus on what's wrong with my partner rather than what I need.",
+        "options": [
+          {"value": 1, "label": "Never"},
+          {"value": 2, "label": "Rarely"},
+          {"value": 3, "label": "Occasionally"},
+          {"value": 4, "label": "Sometimes"},
+          {"value": 5, "label": "Often"},
+          {"value": 6, "label": "Very often"},
+          {"value": 7, "label": "Almost always"}
+        ],
+        "scoring": {
+          "dimension": "criticism",
+          "mapping": "direct",
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate greater criticism tendency"
+        },
+        "source_instrument": "Gottman Four Horsemen Questionnaire, Criticism subscale, adapted",
+        "sequence_order": 18
+      },
+      {
+        "id": "a10",
+        "framework": "gottman_horsemen",
+        "dimension": "defensiveness",
+        "format": "likert",
+        "text": "When my partner brings up a complaint, my first response is usually to explain why it's not my fault.",
+        "options": [
+          {"value": 1, "label": "Never"},
+          {"value": 2, "label": "Rarely"},
+          {"value": 3, "label": "Occasionally"},
+          {"value": 4, "label": "Sometimes"},
+          {"value": 5, "label": "Often"},
+          {"value": 6, "label": "Very often"},
+          {"value": 7, "label": "Almost always"}
+        ],
+        "scoring": {
+          "dimension": "defensiveness",
+          "mapping": "direct",
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate greater defensiveness"
+        },
+        "source_instrument": "Gottman Four Horsemen Questionnaire, Defensiveness subscale, adapted",
+        "sequence_order": 19
+      },
+      {
+        "id": "a11",
+        "framework": "attachment",
+        "dimension": "anxiety",
+        "format": "scenario",
+        "text": "Your partner mentions an attractive coworker they've been spending time with on a project. Your honest reaction:",
+        "options": [
+          {"value": "a", "label": "You barely think about it — you trust them."},
+          {"value": "b", "label": "You feel a small pang but let it go."},
+          {"value": "c", "label": "You find yourself wanting to know more — how attractive? How much time?"},
+          {"value": "d", "label": "You feel a wave of anxiety and might bring it up later, or check their phone."}
+        ],
+        "scoring": {
+          "dimension": "attachment_anxiety",
+          "mapping": {"a": 1, "b": 3, "c": 5, "d": 7},
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate greater attachment anxiety / jealousy sensitivity"
+        },
+        "source_instrument": "ECR-R, Anxiety subscale, adapted",
+        "sequence_order": 21
+      },
+      {
+        "id": "a12",
+        "framework": "attachment",
+        "dimension": "avoidance",
+        "format": "likert",
+        "text": "I prefer not to show my partner how I feel deep down.",
+        "options": [
+          {"value": 1, "label": "Not at all like me"},
+          {"value": 2, "label": "Slightly like me"},
+          {"value": 3, "label": "Somewhat like me"},
+          {"value": 4, "label": "Moderately like me"},
+          {"value": 5, "label": "Quite like me"},
+          {"value": 6, "label": "Very much like me"},
+          {"value": 7, "label": "Exactly like me"}
+        ],
+        "scoring": {
+          "dimension": "attachment_avoidance",
+          "mapping": "direct",
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate greater avoidance"
+        },
+        "source_instrument": "ECR-R, Avoidance subscale, adapted",
+        "sequence_order": 22
+      },
+      {
+        "id": "a13",
+        "framework": "big_five",
+        "dimension": "neuroticism",
+        "format": "likert",
+        "text": "Small relationship hiccups — a missed call, a short text — can throw off my whole day.",
+        "options": [
+          {"value": 1, "label": "Not at all like me"},
+          {"value": 2, "label": "Slightly like me"},
+          {"value": 3, "label": "Somewhat like me"},
+          {"value": 4, "label": "Moderately like me"},
+          {"value": 5, "label": "Quite like me"},
+          {"value": 6, "label": "Very much like me"},
+          {"value": 7, "label": "Exactly like me"}
+        ],
+        "scoring": {
+          "dimension": "neuroticism",
+          "mapping": "direct",
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate greater neuroticism / emotional reactivity"
+        },
+        "source_instrument": "BFI-K, Neuroticism subscale, adapted",
+        "sequence_order": 24
+      },
+      {
+        "id": "a14",
+        "framework": "big_five",
+        "dimension": "conscientiousness",
+        "format": "scenario",
+        "text": "Your partner's birthday is in two weeks. You:",
+        "options": [
+          {"value": "a", "label": "Already have a plan — you started thinking about it a month ago."},
+          {"value": "b", "label": "Have a rough idea and will pull it together this week."},
+          {"value": "c", "label": "Know it's coming but haven't done anything yet — you'll figure it out."},
+          {"value": "d", "label": "Will probably scramble the day before, if you're honest."}
+        ],
+        "scoring": {
+          "dimension": "conscientiousness",
+          "mapping": {"a": 7, "b": 5, "c": 3, "d": 1},
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate greater conscientiousness"
+        },
+        "source_instrument": "BFI-K, Conscientiousness subscale, adapted",
+        "sequence_order": 27
+      },
+      {
+        "id": "a15",
+        "framework": "csi",
+        "dimension": "relationship_satisfaction",
+        "format": "likert",
+        "text": "Overall, how satisfied are you with your relationship?",
+        "options": [
+          {"value": 0, "label": "Not at all"},
+          {"value": 1, "label": "A little"},
+          {"value": 2, "label": "Somewhat"},
+          {"value": 3, "label": "Mostly"},
+          {"value": 4, "label": "Almost completely"},
+          {"value": 5, "label": "Completely"}
+        ],
+        "scoring": {
+          "dimension": "csi_satisfaction",
+          "mapping": "direct",
+          "score_range": [0, 5],
+          "interpretation": "Higher scores indicate greater relationship satisfaction. CSI-4 Item 1."
+        },
+        "source_instrument": "Couples Satisfaction Index (CSI-4), Item 1",
+        "sequence_order": 30
+      },
+      {
+        "id": "a16",
+        "framework": "csi",
+        "dimension": "relationship_satisfaction",
+        "format": "likert",
+        "text": "How rewarding is your relationship?",
+        "options": [
+          {"value": 0, "label": "Not at all"},
+          {"value": 1, "label": "A little"},
+          {"value": 2, "label": "Somewhat"},
+          {"value": 3, "label": "Mostly"},
+          {"value": 4, "label": "Almost completely"},
+          {"value": 5, "label": "Completely"}
+        ],
+        "scoring": {
+          "dimension": "csi_satisfaction",
+          "mapping": "direct",
+          "score_range": [0, 5],
+          "interpretation": "Higher scores indicate greater perceived reward. CSI-4 Item 2."
+        },
+        "source_instrument": "Couples Satisfaction Index (CSI-4), Item 2",
+        "sequence_order": 31
+      },
+      {
+        "id": "a17",
+        "framework": "csi",
+        "dimension": "relationship_satisfaction",
+        "format": "likert",
+        "text": "In general, how happy are you with your relationship?",
+        "options": [
+          {"value": 0, "label": "Not at all happy"},
+          {"value": 1, "label": "A little happy"},
+          {"value": 2, "label": "Fairly happy"},
+          {"value": 3, "label": "Happy"},
+          {"value": 4, "label": "Very happy"},
+          {"value": 5, "label": "Extremely happy"}
+        ],
+        "scoring": {
+          "dimension": "csi_satisfaction",
+          "mapping": "direct",
+          "score_range": [0, 5],
+          "interpretation": "Higher scores indicate greater happiness. CSI-4 Item 3."
+        },
+        "source_instrument": "Couples Satisfaction Index (CSI-4), Item 3",
+        "sequence_order": 32
+      },
+      {
+        "id": "a18",
+        "framework": "csi",
+        "dimension": "relationship_satisfaction",
+        "format": "likert",
+        "text": "How well does your partner meet your needs?",
+        "options": [
+          {"value": 0, "label": "Not at all"},
+          {"value": 1, "label": "A little"},
+          {"value": 2, "label": "Somewhat"},
+          {"value": 3, "label": "Mostly"},
+          {"value": 4, "label": "Almost completely"},
+          {"value": 5, "label": "Completely"}
+        ],
+        "scoring": {
+          "dimension": "csi_satisfaction",
+          "mapping": "direct",
+          "score_range": [0, 5],
+          "interpretation": "Higher scores indicate greater need satisfaction. CSI-4 Item 4."
+        },
+        "source_instrument": "Couples Satisfaction Index (CSI-4), Item 4",
+        "sequence_order": 34
+      },
+      {
+        "id": "a19",
+        "framework": "gottman_srh",
+        "dimension": "fondness_admiration",
+        "format": "scenario",
+        "text": "A friend asks you what you admire most about your partner. You:",
+        "options": [
+          {"value": "a", "label": "Have a ready answer — several things come to mind immediately."},
+          {"value": "b", "label": "Can think of something, but it takes a moment."},
+          {"value": "c", "label": "Struggle a bit — you focus more on what bugs you lately."},
+          {"value": "d", "label": "Deflect with humor — it's hard to answer sincerely."}
+        ],
+        "scoring": {
+          "dimension": "fondness_admiration",
+          "mapping": {"a": 7, "b": 5, "c": 2, "d": 3},
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate stronger fondness and admiration"
+        },
+        "source_instrument": "Gottman Fondness & Admiration Questionnaire (SRH), adapted",
+        "sequence_order": 36
+      },
+      {
+        "id": "a20",
+        "framework": "gottman_srh",
+        "dimension": "conflict_management",
+        "format": "likert",
+        "text": "During arguments, my partner and I can usually find moments of humor or connection, even mid-fight.",
+        "options": [
+          {"value": 1, "label": "Never"},
+          {"value": 2, "label": "Rarely"},
+          {"value": 3, "label": "Occasionally"},
+          {"value": 4, "label": "Sometimes"},
+          {"value": 5, "label": "Often"},
+          {"value": 6, "label": "Very often"},
+          {"value": 7, "label": "Almost always"}
+        ],
+        "scoring": {
+          "dimension": "conflict_management",
+          "mapping": "direct",
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate healthier conflict management with repair attempts"
+        },
+        "source_instrument": "Gottman Conflict Management / Repair Attempts Scale (SRH), adapted",
+        "sequence_order": 38
+      },
+      {
+        "id": "a21",
+        "framework": "gottman_srh",
+        "dimension": "positive_sentiment",
+        "format": "forced_choice",
+        "text": "When you think about your relationship overall, which is closer to how you feel?",
+        "options": [
+          {"value": "a", "label": "The good far outweighs the bad — I feel lucky."},
+          {"value": "b", "label": "The bad moments stick with me more than the good ones."}
+        ],
+        "scoring": {
+          "dimension": "positive_sentiment",
+          "mapping": {"a": 7, "b": 2},
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate positive sentiment override"
+        },
+        "source_instrument": "Gottman Positive Sentiment Override concept (SRH), adapted",
+        "sequence_order": 40
+      },
+      {
+        "id": "a22",
+        "framework": "gottman_horsemen",
+        "dimension": "stonewalling",
+        "format": "scenario",
+        "text": "Your partner is upset and wants to talk right now, but you're feeling overwhelmed. You:",
+        "options": [
+          {"value": "a", "label": "Push through and have the conversation — they need you."},
+          {"value": "b", "label": "Say \"I need 20 minutes, but I promise we'll talk tonight.\""},
+          {"value": "c", "label": "Leave the room without explaining why."},
+          {"value": "d", "label": "Go silent — you're physically there but checked out."}
+        ],
+        "scoring": {
+          "dimension": "stonewalling",
+          "mapping": {"a": 2, "b": 1, "c": 6, "d": 7},
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate greater stonewalling; option b represents healthy self-regulation"
+        },
+        "source_instrument": "Gottman Four Horsemen Questionnaire, Stonewalling subscale, adapted",
+        "sequence_order": 42
+      },
+      {
+        "id": "a23",
+        "framework": "gottman_srh",
+        "dimension": "shared_meaning",
+        "format": "scenario",
+        "text": "If someone asked you and your partner separately \"What's your relationship about — what are you building together?\" — how aligned would your answers be?",
+        "options": [
+          {"value": "a", "label": "Almost identical — we're very much on the same page."},
+          {"value": "b", "label": "Similar themes, but different emphasis."},
+          {"value": "c", "label": "Probably pretty different, honestly."},
+          {"value": "d", "label": "I'm not sure either of us has a clear answer."}
+        ],
+        "scoring": {
+          "dimension": "shared_meaning",
+          "mapping": {"a": 7, "b": 5, "c": 2, "d": 1},
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate stronger shared meaning and life mission alignment"
+        },
+        "source_instrument": "Gottman Shared Meaning Scale (SRH), adapted",
+        "sequence_order": 43
+      },
+      {
+        "id": "a24",
+        "framework": "love_languages",
+        "dimension": "giving_love_language",
+        "format": "scenario",
+        "text": "When you want to show your partner you love them, you're most likely to:",
+        "options": [
+          {"value": "a", "label": "Tell them something specific you appreciate about them."},
+          {"value": "b", "label": "Plan uninterrupted time together."},
+          {"value": "c", "label": "Do something helpful without being asked."},
+          {"value": "d", "label": "Give them a hug, hold their hand, or be physically close."},
+          {"value": "e", "label": "Pick up a small gift that made you think of them."}
+        ],
+        "scoring": {
+          "dimension": "giving_love_language",
+          "mapping": {"a": "words_of_affirmation", "b": "quality_time", "c": "acts_of_service", "d": "physical_touch", "e": "gifts"},
+          "score_type": "categorical",
+          "interpretation": "Identifies primary giving love language"
+        },
+        "source_instrument": "Chapman Love Languages Assessment, adapted",
+        "sequence_order": 44
+      },
+      {
+        "id": "a25",
+        "framework": "attachment",
+        "dimension": "anxiety",
+        "format": "forced_choice",
+        "text": "Which is closer to your experience?",
+        "options": [
+          {"value": "a", "label": "I sometimes worry that my partner doesn't love me as much as I love them."},
+          {"value": "b", "label": "I feel pretty secure that my partner's feelings for me are solid."}
+        ],
+        "scoring": {
+          "dimension": "attachment_anxiety",
+          "mapping": {"a": 6, "b": 2},
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate greater attachment anxiety"
+        },
+        "source_instrument": "ECR-R, Anxiety subscale, adapted",
+        "sequence_order": 45
+      },
+      {
+        "id": "a26",
+        "framework": "big_five",
+        "dimension": "neuroticism",
+        "format": "forced_choice",
+        "text": "After a fight, which is more like you?",
+        "options": [
+          {"value": "a", "label": "I can let it go and move on once it's resolved."},
+          {"value": "b", "label": "I keep replaying it in my head even after we've made up."}
+        ],
+        "scoring": {
+          "dimension": "neuroticism",
+          "mapping": {"a": 2, "b": 6},
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate rumination tendency linked to neuroticism"
+        },
+        "source_instrument": "BFI-K, Neuroticism subscale, adapted",
+        "sequence_order": 46
+      }
+    ]
+  },
+  "mode_b_only": {
+    "questions": [
+      {
+        "id": "b1",
+        "framework": "gottman_horsemen",
+        "dimension": "criticism",
+        "format": "likert",
+        "text": "When I've been unhappy in past relationships, I tended to focus on what was wrong with the other person rather than what I needed.",
+        "options": [
+          {"value": 1, "label": "Not at all like me"},
+          {"value": 2, "label": "Slightly like me"},
+          {"value": 3, "label": "Somewhat like me"},
+          {"value": 4, "label": "Moderately like me"},
+          {"value": 5, "label": "Quite like me"},
+          {"value": 6, "label": "Very much like me"},
+          {"value": 7, "label": "Exactly like me"}
+        ],
+        "scoring": {
+          "dimension": "criticism",
+          "mapping": "direct",
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate greater criticism pattern"
+        },
+        "source_instrument": "Gottman Four Horsemen Questionnaire, Criticism subscale, adapted for pattern recall",
+        "sequence_order": 2
+      },
+      {
+        "id": "b2",
+        "framework": "gottman_horsemen",
+        "dimension": "defensiveness",
+        "format": "likert",
+        "text": "In past relationships, when someone brought up something I did wrong, my first instinct was to defend myself rather than listen.",
+        "options": [
+          {"value": 1, "label": "Not at all like me"},
+          {"value": 2, "label": "Slightly like me"},
+          {"value": 3, "label": "Somewhat like me"},
+          {"value": 4, "label": "Moderately like me"},
+          {"value": 5, "label": "Quite like me"},
+          {"value": 6, "label": "Very much like me"},
+          {"value": 7, "label": "Exactly like me"}
+        ],
+        "scoring": {
+          "dimension": "defensiveness",
+          "mapping": "direct",
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate greater defensiveness pattern"
+        },
+        "source_instrument": "Gottman Four Horsemen Questionnaire, Defensiveness subscale, adapted for pattern recall",
+        "sequence_order": 3
+      },
+      {
+        "id": "b3",
+        "framework": "gottman_srh",
+        "dimension": "turning_toward",
+        "format": "scenario",
+        "text": "Think about your past relationships. When your partner shared something they were excited about, you typically:",
+        "options": [
+          {"value": "a", "label": "Matched their energy and got into it with them."},
+          {"value": "b", "label": "Listened politely but weren't that engaged."},
+          {"value": "c", "label": "Sometimes tuned out — especially if you were busy."},
+          {"value": "d", "label": "Responded with enthusiasm only if you were also interested in the topic."}
+        ],
+        "scoring": {
+          "dimension": "turning_toward",
+          "mapping": {"a": 7, "b": 4, "c": 2, "d": 3},
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate greater tendency to turn toward partner's bids"
+        },
+        "source_instrument": "Gottman Turning Toward Scale (SRH), adapted for pattern recall",
+        "sequence_order": 6
+      },
+      {
+        "id": "b4",
+        "framework": "gottman_srh",
+        "dimension": "conflict_management",
+        "format": "scenario",
+        "text": "Looking back at your past relationships, how did big disagreements usually end?",
+        "options": [
+          {"value": "a", "label": "We'd talk it through until we found a resolution."},
+          {"value": "b", "label": "One of us would give in to keep the peace."},
+          {"value": "c", "label": "Things would escalate and sometimes get ugly."},
+          {"value": "d", "label": "We'd drop it and never really resolve it."}
+        ],
+        "scoring": {
+          "dimension": "conflict_management",
+          "mapping": {"a": 7, "b": 3, "c": 2, "d": 1},
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate healthier conflict management patterns"
+        },
+        "source_instrument": "Gottman Conflict Management Scale (SRH), adapted for pattern recall",
+        "sequence_order": 8
+      },
+      {
+        "id": "b5",
+        "framework": "gottman_horsemen",
+        "dimension": "stonewalling",
+        "format": "scenario",
+        "text": "In past arguments, when things got really intense, your go-to move was usually:",
+        "options": [
+          {"value": "a", "label": "Take a break and come back when you'd cooled down."},
+          {"value": "b", "label": "Keep pushing to resolve it right then."},
+          {"value": "c", "label": "Go completely silent and withdraw."},
+          {"value": "d", "label": "Leave — physically or mentally just check out."}
+        ],
+        "scoring": {
+          "dimension": "stonewalling",
+          "mapping": {"a": 2, "b": 3, "c": 6, "d": 7},
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate greater stonewalling pattern"
+        },
+        "source_instrument": "Gottman Four Horsemen Questionnaire, Stonewalling subscale, adapted for pattern recall",
+        "sequence_order": 9
+      },
+      {
+        "id": "b6",
+        "framework": "attachment",
+        "dimension": "anxiety",
+        "format": "scenario",
+        "text": "Early in a new relationship, you notice the other person takes longer than usual to reply. Your honest reaction:",
+        "options": [
+          {"value": "a", "label": "They're probably just busy — no big deal."},
+          {"value": "b", "label": "You notice but don't overthink it."},
+          {"value": "c", "label": "You start analyzing your last message — did you say something wrong?"},
+          {"value": "d", "label": "You feel a knot in your stomach and resist the urge to double-text."}
+        ],
+        "scoring": {
+          "dimension": "attachment_anxiety",
+          "mapping": {"a": 1, "b": 3, "c": 5, "d": 7},
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate greater attachment anxiety"
+        },
+        "source_instrument": "ECR-R, Anxiety subscale, adapted",
+        "sequence_order": 15
+      },
+      {
+        "id": "b7",
+        "framework": "attachment",
+        "dimension": "avoidance",
+        "format": "likert",
+        "text": "I tend to keep a certain emotional distance in relationships — I don't let people get too close too fast.",
+        "options": [
+          {"value": 1, "label": "Not at all like me"},
+          {"value": 2, "label": "Slightly like me"},
+          {"value": 3, "label": "Somewhat like me"},
+          {"value": 4, "label": "Moderately like me"},
+          {"value": 5, "label": "Quite like me"},
+          {"value": 6, "label": "Very much like me"},
+          {"value": 7, "label": "Exactly like me"}
+        ],
+        "scoring": {
+          "dimension": "attachment_avoidance",
+          "mapping": "direct",
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate greater avoidance tendency"
+        },
+        "source_instrument": "ECR-R, Avoidance subscale, adapted",
+        "sequence_order": 16
+      },
+      {
+        "id": "b8",
+        "framework": "attachment",
+        "dimension": "avoidance",
+        "format": "forced_choice",
+        "text": "Which feels more accurate?",
+        "options": [
+          {"value": "a", "label": "I'm comfortable depending on romantic partners — I like the closeness."},
+          {"value": "b", "label": "I prefer to be self-reliant — depending on someone else feels risky."}
+        ],
+        "scoring": {
+          "dimension": "attachment_avoidance",
+          "mapping": {"a": 2, "b": 6},
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate greater avoidance"
+        },
+        "source_instrument": "ECR-R, Avoidance subscale, adapted",
+        "sequence_order": 18
+      },
+      {
+        "id": "b9",
+        "framework": "big_five",
+        "dimension": "neuroticism",
+        "format": "likert",
+        "text": "I tend to feel anxious or moody, and it takes me a while to bounce back from setbacks.",
+        "options": [
+          {"value": 1, "label": "Not at all like me"},
+          {"value": 2, "label": "Slightly like me"},
+          {"value": 3, "label": "Somewhat like me"},
+          {"value": 4, "label": "Moderately like me"},
+          {"value": 5, "label": "Quite like me"},
+          {"value": 6, "label": "Very much like me"},
+          {"value": 7, "label": "Exactly like me"}
+        ],
+        "scoring": {
+          "dimension": "neuroticism",
+          "mapping": "direct",
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate greater neuroticism"
+        },
+        "source_instrument": "BFI-K, Neuroticism subscale, adapted",
+        "sequence_order": 20
+      },
+      {
+        "id": "b10",
+        "framework": "big_five",
+        "dimension": "conscientiousness",
+        "format": "scenario",
+        "text": "A friend asks you to help them move next Saturday. You said yes two weeks ago. On Friday night, a better offer comes up. You:",
+        "options": [
+          {"value": "a", "label": "Show up for the move — a promise is a promise."},
+          {"value": "b", "label": "Text your friend, explain honestly, and offer to help another day."},
+          {"value": "c", "label": "Go to the better thing and hope your friend understands."},
+          {"value": "d", "label": "Feel guilty but make up an excuse to skip the move."}
+        ],
+        "scoring": {
+          "dimension": "conscientiousness",
+          "mapping": {"a": 7, "b": 5, "c": 2, "d": 1},
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate greater conscientiousness and reliability"
+        },
+        "source_instrument": "BFI-K, Conscientiousness subscale, adapted",
+        "sequence_order": 23
+      },
+      {
+        "id": "b11",
+        "framework": "big_five",
+        "dimension": "agreeableness",
+        "format": "likert",
+        "text": "I generally give people the benefit of the doubt — even when they've let me down before.",
+        "options": [
+          {"value": 1, "label": "Not at all like me"},
+          {"value": 2, "label": "Slightly like me"},
+          {"value": 3, "label": "Somewhat like me"},
+          {"value": 4, "label": "Moderately like me"},
+          {"value": 5, "label": "Quite like me"},
+          {"value": 6, "label": "Very much like me"},
+          {"value": 7, "label": "Exactly like me"}
+        ],
+        "scoring": {
+          "dimension": "agreeableness",
+          "mapping": "direct",
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate greater agreeableness"
+        },
+        "source_instrument": "BFI-K, Agreeableness subscale, adapted",
+        "sequence_order": 26
+      },
+      {
+        "id": "b12",
+        "framework": "love_languages",
+        "dimension": "primary_love_language",
+        "format": "scenario",
+        "text": "Think about the times you felt most loved in a past relationship. What was happening?",
+        "options": [
+          {"value": "a", "label": "They said something that made you feel truly seen and appreciated."},
+          {"value": "b", "label": "You were spending focused, uninterrupted time together."},
+          {"value": "c", "label": "They did something thoughtful without you asking."},
+          {"value": "d", "label": "You were physically close — a long hug, holding hands, cuddling."},
+          {"value": "e", "label": "They gave you a gift that showed they really knew you."}
+        ],
+        "scoring": {
+          "dimension": "love_language_ranking",
+          "mapping": {"a": "words_of_affirmation", "b": "quality_time", "c": "acts_of_service", "d": "physical_touch", "e": "gifts"},
+          "score_type": "categorical_tally",
+          "interpretation": "Tallied across love language items to determine ranked preferences"
+        },
+        "source_instrument": "Chapman Love Languages Assessment, adapted",
+        "sequence_order": 29
+      },
+      {
+        "id": "b13",
+        "framework": "gottman_srh",
+        "dimension": "positive_sentiment",
+        "format": "forced_choice",
+        "text": "When you look back at your past relationships as a whole, which is more true?",
+        "options": [
+          {"value": "a", "label": "I tend to remember the good times more vividly than the bad."},
+          {"value": "b", "label": "The painful moments stick with me more than the happy ones."}
+        ],
+        "scoring": {
+          "dimension": "positive_sentiment",
+          "mapping": {"a": 6, "b": 2},
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate positive sentiment override tendency"
+        },
+        "source_instrument": "Gottman Positive Sentiment Override concept (SRH), adapted for pattern recall",
+        "sequence_order": 35
+      },
+      {
+        "id": "b14",
+        "framework": "attachment",
+        "dimension": "anxiety",
+        "format": "forced_choice",
+        "text": "Which pattern feels more familiar?",
+        "options": [
+          {"value": "a", "label": "I tend to worry that people I'm close to will leave or lose interest."},
+          {"value": "b", "label": "I feel fairly confident that people who care about me will stick around."}
+        ],
+        "scoring": {
+          "dimension": "attachment_anxiety",
+          "mapping": {"a": 6, "b": 2},
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate greater attachment anxiety"
+        },
+        "source_instrument": "ECR-R, Anxiety subscale, adapted",
+        "sequence_order": 36
+      },
+      {
+        "id": "b15",
+        "framework": "big_five",
+        "dimension": "neuroticism",
+        "format": "forced_choice",
+        "text": "After a breakup, which is more like you?",
+        "options": [
+          {"value": "a", "label": "I grieve, learn what I can, and gradually move forward."},
+          {"value": "b", "label": "I replay everything — what I could have done differently haunts me for months."}
+        ],
+        "scoring": {
+          "dimension": "neuroticism",
+          "mapping": {"a": 2, "b": 6},
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate greater rumination linked to neuroticism"
+        },
+        "source_instrument": "BFI-K, Neuroticism subscale, adapted",
+        "sequence_order": 37
+      },
+      {
+        "id": "b16",
+        "framework": "gottman_srh",
+        "dimension": "fondness_admiration",
+        "format": "likert",
+        "text": "In past relationships, it came naturally to me to express admiration and appreciation for the other person.",
+        "options": [
+          {"value": 1, "label": "Not at all"},
+          {"value": 2, "label": "Rarely"},
+          {"value": 3, "label": "Occasionally"},
+          {"value": 4, "label": "Sometimes"},
+          {"value": 5, "label": "Often"},
+          {"value": 6, "label": "Very often"},
+          {"value": 7, "label": "Always — I'm naturally expressive about what I value in people"}
+        ],
+        "scoring": {
+          "dimension": "fondness_admiration",
+          "mapping": "direct",
+          "score_range": [1, 7],
+          "interpretation": "Higher scores indicate stronger fondness and admiration tendency"
+        },
+        "source_instrument": "Gottman Fondness & Admiration Questionnaire (SRH), adapted for pattern recall",
+        "sequence_order": 38
+      }
+    ]
+  },
+  "scoring_rubrics": {
+    "gottman_horsemen": {
+      "criticism": {
+        "healthy": {"range": "1.0-2.9", "description": "Uses specific complaints rather than global character attacks"},
+        "at_risk": {"range": "3.0-5.0", "description": "Sometimes shifts from complaint to criticism under stress"},
+        "critical": {"range": "5.1-7.0", "description": "Frequently frames issues as partner character flaws"}
+      },
+      "contempt": {
+        "healthy": {"range": "1.0-2.5", "description": "Maintains fundamental respect even during disagreements"},
+        "at_risk": {"range": "2.6-4.5", "description": "Occasional superiority or eye-rolling during conflict"},
+        "critical": {"range": "4.6-7.0", "description": "Regular contempt signals; strongest predictor of relationship dissolution"}
+      },
+      "defensiveness": {
+        "healthy": {"range": "1.0-2.9", "description": "Can hear feedback without counter-attacking"},
+        "at_risk": {"range": "3.0-5.0", "description": "Sometimes deflects responsibility during conflict"},
+        "critical": {"range": "5.1-7.0", "description": "Consistently avoids accountability; blocks repair attempts"}
+      },
+      "stonewalling": {
+        "healthy": {"range": "1.0-2.9", "description": "Stays engaged or uses healthy self-soothing breaks"},
+        "at_risk": {"range": "3.0-5.0", "description": "Occasionally shuts down during intense conflict"},
+        "critical": {"range": "5.1-7.0", "description": "Frequently withdraws; emotional flooding leads to disengagement"}
+      }
+    },
+    "gottman_srh": {
+      "love_maps": {
+        "healthy": {"range": "5.0-7.0", "description": "Strong knowledge of partner's inner world"},
+        "at_risk": {"range": "3.0-4.9", "description": "Some gaps in understanding partner's current concerns and dreams"},
+        "critical": {"range": "1.0-2.9", "description": "Significant disconnection from partner's inner life"}
+      },
+      "fondness_admiration": {
+        "healthy": {"range": "5.0-7.0", "description": "Active respect and appreciation for partner"},
+        "at_risk": {"range": "3.0-4.9", "description": "Fondness present but not regularly expressed"},
+        "critical": {"range": "1.0-2.9", "description": "Difficulty identifying admirable qualities; erosion of respect"}
+      },
+      "turning_toward": {
+        "healthy": {"range": "5.0-7.0", "description": "Consistently responds to partner's bids for connection"},
+        "at_risk": {"range": "3.0-4.9", "description": "Sometimes misses or dismisses partner's bids"},
+        "critical": {"range": "1.0-2.9", "description": "Frequently turns away or against partner's bids"}
+      },
+      "positive_sentiment": {
+        "healthy": {"range": "5.0-7.0", "description": "Positive sentiment override active; interprets ambiguous behavior charitably"},
+        "at_risk": {"range": "3.0-4.9", "description": "Mixed sentiment; sometimes assumes negative intent"},
+        "critical": {"range": "1.0-2.9", "description": "Negative sentiment override; assumes worst in partner's actions"}
+      },
+      "conflict_management": {
+        "healthy": {"range": "5.0-7.0", "description": "Constructive conflict with repair attempts and compromise"},
+        "at_risk": {"range": "3.0-4.9", "description": "Some conflicts go unresolved; avoidance or escalation patterns"},
+        "critical": {"range": "1.0-2.9", "description": "Destructive conflict patterns; gridlocked perpetual problems"}
+      },
+      "shared_meaning": {
+        "healthy": {"range": "5.0-7.0", "description": "Strong shared vision and purpose"},
+        "at_risk": {"range": "3.0-4.9", "description": "Some alignment but diverging life visions"},
+        "critical": {"range": "1.0-2.9", "description": "Lack of shared purpose or meaning"}
+      }
+    },
+    "attachment": {
+      "anxiety": {
+        "secure": {"range": "1.0-2.5", "description": "Low anxiety about partner's availability and love"},
+        "moderate": {"range": "2.6-4.5", "description": "Some worry about rejection or abandonment"},
+        "high": {"range": "4.6-7.0", "description": "Significant preoccupation with partner's responsiveness; fear of abandonment"}
+      },
+      "avoidance": {
+        "secure": {"range": "1.0-2.5", "description": "Comfortable with closeness and emotional intimacy"},
+        "moderate": {"range": "2.6-4.5", "description": "Some discomfort with deep emotional closeness"},
+        "high": {"range": "4.6-7.0", "description": "Strong preference for independence; discomfort with vulnerability"}
+      },
+      "style_classification": {
+        "secure": "Low anxiety + Low avoidance",
+        "anxious_preoccupied": "High anxiety + Low avoidance",
+        "dismissive_avoidant": "Low anxiety + High avoidance",
+        "fearful_avoidant": "High anxiety + High avoidance"
+      }
+    },
+    "big_five": {
+      "neuroticism": {
+        "low": {"range": "1.0-2.9", "description": "Emotionally stable; recovers quickly from relationship stress"},
+        "moderate": {"range": "3.0-5.0", "description": "Average emotional reactivity; some rumination under stress"},
+        "high": {"range": "5.1-7.0", "description": "High emotional reactivity; #1 negative predictor of relationship satisfaction"}
+      },
+      "conscientiousness": {
+        "high": {"range": "5.0-7.0", "description": "Reliable, follows through; #1 positive predictor of long-term satisfaction"},
+        "moderate": {"range": "3.0-4.9", "description": "Generally reliable but inconsistent under pressure"},
+        "low": {"range": "1.0-2.9", "description": "Struggles with follow-through; partner may feel they can't count on you"}
+      },
+      "agreeableness": {
+        "high": {"range": "5.0-7.0", "description": "Cooperative, empathic; strong in cross-sectional satisfaction"},
+        "moderate": {"range": "3.0-4.9", "description": "Balances cooperation with self-advocacy"},
+        "low": {"range": "1.0-2.9", "description": "May struggle with compromise; can come across as dismissive of partner's needs"}
+      }
+    },
+    "csi": {
+      "relationship_satisfaction": {
+        "satisfied": {"range": "13.5-20.0", "description": "High relationship satisfaction; strong foundation"},
+        "mixed": {"range": "8.0-13.4", "description": "Some dissatisfaction present; worth exploring contributing factors"},
+        "distressed": {"range": "0-7.9", "description": "Significant relationship distress; clinical cutoff for notable dissatisfaction"},
+        "note": "CSI-4 total is the sum of 4 items (each 0-5), range 0-20. Clinical distress cutoff is typically around 13.5 on the original CSI-4."
+      }
+    },
+    "love_languages": {
+      "scoring_method": "categorical_tally",
+      "description": "Love language items are tallied across forced-choice and scenario questions. Each option maps to one of the five languages. The language with the highest tally is the primary receiving love language. The giving love language is identified from the dedicated giving question (a24 in Mode A, b12 in Mode B).",
+      "languages": ["words_of_affirmation", "quality_time", "physical_touch", "acts_of_service", "gifts"],
+      "note": "No healthy/at-risk/critical thresholds apply. Love languages are preference-based, not deficit-based. The key insight is mismatch between giving and receiving preferences, and between partners."
+    }
+  }
+}
