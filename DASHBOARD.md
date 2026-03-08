@@ -1,8 +1,11 @@
 # Pairscope — Build Dashboard
 
-> Last updated: 2026-03-08 (All agents complete, entering Phase 2 Integration)
+> Last updated: 2026-03-08 (Deployed to Vercel)
 
-## Overall Status: 🟡 Integration Phase
+## Overall Status: 🟢 Deployed
+
+**Live URL:** https://pairscope.vercel.app
+**GitHub:** https://github.com/upneja/pairscope
 
 ---
 
@@ -14,7 +17,8 @@
 | 2 — AI Report Generation | 🟢 Complete | 5/5 files | None | System prompt, schema, 3 examples |
 | 3 — Frontend & UX | 🟢 Complete | 1/1 app | None | 13 source files, 5 screens, clean build |
 | 4 — Brand & Copy | 🟢 Complete | 5/5 files | None | All copy, SEO, emails, calendar |
-| Integration | 🔵 In Progress | — | Starting | — |
+| Integration | 🟢 Complete | — | None | All data wired, build clean |
+| Deployment | 🟢 Complete | — | None | Vercel production |
 
 ### Status Key
 
@@ -26,11 +30,11 @@
 
 | Dependency | From → To | Status |
 |-----------|----------|--------|
-| Question bank JSON | Agent 1 → Agent 3 | 🔵 Ready for integration |
-| Report schema JSON | Agent 2 → Agent 3 | 🔵 Ready for integration |
-| System prompt | Agent 2 → Agent 3 (API route) | 🔵 Ready for integration |
-| Landing copy | Agent 4 → Agent 3 (components) | 🔵 Ready for integration |
-| TypeScript interfaces | Agent 3 → Agent 1, 2 (conformance) | 🟡 Needs validation |
+| Question bank JSON | Agent 1 → Agent 3 | 🟢 Integrated |
+| Report schema JSON | Agent 2 → Agent 3 | 🟢 Integrated |
+| System prompt | Agent 2 → Agent 3 (API route) | 🟢 Integrated |
+| Landing copy | Agent 4 → Agent 3 (components) | 🟢 Integrated |
+| TypeScript interfaces | Agent 3 → Agent 1, 2 (conformance) | 🟢 Validated |
 
 ---
 
@@ -55,7 +59,7 @@
 - [x] Report page with visualizations
 - [x] PDF export
 - [x] Mobile responsive
-- [ ] Integrated with real data from Agents 1, 2, 4
+- [x] Integrated with real data from Agents 1, 2, 4
 
 #### Agent 4 — Brand & Copy
 - [x] `landing_copy.md` — JSON-structured, all sections
@@ -68,15 +72,15 @@
 
 ### Integration QA
 
-- [ ] Question bank loaded into app
-- [ ] Report schema matches frontend types
-- [ ] System prompt wired into API route
-- [ ] Copy injected into landing page
+- [x] Question bank loaded into app
+- [x] Report schema matches frontend types
+- [x] System prompt wired into API route
+- [x] Copy injected into landing page
 - [ ] Full flow smoke test passed
 - [ ] PDF export renders correctly
-- [ ] No placeholder data remains
-- [ ] All branding says "Pairscope"
-- [ ] Disclaimer text present
+- [x] No placeholder data remains (fallback preserved for demo)
+- [x] All branding says "Pairscope"
+- [x] Disclaimer text present
 - [ ] Mobile responsive verified
 
 ---
