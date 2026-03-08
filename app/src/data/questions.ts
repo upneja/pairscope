@@ -1,60 +1,70 @@
 import type {
   Question,
+  QuestionV2,
   Framework,
   Dimension,
   QuestionFormat,
   ScenarioOption,
   ForcedChoiceOption,
-  LikertOption,
   AssessmentMode,
+  TriggerCondition,
 } from "@/lib/types";
-import questionBank from "./question_bank.json";
+import questionBankV2 from "./question_bank_v2.json";
 
 // ---------------------------------------------------------------------------
-// Raw JSON shapes from Agent 1's question bank
+// Raw JSON shapes from question_bank_v2.json
 // ---------------------------------------------------------------------------
+
+interface RawForcedChoice {
+  id: string;
+  text: string;
+  score: number;
+  dimension: string;
+}
 
 interface RawOption {
-  value: string | number;
-  label: string;
+  id: string;
+  text: string;
+  score: number;
+  dimension: string;
 }
 
 interface RawScoring {
   dimension: string;
-  mapping: Record<string, number | string> | "direct";
-  score_range?: [number, number];
-  score_type?: string;
-  interpretation?: string;
+  weight: number;
+  reverse_scored: boolean;
 }
 
-interface RawSharedQuestion {
+interface RawTriggerCondition {
+  dimension: string;
+  operator: string;
+  threshold: number;
+}
+
+interface RawV2Question {
   id: string;
   framework: string;
   dimension: string;
   format: string;
-  text_mode_a: string;
-  text_mode_b: string;
-  options: RawOption[];
+  depth: string;
+  assessment_length: string;
+  text_mode_a: string | null;
+  text_mode_b: string | null;
+  subtext: string | null;
+  likert_labels: { low: string; high: string } | null;
+  options: RawOption[] | null;
+  forced_choices: RawForcedChoice[] | null;
   scoring: RawScoring;
   source_instrument: string;
-  sequence_order_a: number;
-  sequence_order_b: number;
-}
-
-interface RawModeQuestion {
-  id: string;
-  framework: string;
-  dimension: string;
-  format: string;
-  text: string;
-  options: RawOption[];
-  scoring: RawScoring;
-  source_instrument: string;
-  sequence_order: number;
+  text_prompt: string | null;
+  sequence_order_a: number | null;
+  sequence_order_b: number | null;
+  trigger_condition: RawTriggerCondition | null;
+  follow_up_for: string | null;
 }
 
 // ---------------------------------------------------------------------------
-// Dimension mapping: Agent 1 dimension names → frontend Dimension type
+// Dimension mapping: v2 dimension names → frontend Dimension type
 // ---------------------------------------------------------------------------
 
 const DIMENSION_MAP: Record<string, Dimension> = {
@@ -64,6 +74,7 @@ const DIMENSION_MAP: Record<string, Dimension> = {
   stonewalling: "stonewalling",
   love_maps: "love_maps",
   fondness_admiration: "fondness",
+  fondness: "fondness",
   turning_toward: "turning_toward",
   positive_sentiment: "positive_sentiment",
   conflict_management: "conflict_management",
@@ -73,9 +84,16 @@ const DIMENSION_MAP: Record<string, Dimension> = {
   neuroticism: "neuroticism",
   conscientiousness: "conscientiousness",
   agreeableness: "agreeableness",
+  satisfaction: "satisfaction",
   relationship_satisfaction: "satisfaction",
+  love_languages: "primary_love_language",
   primary_love_language: "primary_love_language",
   giving_love_language: "giving_love_language",
+  words_of_affirmation: "words_of_affirmation",
+  quality_time: "quality_time",
+  physical_touch: "physical_touch",
+  acts_of_service: "acts_of_service",
+  gifts: "gifts",
 };
 
 function mapDimension(raw: string): Dimension {
@@ -83,210 +101,191 @@ function mapDimension(raw: string): Dimension {
 }
 
 // ---------------------------------------------------------------------------
-// Score resolution: turn Agent 1's mapping + option value into a number
+// Map assessment_length from v2 JSON to QuestionV2 format
 // ---------------------------------------------------------------------------
 
-function resolveScore(
-  option: RawOption,
-  scoring: RawScoring
-): number {
-  if (scoring.mapping === "direct") {
-    // For direct mapping, the value IS the score
-    return typeof option.value === "number" ? option.value : 0;
-  }
-
-  const key = String(option.value);
-  const mapped = scoring.mapping[key];
-
-  if (typeof mapped === "number") {
-    return mapped;
-  }
-
-  // Categorical love-language mappings (e.g. "a" → "words_of_affirmation").
-  // We assign a flat score of 1 so the tally logic in scoring can count picks.
-  if (typeof mapped === "string") {
-    return 1;
-  }
-
-  return 0;
+function mapAssessmentLength(
+  raw: string
+): "quick" | "deep" | "both" {
+  if (raw === "deep") return "deep";
+  if (raw === "quick") return "quick";
+  return "both"; // "both", "mode_a", "mode_b" all map to "both" for depth purposes
 }
 
 // ---------------------------------------------------------------------------
-// Convert raw options → frontend option types based on question format
+// Determine which modes a question supports based on text availability
 // ---------------------------------------------------------------------------
 
-function buildScenarioOptions(
-  options: RawOption[],
-  scoring: RawScoring,
-  questionId: string
-): ScenarioOption[] {
-  return options.map((opt, idx) => ({
-    id: `${questionId}${String.fromCharCode(97 + idx)}`, // a, b, c, d …
-    text: opt.label,
-    score: resolveScore(opt, scoring),
-  }));
-}
-
-function buildForcedChoices(
-  options: RawOption[],
-  scoring: RawScoring,
-  questionId: string
-): [ForcedChoiceOption, ForcedChoiceOption] {
-  const mapped = options.map((opt, idx) => ({
-    id: `${questionId}${String.fromCharCode(97 + idx)}`,
-    text: opt.label,
-    score: resolveScore(opt, scoring),
-  }));
-  return [mapped[0], mapped[1]];
-}
-
-function buildLikertLabels(
-  options: RawOption[]
-): { low: string; high: string } {
-  if (options.length === 0) return { low: "", high: "" };
-  return {
-    low: options[0].label,
-    high: options[options.length - 1].label,
-  };
+function determineModes(q: RawV2Question): AssessmentMode[] {
+  const modes: AssessmentMode[] = [];
+  if (q.text_mode_a !== null) modes.push("relationship");
+  if (q.text_mode_b !== null) modes.push("single");
+  // If neither text is available (shouldn't happen), default to both
+  if (modes.length === 0) return ["relationship", "single"];
+  return modes;
 }
 
 // ---------------------------------------------------------------------------
-// Generic converter: raw question data → frontend Question
+// Convert raw v2 question → QuestionV2
 // ---------------------------------------------------------------------------
 
-function convertQuestion(
-  id: string,
-  framework: string,
-  dimension: string,
-  format: string,
-  text: string,
-  options: RawOption[],
-  scoring: RawScoring,
-  sourceInstrument: string,
-  modes: AssessmentMode[]
-): Question {
-  const q: Question = {
-    id,
-    framework: framework as Framework,
-    dimension: mapDimension(dimension),
-    format: format as QuestionFormat,
+function convertToV2(
+  raw: RawV2Question,
+  mode: "relationship" | "single"
+): QuestionV2 {
+  const text =
+    mode === "relationship"
+      ? raw.text_mode_a ?? raw.text_mode_b ?? ""
+      : raw.text_mode_b ?? raw.text_mode_a ?? "";
+
+  const q: QuestionV2 = {
+    id: raw.id,
+    framework: raw.framework,
+    dimension: raw.dimension,
+    format: raw.format as QuestionFormat,
+    depth: raw.depth as "core" | "follow_up" | "pre_knowledge",
+    assessmentLength: mapAssessmentLength(raw.assessment_length),
     text,
-    modes,
-    sourceInstrument: sourceInstrument,
+    scoring: {
+      dimension: raw.scoring.dimension,
+      weight: raw.scoring.weight,
+      reverse_scored: raw.scoring.reverse_scored,
+    },
+    modes: determineModes(raw),
   };
 
-  switch (format) {
-    case "scenario":
-      q.options = buildScenarioOptions(options, scoring, id);
-      break;
-    case "forced_choice":
-      q.forcedChoices = buildForcedChoices(options, scoring, id);
-      break;
-    case "likert":
-      q.likertLabels = buildLikertLabels(options);
-      break;
+  if (raw.subtext) q.subtext = raw.subtext;
+  if (raw.source_instrument) q.sourceInstrument = raw.source_instrument;
+  if (raw.text_prompt !== null && raw.text_prompt !== undefined)
+    q.textPrompt = raw.text_prompt;
+  if (raw.trigger_condition) {
+    q.triggerCondition = raw.trigger_condition as TriggerCondition;
+  }
+  if (raw.follow_up_for) q.followUpFor = raw.follow_up_for;
+
+  // Map options (scenario format)
+  if (raw.options && raw.format === "scenario") {
+    q.options = raw.options.map(
+      (opt): ScenarioOption => ({
+        id: opt.id,
+        text: opt.text,
+        score: opt.score,
+      })
+    );
+  }
+
+  // Map forced_choices
+  if (raw.forced_choices && raw.format === "forced_choice") {
+    q.forcedChoices = [
+      { id: raw.forced_choices[0].id, text: raw.forced_choices[0].text, score: raw.forced_choices[0].score },
+      { id: raw.forced_choices[1].id, text: raw.forced_choices[1].text, score: raw.forced_choices[1].score },
+    ] as [ForcedChoiceOption, ForcedChoiceOption];
+  }
+
+  // Map likert labels
+  if (raw.likert_labels && raw.format === "likert") {
+    q.likertLabels = { low: raw.likert_labels.low, high: raw.likert_labels.high };
   }
 
   return q;
 }
 
 // ---------------------------------------------------------------------------
-// Process shared questions → one entry per mode
+// Convert raw v2 question → legacy Question type (backward compat)
 // ---------------------------------------------------------------------------
+
+function convertToLegacy(
+  raw: RawV2Question,
+  mode: "relationship" | "single"
+): Question {
+  const text =
+    mode === "relationship"
+      ? raw.text_mode_a ?? raw.text_mode_b ?? ""
+      : raw.text_mode_b ?? raw.text_mode_a ?? "";
+
+  const q: Question = {
+    id: raw.id,
+    framework: raw.framework as Framework,
+    dimension: mapDimension(raw.dimension),
+    format: raw.format as QuestionFormat,
+    text,
+    modes: determineModes(raw),
+  };
+
+  if (raw.source_instrument) q.sourceInstrument = raw.source_instrument;
+
+  // Map options (scenario format)
+  if (raw.options && raw.format === "scenario") {
+    q.options = raw.options.map(
+      (opt): ScenarioOption => ({
+        id: opt.id,
+        text: opt.text,
+        score: opt.score,
+      })
+    );
+  }
+
+  // Map forced_choices
+  if (raw.forced_choices && raw.format === "forced_choice") {
+    q.forcedChoices = [
+      { id: raw.forced_choices[0].id, text: raw.forced_choices[0].text, score: raw.forced_choices[0].score },
+      { id: raw.forced_choices[1].id, text: raw.forced_choices[1].text, score: raw.forced_choices[1].score },
+    ] as [ForcedChoiceOption, ForcedChoiceOption];
+  }
+
+  // Map likert labels
+  if (raw.likert_labels && raw.format === "likert") {
+    q.likertLabels = { low: raw.likert_labels.low, high: raw.likert_labels.high };
+  }
+
+  return q;
+}
+
+// ---------------------------------------------------------------------------
+// Load & sort questions from v2 JSON
+// ---------------------------------------------------------------------------
+
+const coreRaw = questionBankV2.core_questions as RawV2Question[];
+const followUpRaw = questionBankV2.follow_up_questions as RawV2Question[];
+
+// --- Build legacy exports (backward compat) ---
 
 interface OrderedQuestion {
   question: Question;
   order: number;
 }
 
-const sharedQuestions = questionBank.shared_questions as RawSharedQuestion[];
-const modeAOnlyQuestions = questionBank.mode_a_only
-  .questions as RawModeQuestion[];
-const modeBOnlyQuestions = questionBank.mode_b_only
-  .questions as RawModeQuestion[];
-
-// --- Build relationship (mode A) list ---
-
-const relationshipOrdered: OrderedQuestion[] = [];
-
-for (const sq of sharedQuestions) {
-  relationshipOrdered.push({
-    question: convertQuestion(
-      sq.id,
-      sq.framework,
-      sq.dimension,
-      sq.format,
-      sq.text_mode_a,
-      sq.options,
-      sq.scoring,
-      sq.source_instrument,
-      ["relationship", "single"]
-    ),
-    order: sq.sequence_order_a,
-  });
-}
-
-for (const mq of modeAOnlyQuestions) {
-  relationshipOrdered.push({
-    question: convertQuestion(
-      mq.id,
-      mq.framework,
-      mq.dimension,
-      mq.format,
-      mq.text,
-      mq.options,
-      mq.scoring,
-      mq.source_instrument,
-      ["relationship"]
-    ),
-    order: mq.sequence_order,
-  });
-}
+// Relationship (mode A) questions — core only for legacy compat
+const relationshipOrdered: OrderedQuestion[] = coreRaw
+  .filter((q) => q.text_mode_a !== null)
+  .map((q) => ({
+    question: convertToLegacy(q, "relationship"),
+    order: q.sequence_order_a ?? 999,
+  }));
 
 relationshipOrdered.sort((a, b) => a.order - b.order);
 
-// --- Build single (mode B) list ---
-
-const singleOrdered: OrderedQuestion[] = [];
-
-for (const sq of sharedQuestions) {
-  singleOrdered.push({
-    question: convertQuestion(
-      sq.id,
-      sq.framework,
-      sq.dimension,
-      sq.format,
-      sq.text_mode_b,
-      sq.options,
-      sq.scoring,
-      sq.source_instrument,
-      ["relationship", "single"]
-    ),
-    order: sq.sequence_order_b,
-  });
-}
-
-for (const mq of modeBOnlyQuestions) {
-  singleOrdered.push({
-    question: convertQuestion(
-      mq.id,
-      mq.framework,
-      mq.dimension,
-      mq.format,
-      mq.text,
-      mq.options,
-      mq.scoring,
-      mq.source_instrument,
-      ["single"]
-    ),
-    order: mq.sequence_order,
-  });
-}
+// Single (mode B) questions — core only for legacy compat
+const singleOrdered: OrderedQuestion[] = coreRaw
+  .filter((q) => q.text_mode_b !== null)
+  .map((q) => ({
+    question: convertToLegacy(q, "single"),
+    order: q.sequence_order_b ?? 999,
+  }));
 
 singleOrdered.sort((a, b) => a.order - b.order);
 
+// --- Build V2 exports ---
+
+// For V2 we default to relationship mode text; consumers can pick mode at runtime
+const coreV2Sorted = [...coreRaw].sort(
+  (a, b) => (a.sequence_order_a ?? 999) - (b.sequence_order_a ?? 999)
+);
+
+const followUpV2Sorted = [...followUpRaw]; // follow-ups don't have fixed sequence order
+
 // ---------------------------------------------------------------------------
-// Exports
+// Exports — legacy
 // ---------------------------------------------------------------------------
 
 export const relationshipQuestions: Question[] = relationshipOrdered.map(
@@ -296,3 +295,43 @@ export const relationshipQuestions: Question[] = relationshipOrdered.map(
 export const singleQuestions: Question[] = singleOrdered.map(
   (o) => o.question
 );
+
+// ---------------------------------------------------------------------------
+// Exports — V2
+// ---------------------------------------------------------------------------
+
+export const coreQuestionsV2: QuestionV2[] = coreV2Sorted.map((q) =>
+  convertToV2(q, "relationship")
+);
+
+export const followUpQuestionsV2: QuestionV2[] = followUpV2Sorted.map((q) =>
+  convertToV2(q, "relationship")
+);
+
+/**
+ * Returns follow-up questions whose trigger_condition matches the current
+ * dimension score. Used for adaptive branching in the deep assessment.
+ */
+export function getFollowUpsForDimension(
+  dimension: string,
+  currentScore: number
+): QuestionV2[] {
+  return followUpQuestionsV2.filter((q) => {
+    if (!q.triggerCondition) return false;
+    if (q.triggerCondition.dimension !== dimension) return false;
+
+    const { operator, threshold } = q.triggerCondition;
+    switch (operator) {
+      case ">":
+        return currentScore > threshold;
+      case "<":
+        return currentScore < threshold;
+      case ">=":
+        return currentScore >= threshold;
+      case "<=":
+        return currentScore <= threshold;
+      default:
+        return false;
+    }
+  });
+}
