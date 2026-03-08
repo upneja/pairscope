@@ -61,7 +61,11 @@ export default function ProcessingPage() {
 
         const parsed = JSON.parse(storedData);
         const mode: "relationship" | "single" = parsed.mode || "relationship";
+        const depth = parsed.depth || "quick";
         const answers: Record<string, number | string> = parsed.answers || {};
+        const freeTextResponses: Record<string, string> = parsed.freeTextResponses || {};
+        const preKnowledge = parsed.preKnowledge || {};
+        const completedAt = parsed.completedAt;
 
         // Compute scores from answers using the question bank
         let scores: AssessmentScores;
@@ -105,8 +109,11 @@ export default function ProcessingPage() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             mode,
+            depth,
             scores,
             raw_answers: answers,
+            free_text_responses: freeTextResponses,
+            pre_knowledge: preKnowledge,
           }),
         });
 
@@ -115,7 +122,7 @@ export default function ProcessingPage() {
         }
 
         const report = await response.json();
-        report.createdAt = new Date().toISOString();
+        report.createdAt = completedAt || new Date().toISOString();
 
         // Store the report in sessionStorage
         sessionStorage.setItem("pairscope_report", JSON.stringify(report));
