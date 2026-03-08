@@ -3,7 +3,7 @@ import { Report } from "./types";
 export const placeholderReportRelationship: Report = {
   id: "rpt_demo_001",
   mode: "relationship",
-  createdAt: new Date().toISOString(),
+  createdAt: "2026-03-08T00:00:00.000Z",
   overallSummary:
     "You're in a relationship that has real strengths — particularly in the fondness and admiration you hold for each other. But there are patterns worth paying attention to, especially around how you handle conflict and the emotional distance that can creep in when stress runs high.",
   disclaimerText:
@@ -208,7 +208,7 @@ export const placeholderReportRelationship: Report = {
 export const placeholderReportSingle: Report = {
   id: "rpt_demo_002",
   mode: "single",
-  createdAt: new Date().toISOString(),
+  createdAt: "2026-03-08T00:00:00.000Z",
   overallSummary:
     "You bring real strengths to relationships — conscientiousness, self-awareness, and a genuine desire to understand yourself. But there are patterns worth examining, particularly around avoidance and a tendency to retreat when things get emotionally intense.",
   disclaimerText:
