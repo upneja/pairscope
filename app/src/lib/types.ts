@@ -158,11 +158,54 @@ export interface Report {
   disclaimerText: string;
 }
 
+// --- V2 Question & Assessment Types ---
+
+export type AssessmentDepth = "quick" | "deep";
+
+export interface PreKnowledge {
+  attachmentStyle: "secure" | "anxious" | "avoidant" | "fearful_avoidant" | "not_sure";
+  loveLanguage: "words_of_affirmation" | "quality_time" | "physical_touch" | "acts_of_service" | "gifts" | "not_sure";
+  therapyHistory: "yes" | "no" | "prefer_not_to_say" | null;
+}
+
+export interface TriggerCondition {
+  dimension: string;
+  operator: ">" | "<" | ">=" | "<=";
+  threshold: number;
+}
+
+export interface QuestionV2 {
+  id: string;
+  framework: string;
+  dimension: string;
+  format: QuestionFormat;
+  depth: "core" | "follow_up" | "pre_knowledge";
+  assessmentLength: "quick" | "deep" | "both";
+  text: string;
+  subtext?: string;
+  options?: ScenarioOption[];
+  forcedChoices?: [ForcedChoiceOption, ForcedChoiceOption];
+  likertLabels?: { low: string; high: string };
+  sourceInstrument?: string;
+  textPrompt?: string | null;
+  triggerCondition?: TriggerCondition | null;
+  followUpFor?: string | null;
+  scoring: {
+    dimension: string;
+    weight: number;
+    reverse_scored: boolean;
+  };
+  modes: AssessmentMode[];
+}
+
 // --- UI State Types ---
 
 export interface AssessmentState {
   mode: AssessmentMode;
+  depth?: AssessmentDepth;
   currentIndex: number;
   answers: Record<string, number | string>;
+  freeTextResponses?: Record<string, string>;
+  preKnowledge?: PreKnowledge;
   startedAt: string;
 }
