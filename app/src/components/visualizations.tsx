@@ -16,10 +16,12 @@ import {
 } from "recharts";
 import { Visualization } from "@/lib/types";
 
-const CORAL = "#f97066";
-const CORAL_LIGHT = "#fca5a1";
-const AMBER = "#f59e0b";
-const SLATE = "#94a3b8";
+const TERRA = "#c47a5a";
+const TERRA_LIGHT = "#d4967a";
+const SAGE = "#7a9a8a";
+const SAGE_LIGHT = "#95b3a3";
+const SAND = "#d4c5a9";
+const TEXT_MUTED = "#9a9490";
 
 export function RadarVisualization({ viz }: { viz: Visualization }) {
   const data = Object.entries(viz.data)
@@ -36,8 +38,8 @@ export function RadarVisualization({ viz }: { viz: Visualization }) {
     <div className="w-full h-64 sm:h-72">
       <ResponsiveContainer width="100%" height="100%">
         <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data}>
-          <PolarGrid stroke="#334155" />
-          <PolarAngleAxis dataKey="subject" tick={{ fill: SLATE, fontSize: 11 }} />
+          <PolarGrid stroke="#3d3a36" />
+          <PolarAngleAxis dataKey="subject" tick={{ fill: TEXT_MUTED, fontSize: 11 }} />
           <PolarRadiusAxis
             angle={90}
             domain={[0, 10]}
@@ -46,9 +48,9 @@ export function RadarVisualization({ viz }: { viz: Visualization }) {
           />
           <Radar
             dataKey="value"
-            stroke={CORAL}
-            fill={CORAL}
-            fillOpacity={0.2}
+            stroke={TERRA}
+            fill={TERRA}
+            fillOpacity={0.15}
             strokeWidth={2}
           />
         </RadarChart>
@@ -66,31 +68,31 @@ export function SpectrumVisualization({ viz }: { viz: Visualization }) {
     <div className="space-y-6 py-4">
       <div>
         <div className="flex justify-between text-sm mb-2">
-          <span className="text-slate-light">Low Anxiety</span>
-          <span className="text-slate-light">High Anxiety</span>
+          <span className="text-on-dark-muted">Low Anxiety</span>
+          <span className="text-on-dark-muted">High Anxiety</span>
         </div>
-        <div className="h-3 bg-navy-lighter rounded-full relative overflow-hidden">
+        <div className="h-3 bg-warm-dark-lighter rounded-full relative overflow-hidden">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-coral/30 to-coral"
+            className="h-full rounded-full bg-gradient-to-r from-terra/30 to-terra"
             style={{ width: `${(anxiety / maxValue) * 100}%` }}
           />
         </div>
-        <p className="text-xs text-slate-mid mt-1">
+        <p className="text-xs text-on-dark-muted mt-1">
           {anxiety.toFixed(1)} / {maxValue}
         </p>
       </div>
       <div>
         <div className="flex justify-between text-sm mb-2">
-          <span className="text-slate-light">Low Avoidance</span>
-          <span className="text-slate-light">High Avoidance</span>
+          <span className="text-on-dark-muted">Low Avoidance</span>
+          <span className="text-on-dark-muted">High Avoidance</span>
         </div>
-        <div className="h-3 bg-navy-lighter rounded-full relative overflow-hidden">
+        <div className="h-3 bg-warm-dark-lighter rounded-full relative overflow-hidden">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-amber/30 to-amber"
+            className="h-full rounded-full bg-gradient-to-r from-sage/30 to-sage"
             style={{ width: `${(avoidance / maxValue) * 100}%` }}
           />
         </div>
-        <p className="text-xs text-slate-mid mt-1">
+        <p className="text-xs text-on-dark-muted mt-1">
           {avoidance.toFixed(1)} / {maxValue}
         </p>
       </div>
@@ -110,43 +112,43 @@ export function MeterVisualization({ viz }: { viz: Visualization }) {
   return (
     <div className="py-4">
       <div className="flex justify-between items-end mb-2">
-        <span className="text-sm text-slate-light">{label}</span>
-        <span className="text-2xl font-bold text-white">
+        <span className="text-sm text-on-dark-muted">{label}</span>
+        <span className="text-2xl font-bold text-on-dark">
           {value}
-          <span className="text-sm text-slate-mid font-normal">/{max}</span>
+          <span className="text-sm text-on-dark-muted font-normal">/{max}</span>
         </span>
       </div>
-      <div className="h-4 bg-navy-lighter rounded-full relative overflow-hidden">
+      <div className="h-4 bg-warm-dark-lighter rounded-full relative overflow-hidden">
         <div
           className={`h-full rounded-full transition-all duration-1000 ${
             isAboveThreshold
-              ? "bg-gradient-to-r from-emerald-600 to-emerald-400"
-              : "bg-gradient-to-r from-coral to-amber"
+              ? "bg-gradient-to-r from-sage to-sage-light"
+              : "bg-gradient-to-r from-terra to-sand"
           }`}
           style={{ width: `${percentage}%` }}
         />
         {/* Threshold marker */}
         <div
-          className="absolute top-0 bottom-0 w-0.5 bg-white/40"
+          className="absolute top-0 bottom-0 w-0.5 bg-white/30"
           style={{ left: `${thresholdPercent}%` }}
         />
       </div>
       <div className="flex justify-between mt-1">
-        <span className="text-[10px] text-slate-mid">0</span>
+        <span className="text-[10px] text-on-dark-muted">0</span>
         <span
-          className="text-[10px] text-slate-mid"
+          className="text-[10px] text-on-dark-muted"
           style={{ marginLeft: `${thresholdPercent - 5}%` }}
         >
           threshold: {threshold}
         </span>
-        <span className="text-[10px] text-slate-mid">{max}</span>
+        <span className="text-[10px] text-on-dark-muted">{max}</span>
       </div>
     </div>
   );
 }
 
 export function BarChartVisualization({ viz }: { viz: Visualization }) {
-  const colors = [CORAL, CORAL_LIGHT, AMBER, SLATE, "#64748b"];
+  const colors = [TERRA, TERRA_LIGHT, SAGE, SAND, TEXT_MUTED];
   const data = Object.entries(viz.data)
     .filter(([, v]) => typeof v === "number")
     .map(([key, value]) => ({
@@ -165,12 +167,12 @@ export function BarChartVisualization({ viz }: { viz: Visualization }) {
           layout="vertical"
           margin={{ left: 20, right: 20, top: 10, bottom: 10 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-          <XAxis type="number" tick={{ fill: SLATE, fontSize: 11 }} domain={[0, 10]} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#2a2725" />
+          <XAxis type="number" tick={{ fill: TEXT_MUTED, fontSize: 11 }} domain={[0, 10]} />
           <YAxis
             dataKey="name"
             type="category"
-            tick={{ fill: SLATE, fontSize: 11 }}
+            tick={{ fill: TEXT_MUTED, fontSize: 11 }}
             width={140}
           />
           <Bar dataKey="value" radius={[0, 4, 4, 0]}>

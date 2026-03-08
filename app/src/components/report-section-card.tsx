@@ -34,25 +34,25 @@ export function ReportSectionCard({ section, index }: Props) {
   return (
     <motion.div
       ref={cardRef}
-      className="report-section bg-card rounded-2xl border border-card-border p-6 sm:p-8 shadow-sm"
+      className="report-section bg-card rounded-2xl border border-card-border p-8 sm:p-10 shadow-sm shadow-warm-black/5"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.1, duration: 0.5 }}
+      transition={{ delay: index * 0.1, duration: 0.7 }}
     >
       {/* Header */}
       <div className="flex justify-between items-start mb-6">
         <div>
-          <h2 className="text-xl sm:text-2xl font-bold text-navy">
+          <h2 className="font-display text-2xl text-warm-black">
             {section.title}
           </h2>
           {section.subtitle && (
-            <p className="text-sm text-slate-dark mt-1">{section.subtitle}</p>
+            <p className="text-sm text-text-tertiary mt-1">{section.subtitle}</p>
           )}
         </div>
         <button
           onClick={handleShare}
-          className="p-2 rounded-lg hover:bg-slate-100 transition-colors text-slate-mid hover:text-navy shrink-0"
+          className="p-2 rounded-lg hover:bg-cream-dark transition-colors duration-300 text-text-muted hover:text-terra shrink-0"
           title="Share this section"
         >
           <svg
@@ -72,11 +72,13 @@ export function ReportSectionCard({ section, index }: Props) {
       </div>
 
       {/* Narrative */}
-      <p className="text-slate-dark leading-relaxed mb-6">{section.narrative}</p>
+      <p className="text-text-secondary text-base leading-relaxed mb-6" style={{ lineHeight: 1.8 }}>
+        {section.narrative}
+      </p>
 
       {/* Visualization */}
       {section.visualization && (
-        <div className="mb-6 bg-navy rounded-xl p-4">
+        <div className="mb-6 bg-warm-dark rounded-xl p-6">
           <ReportVisualization visualization={section.visualization} />
         </div>
       )}
@@ -85,14 +87,14 @@ export function ReportSectionCard({ section, index }: Props) {
       {section.conversationScripts && section.conversationScripts.length > 0 && (
         <div className="space-y-4 mb-6">
           {section.conversationScripts.map((script, i) => (
-            <div key={i} className="bg-slate-50 rounded-xl p-5 border border-slate-100">
-              <p className="text-xs font-medium text-coral uppercase tracking-wide mb-2">
+            <div key={i} className="bg-cream-dark rounded-xl p-6">
+              <p className="text-xs font-medium text-terra uppercase tracking-wide mb-2">
                 {script.situation}
               </p>
-              <blockquote className="text-navy font-medium italic border-l-2 border-coral pl-4 mb-3">
+              <blockquote className="text-warm-black italic border-l-2 border-terra pl-4 mb-3">
                 {script.script}
               </blockquote>
-              <p className="text-sm text-slate-dark">{script.explanation}</p>
+              <p className="text-sm text-text-secondary">{script.explanation}</p>
             </div>
           ))}
         </div>
@@ -100,14 +102,14 @@ export function ReportSectionCard({ section, index }: Props) {
 
       {/* Action Items */}
       {section.actionItems && section.actionItems.length > 0 && (
-        <div className="bg-navy/5 rounded-xl p-5">
-          <h3 className="text-sm font-semibold text-navy mb-3 uppercase tracking-wide">
+        <div className="bg-sage-muted rounded-xl p-6">
+          <h3 className="text-sm font-semibold text-sage-dark mb-3 uppercase tracking-wide">
             {section.conversationScripts ? "Try this" : "What to do about it"}
           </h3>
           <ul className="space-y-2">
             {section.actionItems.map((item, i) => (
-              <li key={i} className="flex gap-3 text-sm text-slate-dark">
-                <span className="text-coral mt-0.5 shrink-0">
+              <li key={i} className="flex gap-3 text-sm text-text-secondary">
+                <span className="text-sage mt-0.5 shrink-0">
                   <svg
                     className="w-4 h-4"
                     fill="currentColor"

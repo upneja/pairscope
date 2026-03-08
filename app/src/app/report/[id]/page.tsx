@@ -79,30 +79,30 @@ export default function ReportPage({
   // Loading state
   if (!report) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+      <div className="min-h-screen bg-cream flex items-center justify-center">
         <div className="text-center">
-          <div className="w-8 h-8 border-2 border-coral border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-sm text-slate-500">Loading your report...</p>
+          <div className="w-8 h-8 border-2 border-terra border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-sm text-text-secondary">Loading your report...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="grain min-h-screen bg-cream">
       {/* Fixed top bar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-warm-white/90 backdrop-blur-md border-b border-card-border">
         <div className="max-w-4xl mx-auto px-6 py-3 flex justify-between items-center">
           <Link
             href="/"
-            className="text-lg font-semibold tracking-tight text-navy hover:text-coral transition-colors"
+            className="font-display italic text-lg text-warm-black hover:text-terra transition-colors duration-300"
           >
             Pairscope
           </Link>
           <button
             onClick={handleExportPDF}
             disabled={isExporting}
-            className="px-4 py-2 bg-navy text-white text-sm font-medium rounded-lg hover:bg-navy-light transition-colors disabled:opacity-50 flex items-center gap-2"
+            className="px-4 py-2 border border-card-border text-warm-black text-sm font-medium rounded-lg hover:bg-cream-dark transition-colors duration-300 disabled:opacity-50 flex items-center gap-2"
           >
             {isExporting ? (
               <>
@@ -154,23 +154,23 @@ export default function ReportPage({
         <div className="max-w-3xl mx-auto px-6">
           {/* Report header */}
           <motion.div
-            className="text-center mb-12 pt-8"
+            className="text-center mb-16 pt-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
           >
-            <span className="text-xs font-medium text-coral uppercase tracking-widest">
+            <span className="text-xs font-medium text-terra uppercase tracking-widest">
               {report.mode === "relationship"
                 ? "Relationship Assessment"
                 : "Solo Assessment"}
             </span>
-            <h1 className="text-3xl sm:text-4xl font-bold text-navy mt-3 mb-4">
+            <h1 className="font-display text-4xl sm:text-5xl text-warm-black mt-3 mb-5">
               Your Report
             </h1>
-            <p className="text-slate-dark leading-relaxed max-w-xl mx-auto">
+            <p className="text-text-secondary text-lg leading-relaxed max-w-xl mx-auto">
               {report.overallSummary}
             </p>
-            <p className="text-xs text-slate-mid mt-4">
+            <p className="text-xs text-text-tertiary mt-4">
               Generated on{" "}
               {new Date(report.createdAt).toLocaleDateString("en-US", {
                 year: "numeric",
@@ -193,16 +193,17 @@ export default function ReportPage({
 
           {/* Email capture */}
           <motion.div
-            className="mt-12 bg-white rounded-2xl border border-slate-200 p-8 text-center"
+            className="mt-12 bg-card rounded-2xl border border-card-border p-8 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
           >
             {emailSaved ? (
               <div>
-                <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
+                <div className="w-12 h-12 rounded-full bg-sage-muted flex items-center justify-center mx-auto mb-4">
                   <svg
-                    className="w-6 h-6 text-emerald-600"
+                    className="w-6 h-6 text-sage-dark"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth={2}
@@ -215,20 +216,20 @@ export default function ReportPage({
                     />
                   </svg>
                 </div>
-                <h3 className="text-lg font-semibold text-navy mb-2">
+                <h3 className="font-display text-lg text-warm-black mb-2">
                   You&apos;re all set!
                 </h3>
-                <p className="text-sm text-slate-dark">
+                <p className="text-sm text-text-secondary">
                   We&apos;ll send you a copy of your report and remind you to
                   retake in 90 days.
                 </p>
               </div>
             ) : (
               <>
-                <h3 className="text-lg font-semibold text-navy mb-2">
+                <h3 className="font-display text-lg text-warm-black mb-2">
                   Save your report
                 </h3>
-                <p className="text-sm text-slate-dark mb-6 max-w-sm mx-auto">
+                <p className="text-sm text-text-secondary mb-6 max-w-sm mx-auto">
                   Get a copy of your report emailed to you, plus a reminder to
                   retake in 90 days and see how you&apos;ve grown.
                 </p>
@@ -241,17 +242,17 @@ export default function ReportPage({
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="your@email.com"
-                    className="flex-1 px-4 py-3 rounded-xl border border-slate-200 text-navy text-sm focus:outline-none focus:ring-2 focus:ring-coral/30 focus:border-coral"
+                    className="flex-1 px-4 py-3 rounded-xl border border-card-border bg-cream text-warm-black text-sm focus:outline-none focus:ring-2 focus:ring-terra/20 focus:border-terra transition-colors duration-300"
                     required
                   />
                   <button
                     type="submit"
-                    className="px-6 py-3 bg-coral text-white font-medium rounded-xl text-sm hover:bg-coral-light transition-colors"
+                    className="px-6 py-3 bg-terra text-white font-medium rounded-xl text-sm hover:bg-terra-light transition-colors duration-300"
                   >
                     Save
                   </button>
                 </form>
-                <p className="text-xs text-slate-mid mt-3">
+                <p className="text-xs text-text-tertiary mt-3">
                   Optional. We won&apos;t spam you.
                 </p>
               </>
@@ -259,8 +260,8 @@ export default function ReportPage({
           </motion.div>
 
           {/* Disclaimer */}
-          <div className="mt-8 px-4 py-6 text-center">
-            <p className="text-xs text-slate-mid leading-relaxed max-w-xl mx-auto">
+          <div className="mt-16 px-4 py-6 text-center">
+            <p className="text-xs text-text-tertiary leading-relaxed max-w-xl mx-auto">
               {report.disclaimerText}
             </p>
           </div>
@@ -269,7 +270,7 @@ export default function ReportPage({
           <div className="mt-4 text-center pb-8">
             <Link
               href="/assess"
-              className="text-sm text-coral hover:text-coral-light transition-colors font-medium"
+              className="text-sm text-terra hover:text-terra-light transition-colors duration-300 font-medium"
             >
               Retake the Assessment
             </Link>

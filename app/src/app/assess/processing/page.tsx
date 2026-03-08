@@ -17,36 +17,13 @@ const statusMessages = [
 
 const MIN_DISPLAY_MS = 12000; // Minimum time to show the animation
 
-function PulsingCircles() {
+function OrganicBlob() {
   return (
-    <div className="relative w-48 h-48 mx-auto mb-12">
-      {[0, 1, 2, 3].map((i) => (
-        <motion.div
-          key={i}
-          className="absolute inset-0 rounded-full border border-coral/20"
-          initial={{ scale: 0.3, opacity: 0.8 }}
-          animate={{
-            scale: [0.3, 1.2],
-            opacity: [0.6, 0],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            delay: i * 0.75,
-            ease: "easeOut" as const,
-          }}
-        />
-      ))}
-      <motion.div
-        className="absolute inset-0 m-auto w-4 h-4 rounded-full bg-coral"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.8, 1, 0.8],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut" as const,
+    <div className="w-64 h-64 mx-auto mb-16 relative flex items-center justify-center">
+      <div
+        className="absolute inset-0 bg-gradient-to-br from-terra/40 via-sage/30 to-sand/40 blur-2xl animate-[morph_8s_ease-in-out_infinite] animate-[breathe_6s_ease-in-out_infinite]"
+        style={{
+          animation: "morph 8s ease-in-out infinite, breathe 6s ease-in-out infinite",
         }}
       />
     </div>
@@ -205,11 +182,11 @@ export default function ProcessingPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-navy flex items-center justify-center px-6">
+      <div className="grain min-h-screen bg-warm-dark flex items-center justify-center px-6">
         <div className="text-center max-w-md">
-          <div className="w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center mx-auto mb-6">
+          <div className="w-16 h-16 rounded-full bg-terra/15 flex items-center justify-center mx-auto mb-6">
             <svg
-              className="w-8 h-8 text-red-400"
+              className="w-8 h-8 text-terra"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1.5}
@@ -222,10 +199,10 @@ export default function ProcessingPage() {
               />
             </svg>
           </div>
-          <h1 className="text-2xl font-bold text-white mb-4">
+          <h1 className="font-display text-2xl text-on-dark mb-4">
             Something went wrong
           </h1>
-          <p className="text-slate-light text-sm mb-8">{error}</p>
+          <p className="text-on-dark-muted text-sm mb-8">{error}</p>
           <div className="flex flex-col gap-3">
             <button
               onClick={() => {
@@ -233,13 +210,13 @@ export default function ProcessingPage() {
                 hasStarted.current = false;
                 window.location.reload();
               }}
-              className="px-6 py-3 bg-coral text-white font-medium rounded-xl text-sm hover:bg-coral/90 transition-colors"
+              className="px-6 py-3 bg-terra text-white font-medium rounded-xl text-sm hover:bg-terra-light transition-colors duration-300"
             >
               Try Again
             </button>
             <button
               onClick={() => router.push("/assess")}
-              className="px-6 py-3 bg-white/10 text-white font-medium rounded-xl text-sm hover:bg-white/20 transition-colors"
+              className="px-6 py-3 bg-white/10 text-on-dark font-medium rounded-xl text-sm hover:bg-white/15 transition-colors duration-300"
             >
               Retake Assessment
             </button>
@@ -250,15 +227,15 @@ export default function ProcessingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-navy flex items-center justify-center px-6">
+    <div className="grain min-h-screen bg-warm-dark flex items-center justify-center px-6">
       <div className="text-center max-w-md">
-        <PulsingCircles />
+        <OrganicBlob />
 
         <motion.h1
-          className="text-2xl sm:text-3xl font-bold text-white mb-4"
+          className="font-display text-3xl text-on-dark mb-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 1 }}
         >
           Analyzing your responses
         </motion.h1>
@@ -267,11 +244,11 @@ export default function ProcessingPage() {
           <AnimatePresence mode="wait">
             <motion.p
               key={messageIndex}
-              className="text-slate-light text-sm"
+              className="text-on-dark-muted text-sm"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.4 }}
+              transition={{ duration: 0.6 }}
             >
               {statusMessages[messageIndex]}
             </motion.p>
@@ -283,14 +260,14 @@ export default function ProcessingPage() {
           {statusMessages.map((_, i) => (
             <div
               key={i}
-              className={`w-1.5 h-1.5 rounded-full transition-colors duration-500 ${
-                i <= messageIndex ? "bg-coral" : "bg-white/10"
+              className={`w-2 h-2 rounded-full transition-colors duration-700 ${
+                i <= messageIndex ? "bg-terra" : "bg-warm-dark-lighter"
               }`}
             />
           ))}
         </div>
 
-        <p className="mt-12 text-xs text-slate-mid">
+        <p className="mt-12 text-xs text-on-dark-muted">
           We&apos;re synthesizing your answers across five research frameworks
           to create a report that&apos;s truly personalized to you.
         </p>

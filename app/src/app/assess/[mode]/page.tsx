@@ -12,7 +12,7 @@ import { Question, AssessmentMode } from "@/lib/types";
 
 const slideVariants = {
   enter: (direction: number) => ({
-    x: direction > 0 ? 300 : -300,
+    x: direction > 0 ? 200 : -200,
     opacity: 0,
   }),
   center: {
@@ -20,7 +20,7 @@ const slideVariants = {
     opacity: 1,
   },
   exit: (direction: number) => ({
-    x: direction < 0 ? 300 : -300,
+    x: direction < 0 ? 200 : -200,
     opacity: 0,
   }),
 };
@@ -36,8 +36,8 @@ function LikertScale({
 }) {
   const labels = question.likertLabels || { low: "Disagree", high: "Agree" };
   return (
-    <div className="mt-8">
-      <div className="flex justify-between text-sm text-slate-light mb-4">
+    <div className="mt-10">
+      <div className="flex justify-between text-sm text-text-on-dark-muted mb-5">
         <span>{labels.low}</span>
         <span>{labels.high}</span>
       </div>
@@ -46,11 +46,11 @@ function LikertScale({
           <button
             key={n}
             onClick={() => onSelect(n)}
-            className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 transition-all text-sm font-medium
+            className={`w-12 h-12 rounded-full transition-all duration-500 ease-out text-sm font-medium
               ${
                 value === n
-                  ? "bg-coral border-coral text-white scale-110"
-                  : "border-white/20 text-white/60 hover:border-coral/50 hover:text-white"
+                  ? "bg-terra text-white scale-110"
+                  : "border border-warm-dark-lighter text-text-on-dark-muted hover:border-terra-muted hover:text-text-on-dark"
               }`}
           >
             {n}
@@ -71,16 +71,16 @@ function ScenarioChoice({
   onSelect: (id: string, score: number) => void;
 }) {
   return (
-    <div className="mt-8 space-y-3">
+    <div className="mt-10 space-y-3">
       {question.options?.map((opt) => (
         <button
           key={opt.id}
           onClick={() => onSelect(opt.id, opt.score)}
-          className={`w-full text-left p-4 rounded-xl border-2 transition-all
+          className={`w-full text-left p-5 rounded-xl border transition-all duration-500
             ${
               value === opt.id
-                ? "bg-coral/10 border-coral text-white"
-                : "border-white/10 text-slate-light hover:border-white/30 hover:text-white"
+                ? "bg-terra-muted border-terra text-text-on-dark"
+                : "border-card-dark-border bg-card-dark text-text-on-dark-muted hover:border-warm-dark-lighter hover:text-text-on-dark"
             }`}
         >
           {opt.text}
@@ -103,16 +103,16 @@ function ForcedChoice({
   if (!choices) return null;
 
   return (
-    <div className="mt-8 grid sm:grid-cols-2 gap-4">
+    <div className="mt-10 grid sm:grid-cols-2 gap-4">
       {choices.map((choice) => (
         <button
           key={choice.id}
           onClick={() => onSelect(choice.id, choice.score)}
-          className={`text-left p-6 rounded-xl border-2 transition-all
+          className={`text-left p-5 rounded-xl border transition-all duration-500
             ${
               value === choice.id
-                ? "bg-coral/10 border-coral text-white"
-                : "border-white/10 text-slate-light hover:border-white/30 hover:text-white"
+                ? "bg-terra-muted border-terra text-text-on-dark"
+                : "border-card-dark-border bg-card-dark text-text-on-dark-muted hover:border-warm-dark-lighter hover:text-text-on-dark"
             }`}
         >
           {choice.text}
@@ -176,108 +176,94 @@ export default function AssessmentPage({
 
   const hasAnswer = answers[currentQuestion?.id] !== undefined;
 
+  /* ── Intro screen ── */
   if (showIntro) {
     return (
-      <div className="min-h-screen bg-navy flex flex-col">
-        <div className="px-6 py-4">
+      <div className="grain min-h-screen bg-warm-dark flex flex-col">
+        {/* Logo */}
+        <div className="px-8 py-6">
           <Link
             href="/assess"
-            className="text-xl font-semibold tracking-tight text-white hover:text-coral transition-colors"
+            className="font-display italic text-xl text-text-on-dark hover:text-terra transition-colors duration-700"
           >
             Pairscope
           </Link>
         </div>
+
         <div className="flex-1 flex items-center justify-center px-6">
           <motion.div
             className="max-w-lg text-center"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.8, ease: "easeOut" as const }}
           >
-            <div className="w-20 h-20 rounded-full bg-coral/10 flex items-center justify-center mx-auto mb-8">
-              <svg
-                className="w-10 h-10 text-coral"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </div>
-            <h1 className="text-3xl font-bold text-white mb-4">
+            {/* Decorative line */}
+            <div className="w-12 h-px bg-terra/40 mx-auto mb-10" />
+
+            <h1 className="font-display text-4xl sm:text-5xl text-text-on-dark mb-6 leading-tight">
               {assessmentMode === "relationship"
                 ? "Your Relationship Assessment"
                 : "Your Partner Profile Assessment"}
             </h1>
-            <p className="text-slate-light text-lg mb-2">
-              This takes about{" "}
-              {assessmentMode === "relationship" ? "10" : "8"} minutes.
+
+            <p className="text-text-on-dark-muted text-lg mb-1">
+              About {assessmentMode === "relationship" ? "10" : "8"} minutes
             </p>
-            <p className="text-slate-mid text-sm mb-8 max-w-sm mx-auto">
-              {questions.length} questions across five research frameworks.
-              Answer honestly — there are no right or wrong answers.
+            <p className="text-text-muted text-sm mb-10">
+              {questions.length} questions across five research frameworks
             </p>
+
             <button
               onClick={() => setShowIntro(false)}
-              className="px-8 py-4 bg-coral text-white font-semibold rounded-xl text-lg hover:bg-coral-light transition-colors"
+              className="px-10 py-4 bg-terra text-white font-medium rounded-full text-lg hover:bg-terra-light transition-colors duration-700"
             >
               Begin
             </button>
-            <p className="mt-6 text-xs text-slate-mid max-w-xs mx-auto">
+
+            <p className="mt-10 text-xs text-text-muted max-w-xs mx-auto leading-relaxed">
               Your answers are processed locally. We don&apos;t store personal data without your consent.
             </p>
+
+            {/* Decorative line */}
+            <div className="w-8 h-px bg-terra/20 mx-auto mt-8" />
           </motion.div>
         </div>
       </div>
     );
   }
 
+  /* ── Assessment flow ── */
   return (
-    <div className="min-h-screen bg-navy flex flex-col">
-      {/* Progress bar */}
-      <div className="w-full bg-navy-light">
+    <div className="grain min-h-screen bg-warm-dark flex flex-col">
+      {/* Progress bar — thin, at very top */}
+      <div className="w-full">
         <div
-          className="h-1 bg-coral transition-all duration-500 ease-out"
+          className="h-0.5 bg-terra transition-all duration-700 ease-out"
           style={{ width: `${progress}%` }}
         />
       </div>
 
       {/* Top bar */}
-      <div className="px-6 py-4 flex justify-between items-center">
+      <div className="px-8 py-5 flex justify-between items-center">
         <button
           onClick={goBack}
           disabled={currentIndex === 0}
-          className={`text-sm flex items-center gap-1 transition-colors
+          className={`text-sm transition-colors duration-500
             ${
               currentIndex === 0
-                ? "text-slate-mid/30 cursor-not-allowed"
-                : "text-slate-light hover:text-white"
+                ? "text-warm-dark-lighter cursor-not-allowed"
+                : "text-text-on-dark-muted hover:text-text-on-dark"
             }`}
         >
-          <svg
-            className="w-4 h-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.75 19.5L8.25 12l7.5-7.5"
-            />
-          </svg>
           Back
         </button>
-        <span className="text-sm text-slate-mid">
+        <span className="text-sm text-text-on-dark-muted">
           {currentIndex + 1} of {questions.length}
         </span>
-        <Link href="/" className="text-sm text-slate-mid hover:text-white transition-colors">
+        <Link
+          href="/"
+          className="text-sm text-text-on-dark-muted hover:text-text-on-dark transition-colors duration-500"
+        >
           Exit
         </Link>
       </div>
@@ -293,21 +279,21 @@ export default function AssessmentPage({
               initial="enter"
               animate="center"
               exit="exit"
-              transition={{ duration: 0.3, ease: "easeInOut" as const }}
+              transition={{ duration: 0.4, ease: "easeInOut" as const }}
             >
               {/* Framework badge */}
-              <div className="mb-4">
-                <span className="text-xs font-medium text-coral/70 uppercase tracking-wider">
+              <div className="mb-5">
+                <span className="text-[11px] font-medium text-terra uppercase tracking-widest">
                   {currentQuestion.framework.replace(/_/g, " ")}
                 </span>
               </div>
 
               {/* Question text */}
-              <h2 className="text-xl sm:text-2xl font-semibold text-white leading-snug">
+              <h2 className="font-display text-2xl sm:text-3xl text-text-on-dark leading-snug">
                 {currentQuestion.text}
               </h2>
               {currentQuestion.subtext && (
-                <p className="mt-2 text-slate-light text-sm">
+                <p className="mt-3 text-text-on-dark-muted text-sm">
                   {currentQuestion.subtext}
                 </p>
               )}
@@ -357,34 +343,20 @@ export default function AssessmentPage({
       </div>
 
       {/* Bottom nav */}
-      <div className="px-6 py-6">
+      <div className="px-8 py-8">
         <div className="max-w-xl mx-auto flex justify-end">
           <button
             onClick={goNext}
             disabled={!hasAnswer}
-            className={`px-6 py-3 rounded-xl font-medium transition-all flex items-center gap-2
+            className={`px-8 py-3.5 rounded-full font-medium transition-all duration-700 flex items-center gap-2
               ${
                 hasAnswer
-                  ? "bg-coral text-white hover:bg-coral-light"
-                  : "bg-white/5 text-white/20 cursor-not-allowed"
+                  ? "bg-terra text-white hover:bg-terra-light"
+                  : "bg-warm-dark-lighter text-text-muted cursor-not-allowed"
               }`}
           >
-            {currentIndex === questions.length - 1
-              ? "Submit"
-              : "Continue"}
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              />
-            </svg>
+            {currentIndex === questions.length - 1 ? "Submit" : "Continue"}
+            <span className="text-sm">&rarr;</span>
           </button>
         </div>
       </div>

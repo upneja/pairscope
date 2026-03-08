@@ -4,47 +4,47 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 24 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.15, duration: 0.5, ease: "easeOut" as const },
+    transition: { delay: i * 0.2, duration: 0.8, ease: "easeOut" as const },
   }),
 };
 
 export default function ModeSelectionPage() {
   return (
-    <div className="min-h-screen bg-navy flex flex-col">
-      {/* Top bar */}
-      <div className="px-6 py-4">
+    <div className="grain min-h-screen bg-warm-dark flex flex-col">
+      {/* Logo */}
+      <div className="px-8 py-6">
         <Link
           href="/"
-          className="text-xl font-semibold tracking-tight text-white hover:text-coral transition-colors"
+          className="font-display italic text-xl text-text-on-dark hover:text-terra transition-colors duration-700"
         >
           Pairscope
         </Link>
       </div>
 
       {/* Content */}
-      <div className="flex-1 flex items-center justify-center px-6 pb-12">
+      <div className="flex-1 flex items-center justify-center px-6 pb-16">
         <div className="max-w-2xl w-full">
           <motion.div
-            className="text-center mb-12"
+            className="text-center mb-14"
             initial="hidden"
             animate="visible"
             custom={0}
             variants={fadeUp}
           >
-            <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h1 className="font-display text-4xl sm:text-5xl text-text-on-dark mb-4 leading-tight">
               Are you currently in a relationship?
             </h1>
-            <p className="text-slate-light text-lg">
-              This determines which version of the assessment you&apos;ll take.
-              Both provide valuable insights.
+            <p className="text-text-on-dark-muted text-lg">
+              This shapes the questions you&apos;ll receive. Choose whichever feels right.
             </p>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 gap-8">
+            {/* Relationship card */}
             <motion.div
               initial="hidden"
               animate="visible"
@@ -52,10 +52,11 @@ export default function ModeSelectionPage() {
               variants={fadeUp}
             >
               <Link href="/assess/relationship" className="block group">
-                <div className="bg-navy-light border-2 border-white/10 rounded-2xl p-8 text-center transition-all group-hover:border-coral/50 group-hover:shadow-lg group-hover:shadow-coral/5 h-full">
-                  <div className="w-16 h-16 rounded-full bg-coral/10 flex items-center justify-center mx-auto mb-6">
+                <div className="bg-card-dark border border-card-dark-border rounded-2xl p-10 text-center transition-all duration-700 group-hover:border-terra-muted group-hover:-translate-y-1 group-hover:shadow-[0_8px_40px_rgba(196,122,90,0.08)] h-full">
+                  {/* Heart icon */}
+                  <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-7">
                     <svg
-                      className="w-8 h-8 text-coral"
+                      className="w-7 h-7 text-terra"
                       fill="none"
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
@@ -68,22 +69,20 @@ export default function ModeSelectionPage() {
                       />
                     </svg>
                   </div>
-                  <h2 className="text-xl font-semibold text-white mb-3">
+                  <h2 className="text-xl font-medium text-text-on-dark mb-3">
                     Yes, I&apos;m in a relationship
                   </h2>
-                  <p className="text-slate-light text-sm leading-relaxed">
-                    ~45 questions about your current relationship dynamic.
-                    You&apos;ll get insights on your conflict patterns,
-                    emotional bank account, and personalized conversation
-                    scripts.
+                  <p className="text-text-on-dark-muted text-sm leading-relaxed mb-6">
+                    Questions about your current relationship dynamic, conflict patterns, emotional connection, and communication style.
                   </p>
-                  <p className="text-xs text-slate-mid mt-4">
-                    About 10 minutes
+                  <p className="text-xs text-text-muted">
+                    ~45 questions &middot; 10 minutes
                   </p>
                 </div>
               </Link>
             </motion.div>
 
+            {/* Single card */}
             <motion.div
               initial="hidden"
               animate="visible"
@@ -91,10 +90,11 @@ export default function ModeSelectionPage() {
               variants={fadeUp}
             >
               <Link href="/assess/single" className="block group">
-                <div className="bg-navy-light border-2 border-white/10 rounded-2xl p-8 text-center transition-all group-hover:border-amber/50 group-hover:shadow-lg group-hover:shadow-amber/5 h-full">
-                  <div className="w-16 h-16 rounded-full bg-amber/10 flex items-center justify-center mx-auto mb-6">
+                <div className="bg-card-dark border border-card-dark-border rounded-2xl p-10 text-center transition-all duration-700 group-hover:border-sage-muted group-hover:-translate-y-1 group-hover:shadow-[0_8px_40px_rgba(122,154,138,0.08)] h-full">
+                  {/* Person icon */}
+                  <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-7">
                     <svg
-                      className="w-8 h-8 text-amber"
+                      className="w-7 h-7 text-sage"
                       fill="none"
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
@@ -107,16 +107,14 @@ export default function ModeSelectionPage() {
                       />
                     </svg>
                   </div>
-                  <h2 className="text-xl font-semibold text-white mb-3">
+                  <h2 className="text-xl font-medium text-text-on-dark mb-3">
                     No, I&apos;m currently single
                   </h2>
-                  <p className="text-slate-light text-sm leading-relaxed">
-                    ~35 questions about your patterns across past relationships
-                    and tendencies. You&apos;ll get your partner personality
-                    profile and attachment blueprint.
+                  <p className="text-text-on-dark-muted text-sm leading-relaxed mb-6">
+                    Questions about your patterns across past relationships, attachment tendencies, and what you truly need in a partner.
                   </p>
-                  <p className="text-xs text-slate-mid mt-4">
-                    About 8 minutes
+                  <p className="text-xs text-text-muted">
+                    ~35 questions &middot; 8 minutes
                   </p>
                 </div>
               </Link>
@@ -124,14 +122,13 @@ export default function ModeSelectionPage() {
           </div>
 
           <motion.p
-            className="text-center text-xs text-slate-mid mt-8"
+            className="text-center text-xs text-text-on-dark-muted mt-10"
             initial="hidden"
             animate="visible"
             custom={3}
             variants={fadeUp}
           >
-            There&apos;s no wrong answer. Both assessments provide deep,
-            research-backed insights.
+            Both assessments provide deep, research-backed insights.
           </motion.p>
         </div>
       </div>
