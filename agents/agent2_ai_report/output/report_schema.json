@@ -1,0 +1,426 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pairscope Relationship Health Report",
+  "description": "Strict JSON schema for Pairscope report output. Supports Mode A (in a relationship) and Mode B (flying solo). Designed for deterministic frontend rendering.",
+  "oneOf": [
+    { "$ref": "#/$defs/ModeAReport" },
+    { "$ref": "#/$defs/ModeBReport" }
+  ],
+  "$defs": {
+    "ModeAReport": {
+      "type": "object",
+      "properties": {
+        "mode": { "const": "a" },
+        "report": { "$ref": "#/$defs/ModeAReportBody" },
+        "metadata": { "$ref": "#/$defs/Metadata" }
+      },
+      "required": ["mode", "report", "metadata"],
+      "additionalProperties": false
+    },
+    "ModeBReport": {
+      "type": "object",
+      "properties": {
+        "mode": { "const": "b" },
+        "report": { "$ref": "#/$defs/ModeBReportBody" },
+        "metadata": { "$ref": "#/$defs/Metadata" }
+      },
+      "required": ["mode", "report", "metadata"],
+      "additionalProperties": false
+    },
+    "Metadata": {
+      "type": "object",
+      "properties": {
+        "generated_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp of report generation"
+        },
+        "model_version": {
+          "type": "string",
+          "description": "Claude model version used for generation"
+        },
+        "disclaimer": {
+          "type": "string",
+          "minLength": 50,
+          "description": "Legal/ethical disclaimer about the tool's limitations"
+        }
+      },
+      "required": ["generated_at", "model_version", "disclaimer"],
+      "additionalProperties": false
+    },
+    "HorsemanType": {
+      "type": "string",
+      "enum": ["criticism", "contempt", "defensiveness", "stonewalling"]
+    },
+    "HorsemanScores": {
+      "type": "object",
+      "properties": {
+        "criticism": { "type": "number", "minimum": 0, "maximum": 10 },
+        "contempt": { "type": "number", "minimum": 0, "maximum": 10 },
+        "defensiveness": { "type": "number", "minimum": 0, "maximum": 10 },
+        "stonewalling": { "type": "number", "minimum": 0, "maximum": 10 }
+      },
+      "required": ["criticism", "contempt", "defensiveness", "stonewalling"],
+      "additionalProperties": false
+    },
+    "BigFiveScores": {
+      "type": "object",
+      "properties": {
+        "neuroticism": { "type": "number", "minimum": 0, "maximum": 5 },
+        "conscientiousness": { "type": "number", "minimum": 0, "maximum": 5 },
+        "agreeableness": { "type": "number", "minimum": 0, "maximum": 5 }
+      },
+      "required": ["neuroticism", "conscientiousness", "agreeableness"],
+      "additionalProperties": false
+    },
+    "AttachmentStyle": {
+      "type": "string",
+      "enum": ["secure", "anxious", "avoidant", "fearful-avoidant"]
+    },
+    "SatisfactionLevel": {
+      "type": "string",
+      "enum": ["distressed", "moderate", "good", "strong"]
+    },
+    "BalanceLevel": {
+      "type": "string",
+      "enum": ["overdrawn", "low", "healthy", "thriving"]
+    },
+    "SeverityLevel": {
+      "type": "string",
+      "enum": ["low", "moderate", "high"]
+    },
+    "LoveLanguage": {
+      "type": "string",
+      "enum": ["quality_time", "words_of_affirmation", "physical_touch", "acts_of_service", "gifts"]
+    },
+    "ConversationScript": {
+      "type": "object",
+      "properties": {
+        "situation": {
+          "type": "string",
+          "minLength": 20,
+          "description": "Specific triggering scenario drawn from user's scored patterns"
+        },
+        "your_typical_response": {
+          "type": "string",
+          "minLength": 20,
+          "description": "What they probably do now, inferred from their scores"
+        },
+        "try_instead": {
+          "type": "string",
+          "minLength": 20,
+          "description": "Exact words to say, in quotes — must be specific to their pattern"
+        },
+        "why_it_works": {
+          "type": "string",
+          "minLength": 20,
+          "description": "Brief explanation tied to the underlying research"
+        }
+      },
+      "required": ["situation", "your_typical_response", "try_instead", "why_it_works"],
+      "additionalProperties": false
+    },
+    "RiskFactor": {
+      "type": "object",
+      "properties": {
+        "factor": { "type": "string", "minLength": 5 },
+        "severity": { "$ref": "#/$defs/SeverityLevel" },
+        "explanation": { "type": "string", "minLength": 20 }
+      },
+      "required": ["factor", "severity", "explanation"],
+      "additionalProperties": false
+    },
+    "ReflectionQuestion": {
+      "type": "object",
+      "properties": {
+        "question": {
+          "type": "string",
+          "minLength": 20,
+          "description": "Thought-provoking question specific to user's profile"
+        },
+        "context": {
+          "type": "string",
+          "minLength": 20,
+          "description": "Why this question matters for them specifically"
+        }
+      },
+      "required": ["question", "context"],
+      "additionalProperties": false
+    },
+    "ModeAReportBody": {
+      "type": "object",
+      "properties": {
+        "relationship_snapshot": {
+          "type": "object",
+          "properties": {
+            "headline": { "type": "string", "minLength": 10, "maxLength": 200 },
+            "satisfaction_level": { "$ref": "#/$defs/SatisfactionLevel" },
+            "csi_score": { "type": "number", "minimum": 0, "maximum": 21 },
+            "narrative": { "type": "string", "minLength": 100 }
+          },
+          "required": ["headline", "satisfaction_level", "csi_score", "narrative"],
+          "additionalProperties": false
+        },
+        "conflict_signature": {
+          "type": "object",
+          "properties": {
+            "headline": { "type": "string", "minLength": 10, "maxLength": 200 },
+            "primary_horseman": { "$ref": "#/$defs/HorsemanType" },
+            "secondary_horseman": {
+              "oneOf": [
+                { "$ref": "#/$defs/HorsemanType" },
+                { "type": "null" }
+              ]
+            },
+            "horseman_scores": { "$ref": "#/$defs/HorsemanScores" },
+            "narrative": { "type": "string", "minLength": 100 },
+            "what_to_do": { "type": "string", "minLength": 50 }
+          },
+          "required": ["headline", "primary_horseman", "secondary_horseman", "horseman_scores", "narrative", "what_to_do"],
+          "additionalProperties": false
+        },
+        "emotional_bank_account": {
+          "type": "object",
+          "properties": {
+            "headline": { "type": "string", "minLength": 10, "maxLength": 200 },
+            "balance_level": { "$ref": "#/$defs/BalanceLevel" },
+            "positive_negative_ratio": {
+              "type": "string",
+              "pattern": "^[0-9]+\\.?[0-9]*:[0-9]+$",
+              "description": "Estimated ratio like '2:1' or '5:1'"
+            },
+            "deposits": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 10 },
+              "minItems": 1,
+              "maxItems": 5
+            },
+            "withdrawals": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 10 },
+              "minItems": 1,
+              "maxItems": 5
+            },
+            "narrative": { "type": "string", "minLength": 100 },
+            "what_to_do": { "type": "string", "minLength": 50 }
+          },
+          "required": ["headline", "balance_level", "positive_negative_ratio", "deposits", "withdrawals", "narrative", "what_to_do"],
+          "additionalProperties": false
+        },
+        "attachment_dynamic": {
+          "type": "object",
+          "properties": {
+            "headline": { "type": "string", "minLength": 10, "maxLength": 200 },
+            "style": { "$ref": "#/$defs/AttachmentStyle" },
+            "anxiety_score": { "type": "number", "minimum": 0, "maximum": 7 },
+            "avoidance_score": { "type": "number", "minimum": 0, "maximum": 7 },
+            "narrative": { "type": "string", "minLength": 100 },
+            "partner_interaction_patterns": { "type": "string", "minLength": 50 },
+            "what_to_do": { "type": "string", "minLength": 50 }
+          },
+          "required": ["headline", "style", "anxiety_score", "avoidance_score", "narrative", "partner_interaction_patterns", "what_to_do"],
+          "additionalProperties": false
+        },
+        "personality_insights": {
+          "type": "object",
+          "properties": {
+            "headline": { "type": "string", "minLength": 10, "maxLength": 200 },
+            "big_five_scores": { "$ref": "#/$defs/BigFiveScores" },
+            "narrative": { "type": "string", "minLength": 100 },
+            "what_to_do": { "type": "string", "minLength": 50 }
+          },
+          "required": ["headline", "big_five_scores", "narrative", "what_to_do"],
+          "additionalProperties": false
+        },
+        "love_language_analysis": {
+          "type": "object",
+          "properties": {
+            "headline": { "type": "string", "minLength": 10, "maxLength": 200 },
+            "receiving_languages": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/LoveLanguage" },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "full_ranking": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/LoveLanguage" },
+              "minItems": 5,
+              "maxItems": 5,
+              "uniqueItems": true
+            },
+            "narrative": { "type": "string", "minLength": 100 },
+            "what_to_do": { "type": "string", "minLength": 50 }
+          },
+          "required": ["headline", "receiving_languages", "full_ranking", "narrative", "what_to_do"],
+          "additionalProperties": false
+        },
+        "conversation_scripts": {
+          "type": "object",
+          "properties": {
+            "headline": { "type": "string", "minLength": 10, "maxLength": 200 },
+            "scripts": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/ConversationScript" },
+              "minItems": 3,
+              "maxItems": 5
+            }
+          },
+          "required": ["headline", "scripts"],
+          "additionalProperties": false
+        },
+        "retake_prompt": {
+          "type": "object",
+          "properties": {
+            "message": { "type": "string", "minLength": 20 },
+            "next_date": { "type": "string", "description": "Suggested retake date" }
+          },
+          "required": ["message", "next_date"],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "relationship_snapshot",
+        "conflict_signature",
+        "emotional_bank_account",
+        "attachment_dynamic",
+        "personality_insights",
+        "love_language_analysis",
+        "conversation_scripts",
+        "retake_prompt"
+      ],
+      "additionalProperties": false
+    },
+    "ModeBReportBody": {
+      "type": "object",
+      "properties": {
+        "partner_personality_profile": {
+          "type": "object",
+          "properties": {
+            "headline": { "type": "string", "minLength": 10, "maxLength": 200 },
+            "big_five_scores": { "$ref": "#/$defs/BigFiveScores" },
+            "narrative": { "type": "string", "minLength": 100 },
+            "what_to_do": { "type": "string", "minLength": 50 }
+          },
+          "required": ["headline", "big_five_scores", "narrative", "what_to_do"],
+          "additionalProperties": false
+        },
+        "conflict_signature": {
+          "type": "object",
+          "properties": {
+            "headline": { "type": "string", "minLength": 10, "maxLength": 200 },
+            "primary_horseman": { "$ref": "#/$defs/HorsemanType" },
+            "secondary_horseman": {
+              "oneOf": [
+                { "$ref": "#/$defs/HorsemanType" },
+                { "type": "null" }
+              ]
+            },
+            "horseman_scores": { "$ref": "#/$defs/HorsemanScores" },
+            "narrative": { "type": "string", "minLength": 100 },
+            "what_to_do": { "type": "string", "minLength": 50 }
+          },
+          "required": ["headline", "primary_horseman", "secondary_horseman", "horseman_scores", "narrative", "what_to_do"],
+          "additionalProperties": false
+        },
+        "attachment_blueprint": {
+          "type": "object",
+          "properties": {
+            "headline": { "type": "string", "minLength": 10, "maxLength": 200 },
+            "style": { "$ref": "#/$defs/AttachmentStyle" },
+            "anxiety_score": { "type": "number", "minimum": 0, "maximum": 7 },
+            "avoidance_score": { "type": "number", "minimum": 0, "maximum": 7 },
+            "triggers": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 10 },
+              "minItems": 2,
+              "maxItems": 4
+            },
+            "what_you_seek": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 10 },
+              "minItems": 2,
+              "maxItems": 4
+            },
+            "narrative": { "type": "string", "minLength": 100 },
+            "what_to_do": { "type": "string", "minLength": 50 }
+          },
+          "required": ["headline", "style", "anxiety_score", "avoidance_score", "triggers", "what_you_seek", "narrative", "what_to_do"],
+          "additionalProperties": false
+        },
+        "relationship_risk_factors": {
+          "type": "object",
+          "properties": {
+            "headline": { "type": "string", "minLength": 10, "maxLength": 200 },
+            "risk_factors": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/RiskFactor" },
+              "minItems": 1,
+              "maxItems": 5
+            },
+            "narrative": { "type": "string", "minLength": 100 },
+            "what_to_do": { "type": "string", "minLength": 50 }
+          },
+          "required": ["headline", "risk_factors", "narrative", "what_to_do"],
+          "additionalProperties": false
+        },
+        "what_to_screen_for": {
+          "type": "object",
+          "properties": {
+            "headline": { "type": "string", "minLength": 10, "maxLength": 200 },
+            "complementary_traits": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 10 },
+              "minItems": 2,
+              "maxItems": 5
+            },
+            "potential_clashes": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 10 },
+              "minItems": 2,
+              "maxItems": 5
+            },
+            "narrative": { "type": "string", "minLength": 100 },
+            "green_flags": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 10 },
+              "minItems": 2,
+              "maxItems": 5
+            },
+            "red_flags": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 10 },
+              "minItems": 2,
+              "maxItems": 5
+            }
+          },
+          "required": ["headline", "complementary_traits", "potential_clashes", "narrative", "green_flags", "red_flags"],
+          "additionalProperties": false
+        },
+        "reflection_questions": {
+          "type": "object",
+          "properties": {
+            "headline": { "type": "string", "minLength": 10, "maxLength": 200 },
+            "questions": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/ReflectionQuestion" },
+              "minItems": 4,
+              "maxItems": 6
+            }
+          },
+          "required": ["headline", "questions"],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "partner_personality_profile",
+        "conflict_signature",
+        "attachment_blueprint",
+        "relationship_risk_factors",
+        "what_to_screen_for",
+        "reflection_questions"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

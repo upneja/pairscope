@@ -1,0 +1,98 @@
+{
+  "mode": "a",
+  "report": {
+    "relationship_snapshot": {
+      "headline": "Your relationship is in genuinely good shape — and this report is about keeping it there",
+      "satisfaction_level": "good",
+      "csi_score": 17,
+      "narrative": "Your satisfaction score is a 17 out of 21 — solidly in the 'good' range. This isn't a lukewarm assessment. Most people in long-term relationships don't score this high. You and your partner have built something real, and the data confirms what you probably already feel: this relationship works.\n\nNow, here's why this report still matters. Healthy relationships don't stay healthy on autopilot. The couples who maintain high satisfaction over decades aren't the ones who got lucky — they're the ones who kept investing even when things felt fine. What we're going to look at here isn't what's broken (not much is). It's where the hairline cracks are — the small patterns that are currently at 'keep an eye on this' levels — and how to address them before they grow.\n\nThink of this less like a diagnostic and more like a high-performance tune-up. Your engine is running well. Let's make sure it stays that way."
+    },
+    "conflict_signature": {
+      "headline": "You lean toward defensiveness when things get heated — but you catch yourself",
+      "primary_horseman": "defensiveness",
+      "secondary_horseman": null,
+      "horseman_scores": {
+        "criticism": 2,
+        "contempt": 1,
+        "defensiveness": 5,
+        "stonewalling": 2
+      },
+      "narrative": "Your Horseman scores tell a reassuring story. Criticism is low (2), contempt is minimal (1), and stonewalling is barely present (2). These are the scores of someone who fundamentally respects their partner and stays engaged during conflict. That's not a small thing — many couples can't say this.\n\nThe one area that stands out is defensiveness at 5 out of 10 — moderate, not alarming, but high enough relative to your other scores to be worth examining. Defensiveness usually shows up as reflexive counter-arguments, cross-complaints, or explaining your intentions when your partner is trying to share how they felt. 'I didn't mean it that way' is a classic defensive response. It's not hostile, but it subtly redirects the conversation away from your partner's experience and toward your innocence.\n\nAt your current level, this probably surfaces during specific types of disagreements — likely when your partner brings up something that catches you off guard, or when you feel like their complaint is unfair. It's a natural human response. But Gottman's research is clear that even moderate defensiveness blocks repair attempts, and in otherwise healthy relationships, it's often the first Horseman to start climbing if left unattended.\n\nThe excellent news: your very low contempt and criticism scores mean your conflict foundation is strong. You're not in a negative cycle. You have one habit to refine, not an entire conflict system to rebuild.",
+      "what_to_do": "When you feel the defensive reflex kick in — that urge to say 'but I didn't mean...' or 'well, you also...' — try this instead: pause for three seconds and say 'Okay, tell me more about how that felt for you.' You don't have to agree. You don't have to accept blame. You're simply letting your partner complete their thought before you respond. In Gottman's research, this one shift — listening before defending — is the highest-leverage change a fundamentally healthy couple can make."
+    },
+    "emotional_bank_account": {
+      "headline": "Your account is healthy — and you know how to make deposits",
+      "balance_level": "healthy",
+      "positive_negative_ratio": "5:1",
+      "deposits": [
+        "You're highly attuned to your partner's bids for connection — you notice when they reach out and you respond",
+        "You express genuine fondness and admiration regularly, not just on special occasions",
+        "You maintain strong love maps — you know what your partner is worried about, excited by, and working through"
+      ],
+      "withdrawals": [
+        "Occasional defensive responses that make your partner feel unheard during disagreements",
+        "Possible drift in novelty — the deposits are consistent but may be getting routine"
+      ],
+      "narrative": "Your positive-to-negative ratio sits right around 5:1 — exactly where Gottman's research says stable relationships live. You're turning toward your partner's bids consistently (scoring 7 out of 10 on turning toward), your fondness score is strong (7 out of 10), and your love maps are solid (8 out of 10). In plain terms: you pay attention to your partner, you like them, and you know them well.\n\nThe withdrawals are minor and infrequent. Your defensiveness creates small moments where your partner feels dismissed, but these are offset by a strong baseline of positive interaction. The only thing I'd flag is the possibility of deposit stagnation — when a relationship is going well, there's a tendency to keep making the same types of deposits (the same date night routine, the same expressions of appreciation) without introducing novelty. The account stays balanced, but the deposits stop generating the same return.\n\nThis isn't a problem yet. It's a pattern to watch for in the next 6-12 months, especially if you notice your partner seeming content but not particularly energized by the relationship.",
+      "what_to_do": "Keep doing what you're doing — seriously. Your turning-toward rate is strong and your fondness is genuine. The one upgrade: introduce unexpected deposits. Leave a note somewhere they'll find it at 2pm on a Tuesday. Ask them a question about themselves you've never asked before. Bring up a memory from early in the relationship they might have forgotten. Novelty deposits hit different than routine ones — they signal 'I'm still curious about you, I'm still choosing this.'"
+    },
+    "attachment_dynamic": {
+      "headline": "Securely attached — this is your relationship's structural foundation",
+      "style": "secure",
+      "anxiety_score": 2,
+      "avoidance_score": 1,
+      "narrative": "Your attachment profile is secure — low anxiety (2 out of 7), low avoidance (1 out of 7). This means you're comfortable with closeness, you don't panic when your partner needs space, and you trust that the relationship is stable even during disconnected moments. Roughly 50-60% of adults have secure attachment, so you're not unusual here — but you are fortunate, because secure attachment is the single best predictor of relationship resilience.\n\nWhat secure attachment gives you is a buffer. When conflict happens, you don't spiral into 'they're going to leave me' (anxious) or 'I need to get out of here' (avoidant). You can stay in the difficult conversation because your nervous system fundamentally believes the relationship will survive it. That's an enormous advantage that you probably take for granted.\n\nOne thing to be aware of: securely attached people can sometimes underestimate how different the experience is for an insecurely attached partner. If your partner has any anxious tendencies, your calm during conflict might read as indifference to them. Your 'this will be fine' energy is reassuring to you but might not be landing as reassurance for them.",
+      "partner_interaction_patterns": "Your secure base means you can be a stabilizing force for almost any partner attachment style. With an anxious partner, your consistency calms their alarm system over time. With an avoidant partner, your comfort with closeness can model what safe intimacy looks like. The key is adjusting your reassurance to match their style: an anxious partner needs more verbal confirmation than you might think to offer, and an avoidant partner needs more space than might feel natural to you.",
+      "what_to_do": "Your attachment is an asset — protect it by keeping communication channels open even when things feel easy. Secure attachment can become complacent attachment if you stop actively nurturing the connection. Continue to share vulnerabilities, ask for what you need, and invite your partner to do the same. Security isn't the absence of work — it's the foundation that makes the work feel safe."
+    },
+    "personality_insights": {
+      "headline": "Emotionally steady and reliable — the personality profile that relationships thrive on",
+      "big_five_scores": {
+        "neuroticism": 2,
+        "conscientiousness": 4,
+        "agreeableness": 4
+      },
+      "narrative": "Your personality profile is almost textbook for long-term relationship success. Low neuroticism (2 out of 5) means you don't catastrophize, you recover from conflict quickly, and you don't generate unnecessary negative emotion. High conscientiousness (4 out of 5) means you follow through on commitments, you're reliable, and you bring structure to the relationship. High agreeableness (4 out of 5) means you're warm, cooperative, and naturally inclined toward compromise.\n\nThe 9-year longitudinal study that shaped a lot of modern relationship personality research would put you in the highest-satisfaction bracket based on these traits alone. Your own personality is contributing more to your relationship satisfaction than almost anything your partner is doing. That's not a compliment — it's data. And it's worth knowing, because it means a lot of what's working in your relationship is coming from who you are, not just from the chemistry between you.\n\nThe growth edge in your profile is subtle: high agreeableness combined with moderate defensiveness suggests you might sometimes over-accommodate and then feel resentful when the accommodation goes unnoticed. You're so good at being easy that your partner might not realize when you've given up something that mattered to you. And when they inadvertently step on that unvoiced need, you defend rather than disclose.",
+      "what_to_do": "Your personality is working for you. The refinement is this: practice voicing preferences before they become grievances. Your agreeableness makes you great at going with the flow, but sometimes the flow isn't going where you actually want. Saying 'I'd really prefer to do X tonight' before you've already agreed to Y is much easier than defending yourself after the fact. Your partner will respect the honesty more than the accommodation."
+    },
+    "love_language_analysis": {
+      "headline": "Words of affirmation fill your tank — make sure your partner knows that",
+      "receiving_languages": ["words_of_affirmation", "quality_time"],
+      "full_ranking": ["words_of_affirmation", "quality_time", "acts_of_service", "physical_touch", "gifts"],
+      "narrative": "Your primary love languages are words of affirmation and quality time. You feel most loved when your partner tells you — out loud, in specific terms — what they appreciate about you. Not just 'I love you' on the way out the door, but 'I noticed how patient you were with my mom at dinner and it meant a lot to me.' That specificity is the difference between a generic affirmation and one that actually lands for you.\n\nQuality time is your strong second — undivided attention, shared experiences, the feeling of being genuinely chosen over other options. Given your secure attachment and high love maps score, you probably already create quality time naturally. The risk isn't that you're missing it — it's that it might be getting predictable.\n\nYour lower-ranked languages (physical touch and gifts) aren't unimportant, they're just not where the magic happens for you. If your partner's primary language differs from yours, the gap is worth discussing — not because it's a problem, but because awareness prevents the slow misunderstanding where both people are expressing love but neither feels fully received.",
+      "what_to_do": "Share your love language ranking with your partner and ask them to share theirs. Frame it as curiosity, not criticism: 'I realized I feel most loved when you tell me specific things you appreciate about me. What makes you feel most loved?' This conversation alone — the mutual disclosure of what actually fills each person's tank — is one of the highest-ROI conversations a healthy couple can have."
+    },
+    "conversation_scripts": {
+      "headline": "Fine-Tuning Scripts for an Already-Good Thing",
+      "scripts": [
+        {
+          "situation": "Your partner brings up something you did that bothered them, and your immediate internal reaction is 'That's not fair — I had good intentions.'",
+          "your_typical_response": "You explain your reasoning. You might say 'I didn't mean it that way' or 'I was just trying to help.' The conversation shifts from their feelings to your intentions.",
+          "try_instead": "\"I hear you. That wasn't what I was going for, but I can see how it landed that way for you. What would have felt better in that moment?\"",
+          "why_it_works": "This acknowledges their experience without abandoning your own. The question at the end ('What would have felt better?') turns a complaint into collaborative problem-solving. For someone with your low-conflict profile, this is the difference between a productive 5-minute conversation and a lingering 2-day weird vibe."
+        },
+        {
+          "situation": "You've been accommodating your partner's preferences all week — where to eat, what to watch, how to spend the weekend — and you're starting to feel a low-grade resentment but can't quite name it.",
+          "your_typical_response": "You keep accommodating. When they ask if you have a preference, you say 'I don't care, you pick.' The resentment builds until it leaks out as a snippy comment or a defensive reaction to something unrelated.",
+          "try_instead": "\"Hey, I've noticed I've been deferring to you a lot this week, and I think I'm starting to lose track of what I actually want. Can we take turns picking tonight? I'll go first.\"",
+          "why_it_works": "Your high agreeableness makes accommodation your default, and it genuinely works most of the time. But chronic over-accommodation creates invisible resentment that erodes the bank account. This script names the pattern before it becomes a problem. It's also modeling healthy assertiveness, which gives your partner permission to do the same."
+        },
+        {
+          "situation": "Things have been steady and comfortable for a while. Good, but maybe a little too predictable. You sense a mild flatness creeping into the routine.",
+          "your_typical_response": "You don't say anything because nothing is wrong, exactly. You wait for your partner to notice or suggest something, or you chalk it up to normal long-term relationship stuff.",
+          "try_instead": "\"I love what we have, and I want to make sure we keep growing inside of it. What's something you've been wanting to do — with me or on your own — that we haven't made space for? I want to hear about it.\"",
+          "why_it_works": "Healthy relationships can coast into comfortable stagnation without anyone noticing. This script introduces novelty and curiosity without implying anything is wrong. The phrase 'keep growing inside of it' signals that you're committed and invested, not restless. For a securely attached couple, this kind of proactive conversation is what separates good relationships from great ones."
+        }
+      ]
+    },
+    "retake_prompt": {
+      "message": "Your relationship is in a strong place. That doesn't mean you stop paying attention — it means you've earned the right to focus on growth instead of repair. Retake the Pairscope assessment in about 90 days. Watch your defensiveness score — if it drops, you'll know the work is landing. And watch your emotional bank account: healthy relationships sometimes coast on momentum rather than active investment. Make sure you're still depositing intentionally.",
+      "next_date": "2026-06-08"
+    }
+  },
+  "metadata": {
+    "generated_at": "2026-03-08T14:30:00Z",
+    "model_version": "claude-opus-4-6",
+    "disclaimer": "Pairscope is an educational self-reflection tool, not a substitute for licensed therapy or clinical diagnosis. If you are experiencing a relationship crisis, domestic violence, or a mental health emergency, please contact a qualified professional or call 988 (Suicide & Crisis Lifeline)."
+  }
+}

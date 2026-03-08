@@ -1,0 +1,132 @@
+{
+  "mode": "b",
+  "report": {
+    "partner_personality_profile": {
+      "headline": "You're reliable, principled, and a little allergic to chaos — here's what that means for love",
+      "big_five_scores": {
+        "neuroticism": 2,
+        "conscientiousness": 5,
+        "agreeableness": 2
+      },
+      "narrative": "Your conscientiousness is maxed out at 5 out of 5. You're the person who follows through, keeps promises, shows up on time, and actually reads the full instructions before assembling the furniture. In relationships, this is an enormous asset — research shows conscientiousness is the single strongest positive predictor of long-term relationship satisfaction. Partners of conscientious people report feeling safe, prioritized, and cared for.\n\nBut here's where it gets complicated. Your agreeableness sits at 2 out of 5, which means you're direct, you have firm opinions, and you don't naturally default to accommodation. Pair that with high conscientiousness and you get someone who has very clear standards for how things should be done — and limited patience when a partner does things differently. You're not being controlling. You genuinely believe your way is the efficient, correct, logical way. And honestly, you're often right. But being right isn't always the point in a relationship.\n\nYour neuroticism is low (2 out of 5), which means you're emotionally steady, not easily rattled, and you process stress internally without much drama. This is a stabilizing force — but it also means you might underestimate how much emotional processing a partner needs. What feels like 'making a big deal out of nothing' to you might be a genuine emotional need for them.",
+      "what_to_do": "Your conscientiousness is your superpower. The growth edge is learning to extend the same reliability you bring to tasks and commitments to emotional availability. When a future partner needs to process feelings out loud, treat that with the same seriousness you'd treat a deadline. It's not inefficiency — it's maintenance on the relationship's most critical system."
+    },
+    "conflict_signature": {
+      "headline": "You don't blow up — you ice out",
+      "primary_horseman": "stonewalling",
+      "secondary_horseman": "contempt",
+      "horseman_scores": {
+        "criticism": 3,
+        "contempt": 5,
+        "defensiveness": 3,
+        "stonewalling": 8
+      },
+      "narrative": "Across your past relationships, your dominant conflict pattern has been stonewalling — scoring 8 out of 10. When things get heated, you don't yell, you don't throw accusations. You go cold. You withdraw into yourself, maybe leave the room, maybe stay physically present but completely checked out emotionally. To you, this feels like the responsible thing to do — you're avoiding saying something you'd regret. But to your partners, it has almost certainly felt like punishment.\n\nYour secondary pattern is moderate contempt (5 out of 10), which in your case likely shows up as dismissiveness rather than open hostility. An eye roll when your partner is being 'irrational.' A tone that conveys 'I've already figured this out, why are you still talking about it.' With your high conscientiousness and low agreeableness, this contempt isn't born from cruelty — it's born from a genuine frustration that your partner can't keep up with what seems obvious to you.\n\nThis combination — stonewalling plus dismissive contempt — is particularly damaging because it leaves the other person with nowhere to go. They can't reach you when you've walled off, and when you do engage, the subtext is that their feelings are an inconvenience. Over multiple relationships, this pattern has likely been a consistent factor in how things ended, even if other reasons were given on the surface.\n\nYour criticism and defensiveness scores are low (both 3), which means you're not picking fights or playing the victim. Your conflict issue isn't about aggression. It's about absence.",
+      "what_to_do": "The stonewalling-contempt combo in someone with your personality profile usually stems from emotional overwhelm that you don't recognize as overwhelm — because your low neuroticism means you don't feel flooded the way a high-neuroticism person does. Instead, you experience it as annoyance or impatience. Start treating that impatience as a signal that you need to slow down, not shut down.\n\nBefore your next relationship gets serious, practice this out loud until it feels natural: 'I'm starting to check out of this conversation, and I don't want to do that. Can we take a different approach?' That sentence alone — acknowledging the withdrawal in real time — would have changed the trajectory of your past relationships."
+    },
+    "attachment_blueprint": {
+      "headline": "You prize independence so much that intimacy can feel like a threat",
+      "style": "avoidant",
+      "anxiety_score": 1,
+      "avoidance_score": 6,
+      "triggers": [
+        "A partner wanting to spend most of their free time together or expressing disappointment when you need alone time",
+        "Conversations about 'where is this going' or pressure to define the relationship on someone else's timeline",
+        "A partner expressing intense emotions and expecting you to match their intensity or fix how they feel",
+        "Feeling like you're losing your identity, routine, or personal space as the relationship deepens"
+      ],
+      "what_you_seek": [
+        "Partners who are confident, independent, and don't need constant reassurance",
+        "Relationships that respect personal space and don't require daily check-ins to feel secure",
+        "Someone who communicates directly and doesn't expect you to read between emotional lines",
+        "A partner who has their own rich life and doesn't make you the center of their emotional world"
+      ],
+      "narrative": "Your avoidance score is 6 out of 7 — high enough that it's been a defining feature of how your relationships have played out. Your anxiety is very low (1 out of 7), meaning you're not worried about being abandoned. You're worried about being engulfed.\n\nHere's what avoidant attachment looks like from the inside: you genuinely value your relationships. You care about your partners. But when they move toward more closeness — more time, more vulnerability, more emotional intensity — something in you reflexively pulls back. It's not a conscious choice. It's a nervous system response that says 'too close, need air.' And the more your partner pursues, the faster you retreat.\n\nThis pattern has probably shown up in every significant relationship you've had. Early stages feel great — there's excitement, novelty, enough distance to feel comfortable. But as things deepen, a predictable sequence begins: your partner starts wanting more, you start feeling suffocated, you pull back (your stonewalling pattern kicks in), they feel rejected and either push harder or give up. You've probably been told some version of 'you're emotionally unavailable' more than once. And each time, it felt unfair — because from your perspective, you were right there. You were showing up. You were doing things for them. But you weren't letting them in.\n\nThe connection between your avoidant attachment and your high conscientiousness is worth noting. You show love through reliability and action — doing things, keeping commitments, being someone your partner can count on. That's real love. But many partners also need emotional presence, verbal vulnerability, and the willingness to be seen in your less composed moments. Those are the deposits you've been underpaying.",
+      "what_to_do": "Avoidant attachment isn't a life sentence. Research on 'earned security' shows that people can shift their attachment orientation through awareness and practice. The key is learning to tolerate closeness in small, increasing doses rather than waiting until it becomes overwhelming and then slamming the door.\n\nIn your next relationship, try this experiment: when you feel the pull-back impulse, don't act on it for 10 minutes. Stay in the conversation. Stay on the couch. Stay present. Notice what happens in your body. Usually, the discomfort peaks and then passes — if you let it. You'll learn that closeness doesn't actually consume you. It just feels like it will."
+    },
+    "relationship_risk_factors": {
+      "headline": "Your risk isn't chaos — it's emotional distance that calcifies into permanent walls",
+      "risk_factors": [
+        {
+          "factor": "Emotional withdrawal under stress",
+          "severity": "high",
+          "explanation": "Your combination of high avoidance and high stonewalling means that when relationships hit inevitable rough patches, your default is to disappear emotionally — which prevents repair and erodes your partner's trust over time."
+        },
+        {
+          "factor": "Dismissive contempt toward emotional expression",
+          "severity": "moderate",
+          "explanation": "Your moderate contempt score paired with low agreeableness and high conscientiousness creates a tendency to view emotional processing as inefficient or irrational, which partners experience as belittling."
+        },
+        {
+          "factor": "Rigidity disguised as standards",
+          "severity": "moderate",
+          "explanation": "Your very high conscientiousness combined with low agreeableness can make compromise feel like lowering your standards. Partners may experience this as inflexibility rather than principled behavior."
+        },
+        {
+          "factor": "Difficulty recognizing your own emotional needs",
+          "severity": "moderate",
+          "explanation": "Low neuroticism and high avoidance together mean you may not register your own emotional needs until they've been unmet for a long time — then they surface as resentment rather than a clear request."
+        }
+      ],
+      "narrative": "None of these risk factors mean you're destined for failed relationships. They mean you have specific, identifiable patterns that have historically gotten in the way — and now you can see them clearly.\n\nThe through-line across all four factors is emotional distance. You're not someone who creates drama, picks fights, or behaves erratically. Your risk is the opposite: you create too much space. You build walls so well-constructed and so quietly that your partners don't even realize they've been walled out until the relationship feels hollow.\n\nThe combination of high conscientiousness and avoidant attachment is particularly sneaky because on paper, you look like a great partner. You're reliable, you follow through, you don't lose your temper. But emotional availability — the willingness to be seen, to be vulnerable, to let someone else's feelings be as important as your routines — is the piece that's been missing. And it's the piece that matters most for long-term relationship survival.",
+      "what_to_do": "Start practicing emotional disclosure in low-stakes situations before your next relationship. Tell a close friend something you're worried about. Share an embarrassment with a family member. The goal isn't dramatic vulnerability — it's building the muscle of letting people see behind the competent exterior. When that muscle is stronger, you'll be able to offer it to a partner without it feeling like you're handing over the keys to your entire identity."
+    },
+    "what_to_screen_for": {
+      "headline": "The partner who's right for you won't try to crack you open — they'll make you want to open up",
+      "complementary_traits": [
+        "Secure attachment style — someone who can tolerate your need for space without taking it personally",
+        "Moderate emotional expressiveness — enough to model vulnerability without overwhelming your system",
+        "Independent with their own interests, social circle, and sense of identity outside the relationship",
+        "Direct, clear communication style — someone who says what they mean instead of expecting you to decode hints"
+      ],
+      "potential_clashes": [
+        "Anxious attachment — their need for reassurance will trigger your withdrawal, creating the classic pursue-retreat spiral",
+        "High neuroticism — their emotional intensity may register as chaos to your ordered system, triggering contempt",
+        "High agreeableness without assertiveness — they'll accommodate your preferences until resentment explodes"
+      ],
+      "narrative": "You don't need someone who's your emotional opposite. You need someone who's emotionally secure enough to not take your need for autonomy as rejection — and warm enough to gently pull you out of your fortress when you've been in there too long.\n\nThe biggest trap for avoidant people is choosing partners who seem 'low maintenance' early on but are actually suppressing their needs. Those relationships feel easy at first and then implode when the suppressed needs finally surface. Look for someone who is comfortable expressing needs clearly and early — it might feel like a lot at first, but it's actually the safer long-term bet.\n\nAvoid the seductive pull of someone who 'gets' your independence so well that they never challenge your comfort zone. That's not compatibility — that's two people being alone in the same room. Growth happens at the edge of discomfort, and the right partner will bring you to that edge without pushing you off it.",
+      "green_flags": [
+        "They can spend a weekend apart without spiraling or guilt-tripping you about it",
+        "They express needs directly ('I'd love to see you Thursday') rather than indirectly ('We never spend time together')",
+        "They have close friendships they actively maintain — they're not looking for you to be their entire emotional world",
+        "When you pull back slightly, they notice and name it calmly ('You seem a bit distant today — everything okay?') instead of either ignoring it or panicking"
+      ],
+      "red_flags": [
+        "They text constantly and get anxious if you don't respond within an hour",
+        "They describe all their exes as emotionally unavailable — you may be next on that list for the same reasons",
+        "They move very fast emotionally — 'I love you' in the first month, wanting to merge lives before you've established trust",
+        "They avoid all conflict and tell you everything is fine when it clearly isn't — you'll mistake their silence for compatibility until it's too late"
+      ]
+    },
+    "reflection_questions": {
+      "headline": "Before Your Next Relationship, Sit With These",
+      "questions": [
+        {
+          "question": "Think about the last time a partner told you they felt emotionally shut out. What was actually happening inside you at that moment — and did you ever tell them?",
+          "context": "Your stonewalling pattern suggests there's a rich internal experience during conflict that your partners never get access to. Understanding what's behind the wall is the first step to choosing when to lower it."
+        },
+        {
+          "question": "When a relationship starts to feel like it's 'too much,' what specifically tips it over? Is it the time commitment, the emotional intensity, the loss of routine, or something else?",
+          "context": "With avoidance at 6 out of 7, 'too much' is a feeling you know well. But getting precise about what triggers it helps you distinguish between a genuine incompatibility and your avoidant system sounding a false alarm."
+        },
+        {
+          "question": "Have you ever stayed in a relationship longer than you wanted to because ending it would require a difficult emotional conversation?",
+          "context": "Avoidant attachment combined with stonewalling sometimes means people stay in relationships they've mentally left — because the breakup conversation itself requires the kind of emotional engagement they're avoiding."
+        },
+        {
+          "question": "What would it look like for you to need someone? Not depend on them for logistics or comfort, but genuinely need their presence in your life in a way that would hurt to lose?",
+          "context": "Your self-reliance is real and valuable. But if you can't identify what you'd actually miss about a partner beyond practical companionship, it may explain why past partners felt like they couldn't reach you."
+        },
+        {
+          "question": "When you imagine a relationship that would make you deeply happy, how much vulnerability does it require from you? And does that amount scare you?",
+          "context": "High conscientiousness people often plan relationships the way they plan projects — with clear objectives and manageable risk. But love requires tolerating uncertainty. This question tests whether you've been optimizing for safety instead of depth."
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "generated_at": "2026-03-08T14:30:00Z",
+    "model_version": "claude-opus-4-6",
+    "disclaimer": "Pairscope is an educational self-reflection tool, not a substitute for licensed therapy or clinical diagnosis. If you are experiencing a relationship crisis, domestic violence, or a mental health emergency, please contact a qualified professional or call 988 (Suicide & Crisis Lifeline)."
+  }
+}

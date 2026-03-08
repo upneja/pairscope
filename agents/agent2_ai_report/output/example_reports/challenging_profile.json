@@ -1,0 +1,104 @@
+{
+  "mode": "a",
+  "report": {
+    "relationship_snapshot": {
+      "headline": "Your relationship has real warmth in it, but it's running on fumes right now",
+      "satisfaction_level": "moderate",
+      "csi_score": 11,
+      "narrative": "Your overall satisfaction score lands in the moderate range — a CSI of 11 out of 21. That's not in crisis territory, but it's below where you'd want to be, and more importantly, it's probably below where you were a year or two ago. You can feel it, right? Something has shifted.\n\nHere's what's tricky about your profile: you're not unhappy enough to sound the alarm, but you're not happy enough to stop worrying. That middle zone is actually where the most important work happens, because the patterns that erode a relationship tend to operate slowly, like water on stone. The fact that you're here, looking at this, suggests you already sense that.\n\nThe good news is that your fondness scores show you still genuinely like this person. That matters more than you might think — Gottman's research found that couples who maintain a foundation of fondness can recover from almost anything. The foundation hasn't cracked. But some habits have crept in that are chipping away at it, and we need to talk about those."
+    },
+    "conflict_signature": {
+      "headline": "You're a stonewaller — and it's not because you don't care",
+      "primary_horseman": "stonewalling",
+      "secondary_horseman": "defensiveness",
+      "horseman_scores": {
+        "criticism": 4,
+        "contempt": 3,
+        "defensiveness": 6,
+        "stonewalling": 9
+      },
+      "narrative": "Your stonewalling score is a 9 out of 10. That's significant — it means going silent, shutting down, or physically leaving during conflict is your go-to move. And here's the thing you need to hear: you're not doing it to punish your partner. You're doing it because your internal alarm system is going off so loudly that you literally cannot process words anymore.\n\nThis connects directly to your high neuroticism score (we'll get to that). Your nervous system has a hair trigger. When conflict starts, your heart rate spikes, your prefrontal cortex goes offline, and your body's only strategy is to withdraw. Gottman calls this \"physiological flooding\" — your pulse goes above 100 BPM and your brain switches from problem-solving mode to survival mode.\n\nThe problem is what it looks like from the outside. To your partner, your silence reads as abandonment. Every time you go quiet, they experience a micro-rejection. And because your secondary pattern is defensiveness (scoring 6), even when you do re-engage, you tend to come back swinging — not with curiosity, but with justification. It creates a brutal cycle: they push, you wall off, they push harder, you wall off more.\n\nYour criticism and contempt scores are relatively low (4 and 3), which is genuinely good news. You're not attacking your partner's character or expressing disgust. Your conflict pattern is about withdrawal, not aggression — and withdrawal patterns are very treatable once you understand the mechanics.",
+      "what_to_do": "The single most effective intervention for stonewalling is the structured timeout. This isn't storming out — it's a planned, communicated pause. Tell your partner in advance: 'When I go quiet in a fight, it's not that I don't care. My brain is flooding. I'm going to start asking for 20-minute breaks, and I need you to trust that I'll come back.' Then actually come back. Every time. The repair happens in the return.\n\nDuring your 20 minutes, don't ruminate on the argument. Do something physiologically calming: walk around the block, splash cold water on your face, do box breathing (inhale 4 counts, hold 4, exhale 4, hold 4). Your goal is to get your heart rate below 95 BPM before you re-engage."
+    },
+    "emotional_bank_account": {
+      "headline": "Your account is running low — more withdrawals than deposits lately",
+      "balance_level": "low",
+      "positive_negative_ratio": "2:1",
+      "deposits": [
+        "You still express genuine fondness and respect for your partner",
+        "You have a moderate awareness of your partner's inner world and daily stressors"
+      ],
+      "withdrawals": [
+        "Frequent emotional shutdowns during conflict leave your partner feeling abandoned",
+        "Defensive responses block repair attempts after disagreements",
+        "Turning toward bids for connection has dropped — you're missing more than you're catching"
+      ],
+      "narrative": "Gottman's research found that stable relationships maintain a 5:1 ratio of positive to negative interactions. Your estimated ratio sits around 2:1 — enough to keep things afloat, but not enough to build resilience. When the ratio drops this low, both partners start interpreting neutral actions negatively. A forgotten text becomes evidence of not caring. A distracted response becomes proof of checking out.\n\nYour fondness score (5 out of 10) tells me you still have real affection for your partner, but it's not getting expressed often enough to counterbalance the withdrawals. And your turning toward score (4 out of 10) suggests you're missing a lot of your partner's small bids — the moments when they share something about their day, reach for your hand, or make a joke hoping you'll laugh.\n\nThose small moments are the actual currency of the bank account. Grand gestures don't build this balance. Noticing does.",
+      "what_to_do": "Start tracking bids. For one week, try to notice every time your partner reaches out — verbally, physically, or emotionally — and respond to it. Not with a big performance, but with genuine attention. They say 'Look at this funny thing on my phone,' and instead of a distracted 'mmhmm,' you actually look. You laugh. You comment. That's a deposit.\n\nAim for five of those micro-moments for every one time things get tense. It sounds mechanical, but the research is clear: couples who consciously increase their turning-toward rate see measurable improvement in satisfaction within weeks."
+    },
+    "attachment_dynamic": {
+      "headline": "You love hard and worry harder — the anxious attachment pattern",
+      "style": "anxious",
+      "anxiety_score": 6,
+      "avoidance_score": 1,
+      "narrative": "Your attachment profile shows high anxiety (6 out of 7) and low avoidance (1 out of 7). This puts you squarely in the anxious-preoccupied category. In plain terms: you want closeness, you crave reassurance, and when you sense even a small shift in your partner's mood or availability, your internal alarm system starts screaming.\n\nThis is where your profile gets really interesting — and a little paradoxical. You're anxiously attached, which means you desperately want connection. But your primary conflict move is stonewalling, which creates disconnection. What's happening under the surface is that your anxiety floods your system so fast that you shut down before you can even articulate what you need. You're not withdrawing because you don't care. You're withdrawing because you care so much that the fear of getting it wrong paralyzes you.\n\nYour partner likely experiences this as deeply confusing. One moment you're seeking closeness, the next you've gone completely silent. For them, it can feel like emotional whiplash. And if your partner has any avoidant tendencies, your anxiety activates their withdrawal, which activates more of your anxiety, and you end up in the classic anxious-avoidant trap — even if that's not their baseline style.\n\nThe combination of high attachment anxiety and high neuroticism means your emotional thermostat is set very sensitive. You pick up on micro-shifts in tone, body language, and responsiveness that other people might not even notice. This is actually a superpower in some contexts — you're attuned, perceptive, and deeply caring. But in conflict, it becomes a vulnerability because you're reading threats that may not actually be there.",
+      "partner_interaction_patterns": "If your partner tends toward avoidance (even mildly), your dynamic probably follows this script: something feels off to you, you try to address it, they seem dismissive or distant, your anxiety spikes, you either pursue harder or shut down entirely, they feel overwhelmed and pull back further. Breaking this cycle requires you to learn to self-soothe before seeking reassurance — not because your need for reassurance is wrong, but because the timing of when you ask for it determines whether you get it.",
+      "what_to_do": "Practice what attachment researchers call 'earned security.' Before reaching out to your partner for reassurance, pause and ask yourself: 'Is there actual evidence that something is wrong, or is my alarm system firing on old data?' You can even say this out loud to your partner: 'My anxiety brain is telling me you're pulling away. Can you help me reality-check that?' Naming the pattern out loud defuses it. It turns an accusation into a request for help."
+    },
+    "personality_insights": {
+      "headline": "Your emotional sensitivity is both your greatest relationship asset and your biggest risk factor",
+      "big_five_scores": {
+        "neuroticism": 5,
+        "conscientiousness": 2,
+        "agreeableness": 3
+      },
+      "narrative": "Your neuroticism score is 5 out of 5 — the highest it can be. Before you wince: this isn't a character flaw. It means your nervous system is wired for high emotional responsiveness. You feel things deeply, you notice subtle shifts in your environment, and your emotions come on fast and strong. In the right contexts, this makes you empathetic, perceptive, and deeply engaged.\n\nIn relationship conflict, though, high neuroticism is the single strongest predictor of long-term dissatisfaction — not because the person is 'difficult,' but because the constant emotional activation creates wear. You experience more negative emotion, more intensely, more often. Over time, this can create what researchers call 'negative sentiment override' — a state where even neutral or positive actions from your partner get filtered through a negative lens.\n\nYour conscientiousness is moderate-low (2 out of 5), which adds a wrinkle. Conscientiousness is the #1 positive predictor of relationship satisfaction, and it often serves as a stabilizer for high neuroticism — routines, follow-through, and reliability create a sense of safety that calms the anxious system. Without that stabilizing structure, your emotional volatility doesn't have guardrails.\n\nYour agreeableness (3 out of 5) is right in the middle, which is actually healthy. You're warm but not a pushover. You have boundaries but you're not rigid about them.",
+      "what_to_do": "Two practical things. First, build structure where your conscientiousness is low. Set a weekly check-in with your partner — same time, same place, 20 minutes. Not when things are bad, but as a routine. Research shows that couples who have regular low-stakes conversations about the relationship are 40% less likely to let resentments build. This leverages structure to compensate for your lower conscientiousness.\n\nSecond, learn your flooding signals. High neuroticism means you flood fast. Know your personal tells — racing heart, clenching jaw, that tight feeling in your chest — and treat them as data, not as proof that something is catastrophically wrong. When you notice them: pause, breathe, re-engage when you're below the flood line."
+    },
+    "love_language_analysis": {
+      "headline": "You need quality time to feel loved, but you may be giving acts of service instead",
+      "receiving_languages": ["quality_time", "physical_touch"],
+      "full_ranking": ["quality_time", "physical_touch", "words_of_affirmation", "acts_of_service", "gifts"],
+      "narrative": "Your top receiving languages are quality time and physical touch — you feel most loved when your partner is fully present with you and when there's physical closeness. This maps perfectly onto your anxious attachment style: you're wired for proximity and presence. When your partner is distracted during what's supposed to be together-time, or when physical affection drops off, it likely triggers your attachment alarm faster than anything else.\n\nThe risk with this combination is that your anxiety about the relationship can actually make quality time harder to achieve. If you're mentally scanning for signs of disconnection during dinner, you're not actually present — you're monitoring. And your partner can feel the difference between 'we're enjoying this moment together' and 'you're watching me to see if I'm enjoying this moment.'\n\nUnderstanding your love language ranking also helps explain some mismatch friction. If your partner's primary language is acts of service, they might show love by handling logistics, fixing things, or taking tasks off your plate. That's real love — but it doesn't fill your tank the way sitting on the couch with their undivided attention does.",
+      "what_to_do": "Tell your partner explicitly: 'I feel most connected to you when we have uninterrupted time together — even 15 minutes without phones.' Don't assume they know this. Most partners are expressing love in their own language, not yours. And when they do give you quality time, receive it fully. Put your own phone away. Stop scanning for problems. Let the moment be what it is."
+    },
+    "conversation_scripts": {
+      "headline": "Words for Your Hardest Moments",
+      "scripts": [
+        {
+          "situation": "You're in the middle of a disagreement and you feel the shutdown coming — your chest tightens, your mind goes blank, and every instinct says 'leave the room.'",
+          "your_typical_response": "You go silent. Maybe you physically walk away. You might mutter 'I'm fine' or 'Whatever' on your way out. Your partner is left talking to an empty room.",
+          "try_instead": "\"I can feel myself flooding right now, and I know if I keep talking I'm going to shut down completely. I need 20 minutes to let my nervous system calm down. I'm not leaving this conversation — I'm pressing pause so I can actually be present for it. Can we set a timer and come back to this?\"",
+          "why_it_works": "This does three things: it names what's happening in your body (which builds emotional vocabulary), it explicitly reassures your partner you're not abandoning the conversation (which addresses their likely fear), and it commits to a specific return time (which builds trust that the pause is real, not an escape hatch)."
+        },
+        {
+          "situation": "Your partner hasn't texted back in hours and your anxiety is spiraling. You're composing the fourth follow-up text in your head, each one more loaded than the last.",
+          "your_typical_response": "You either send a passive-aggressive check-in ('Guess you're busy') or you stew in silence and bring it up later as evidence that they don't prioritize you.",
+          "try_instead": "\"Hey, my anxiety brain is doing the thing where no response = something is wrong. I know logically you're probably just busy. A quick thumbs up when you get a chance would really help me not spiral. No pressure on a real reply.\"",
+          "why_it_works": "This is a clean bid for reassurance that owns the anxiety instead of weaponizing it. You're telling your partner what you need without accusing them of causing the problem. It's also building a pattern where you name your attachment trigger out loud, which over time reduces its power."
+        },
+        {
+          "situation": "Your partner gives you feedback about something you did — maybe they say you seemed checked out during dinner with their friends — and your first instinct is to defend yourself.",
+          "your_typical_response": "You immediately counter with your own grievance ('Well, you were on your phone the whole time at MY mom's dinner') or you explain why their perception is wrong ('I wasn't checked out, I was just tired').",
+          "try_instead": "\"Okay, I hear you. You felt like I wasn't really there tonight. Tell me more about what that was like for you — I want to understand what you saw, even if it's hard to hear.\"",
+          "why_it_works": "Defensiveness blocks repair. This response does the opposite: it creates space for your partner to feel heard. You don't have to agree with their interpretation. You're not admitting fault. You're simply letting them finish their thought before you respond. That pause — that willingness to listen first — is the single most powerful de-escalation tool in Gottman's research."
+        },
+        {
+          "situation": "It's been a tense week between you and you can feel the emotional distance growing. Neither of you has addressed it directly, and the silence is becoming its own problem.",
+          "your_typical_response": "You wait for them to bring it up first. Or you make an indirect comment ('We've barely talked this week') that invites a fight more than a conversation.",
+          "try_instead": "\"I've noticed we've been kind of circling each other this week, and I don't want to let it harden. I don't have an agenda — I'm not trying to relitigate anything. I miss feeling close to you. Can we sit together tonight and just check in?\"",
+          "why_it_works": "This breaks the stalemate without placing blame. The phrase 'I miss feeling close to you' is a soft startup — it leads with longing instead of complaint. It also removes the stakes ('I don't have an agenda') which makes your partner less likely to brace for a fight. For someone with your anxious attachment style, taking initiative here is also a form of self-regulation: you're addressing the gap instead of ruminating about it."
+        }
+      ]
+    },
+    "retake_prompt": {
+      "message": "Relationships aren't static, and neither are you. The patterns in this report are a snapshot of right now — they can shift, especially if you're actively working on them. Retake the Pairscope assessment in about 90 days and see what's moved. Pay special attention to your stonewalling score and your emotional bank account balance. Those two indicators will tell you the most about whether the work is landing.",
+      "next_date": "2026-06-08"
+    }
+  },
+  "metadata": {
+    "generated_at": "2026-03-08T14:30:00Z",
+    "model_version": "claude-opus-4-6",
+    "disclaimer": "Pairscope is an educational self-reflection tool, not a substitute for licensed therapy or clinical diagnosis. If you are experiencing a relationship crisis, domestic violence, or a mental health emergency, please contact a qualified professional or call 988 (Suicide & Crisis Lifeline)."
+  }
+}
