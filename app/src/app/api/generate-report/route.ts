@@ -94,6 +94,43 @@ Each scored 0-5:
 
 ---
 
+## EVIDENCE-BASED CLAIMS
+
+For each claim about the user's pattern, you MUST reference the specific dimension score that supports it. Do not infer patterns not directly evidenced by the scores or raw answers.
+
+**Tone calibration by score magnitude:**
+- 1-2/7 or 0-3/10: "minimal/low presence" — do not dramatize
+- 3-4/7 or 4-5/10: "moderate tendency, shows up sometimes" — not "significant" or "strong"
+- 5-6/7 or 6-8/10: "notable pattern worth attention"
+- 7/7 or 9-10/10: "strong pattern, significant impact"
+
+A score of 4/7 is NOT a "significant pattern." It is a "moderate tendency that shows up sometimes." Match your language intensity precisely to the score magnitude.
+
+## PRE-KNOWLEDGE INTEGRATION
+
+If the user provided their self-assessed attachment style or love language:
+- If their self-assessment MATCHES the scores: validate them. "You know yourself well — your scores confirm your sense that you tend toward [style]."
+- If their self-assessment DIFFERS from the scores: explore gently. "You identified as [X], but your responses suggest [Y] tendencies — this is common because [reason]. It doesn't mean your self-knowledge is wrong; it may reflect [context]."
+- If they said "not sure": skip this and just report the scores.
+
+If they reported therapy history: acknowledge it briefly. "Given your experience with therapy, you may already recognize some of these patterns."
+
+## FREE-TEXT INTEGRATION
+
+If the user provided free-text responses to any questions:
+- Reference them directly in the relevant section. Quote or paraphrase their words.
+- Example: "You wrote that you 'feel like I'm always the one reaching out' — this aligns with your anxiety score of 5.2/7 and suggests..."
+- Free-text responses are the most personalized data you have. Use them.
+
+## RAW ANSWER USAGE
+
+You receive the user's raw answers alongside scores. Use specific scenario choices to ground your insights:
+- Instead of "you tend to get defensive," say "when presented with the scenario about receiving criticism, you chose the response about explaining your reasons — this suggests a defensiveness pattern where..."
+- Reference at least 2-3 specific answer choices across the report.
+- If raw_answers is empty, rely solely on scores but reduce specificity claims.
+
+---
+
 ## INPUT FORMAT
 
 You will receive a JSON object in the user message:
@@ -101,26 +138,26 @@ You will receive a JSON object in the user message:
 \`\`\`json
 {
   "mode": "a" | "b",
+  "depth": "quick" | "deep",
   "scores": {
-    "gottman": {
-      "criticism": 0-10,
-      "contempt": 0-10,
-      "defensiveness": 0-10,
-      "stonewalling": 0-10,
-      "love_maps": 0-10,
-      "fondness": 0-10,
-      "turning_toward": 0-10
-    },
+    "gottman": { "criticism": 0-10, "contempt": 0-10, ... },
     "attachment": { "anxiety": 0-7, "avoidance": 0-7 },
     "big_five": { "neuroticism": 0-5, "conscientiousness": 0-5, "agreeableness": 0-5 },
     "csi_total": 0-21,
-    "love_languages": { "ranked": ["quality_time", "words_of_affirmation", ...] }
+    "love_languages": { "ranked": [...] }
   },
-  "raw_answers": [... selected scenario responses for context ...]
+  "raw_answers": { "c1": 5, "c2": 3, "c4_choice": "a", ... },
+  "free_text_responses": { "c4": "I always shut down when...", ... },
+  "pre_knowledge": {
+    "attachmentStyle": "anxious" | "secure" | ... | "not_sure",
+    "loveLanguage": "quality_time" | ... | "not_sure",
+    "therapyHistory": "yes" | "no" | "prefer_not_to_say" | null
+  }
 }
 \`\`\`
 
 For Mode B, \`csi_total\` will be \`null\` or absent.
+For Quick mode, \`free_text_responses\` will be empty.
 
 ---
 
@@ -344,6 +381,7 @@ Sometimes scores will appear contradictory. Handle these cases explicitly:
 
 interface AssessmentSubmissionPayload {
   mode: "relationship" | "single";
+  depth?: "quick" | "deep";
   scores: {
     gottman: {
       criticism: number;
@@ -364,6 +402,12 @@ interface AssessmentSubmissionPayload {
     love_languages: { ranked: string[] };
   };
   raw_answers: Record<string, number | string>;
+  free_text_responses?: Record<string, string>;
+  pre_knowledge?: {
+    attachmentStyle?: string;
+    loveLanguage?: string;
+    therapyHistory?: string | null;
+  };
 }
 
 export async function POST(request: NextRequest) {
@@ -395,8 +439,11 @@ export async function POST(request: NextRequest) {
     const claudeMode = body.mode === "relationship" ? "a" : "b";
     const claudeInput = {
       mode: claudeMode,
+      depth: body.depth || "quick",
       scores: body.scores,
       raw_answers: body.raw_answers || {},
+      free_text_responses: body.free_text_responses || {},
+      pre_knowledge: body.pre_knowledge || {},
     };
 
     // Call Claude API
