@@ -1,14 +1,17 @@
 "use client";
 
-import { useState, useCallback, use } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useCallback, useMemo, use, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import {
   relationshipQuestions,
   singleQuestions,
+  getCoreQuestionsForMode,
+  getFollowUpsForDimension,
 } from "@/data/questions";
-import { Question, AssessmentMode } from "@/lib/types";
+import { Question, QuestionV2, AssessmentMode, AssessmentDepth } from "@/lib/types";
+import { computeRealtimeScore } from "@/lib/scoring";
 
 const slideVariants = {
   enter: (direction: number) => ({
@@ -25,12 +28,28 @@ const slideVariants = {
   }),
 };
 
+/* ── Shared question shape for UI components ── */
+type DisplayQuestion = {
+  id: string;
+  framework: string;
+  text: string;
+  subtext?: string;
+  format: string;
+  options?: { id: string; text: string; score: number }[];
+  forcedChoices?: [
+    { id: string; text: string; score: number },
+    { id: string; text: string; score: number },
+  ];
+  likertLabels?: { low: string; high: string };
+  textPrompt?: string | null;
+};
+
 function LikertScale({
   question,
   value,
   onSelect,
 }: {
-  question: Question;
+  question: DisplayQuestion;
   value?: number;
   onSelect: (val: number) => void;
 }) {
@@ -66,7 +85,7 @@ function ScenarioChoice({
   value,
   onSelect,
 }: {
-  question: Question;
+  question: DisplayQuestion;
   value?: string;
   onSelect: (id: string, score: number) => void;
 }) {
@@ -95,7 +114,7 @@ function ForcedChoice({
   value,
   onSelect,
 }: {
-  question: Question;
+  question: DisplayQuestion;
   value?: string;
   onSelect: (id: string, score: number) => void;
 }) {
@@ -122,24 +141,54 @@ function ForcedChoice({
   );
 }
 
-export default function AssessmentPage({
-  params,
-}: {
-  params: Promise<{ mode: string }>;
-}) {
-  const { mode } = use(params);
+/* ── Assessment content (needs Suspense for useSearchParams) ── */
+function AssessmentContent({ mode }: { mode: string }) {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const depth: AssessmentDepth =
+    (searchParams.get("depth") as AssessmentDepth) || "quick";
   const assessmentMode: AssessmentMode =
     mode === "relationship" ? "relationship" : "single";
-  const questions =
+
+  // Build mode-specific V2 question queue
+  const modeQuestions = useMemo(() => {
+    const core = getCoreQuestionsForMode(assessmentMode);
+    // For quick mode, filter to questions that are "quick" or "both"
+    if (depth === "quick") {
+      return core.filter(
+        (q) => q.assessmentLength === "quick" || q.assessmentLength === "both"
+      );
+    }
+    // For deep mode, include all core questions
+    return core;
+  }, [assessmentMode, depth]);
+
+  // Legacy fallback questions (used if V2 queue is empty)
+  const legacyQuestions: Question[] =
     assessmentMode === "relationship" ? relationshipQuestions : singleQuestions;
+
+  // Dynamic question queue that can grow with follow-ups in deep mode
+  const [questionQueue, setQuestionQueue] = useState<QuestionV2[]>(
+    () => modeQuestions
+  );
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, number | string>>({});
   const [direction, setDirection] = useState(1);
   const [showIntro, setShowIntro] = useState(true);
+  const [freeTextResponses, setFreeTextResponses] = useState<
+    Record<string, string>
+  >({});
+  const [showTextBox, setShowTextBox] = useState<Record<string, boolean>>({});
 
-  const currentQuestion = questions[currentIndex];
+  // Use V2 queue if available, otherwise fall back to legacy
+  const useV2 = questionQueue.length > 0;
+  const questions = useV2 ? questionQueue : (legacyQuestions as unknown as QuestionV2[]);
+
+  const currentQuestion: DisplayQuestion = questions[currentIndex];
+  const currentQuestionV2: QuestionV2 | null = useV2
+    ? questionQueue[currentIndex]
+    : null;
   const progress = ((currentIndex + 1) / questions.length) * 100;
 
   const handleAnswer = useCallback(
@@ -149,23 +198,92 @@ export default function AssessmentPage({
     []
   );
 
+  // Adaptive follow-up injection for deep mode
+  const checkAndInjectFollowUps = useCallback(
+    (answeredIndex: number) => {
+      if (depth !== "deep" || !useV2) return;
+
+      const current = questionQueue[answeredIndex];
+      const next = questionQueue[answeredIndex + 1];
+
+      // Check if we just finished a framework section
+      if (!next || next.framework !== current.framework) {
+        // Get unique dimensions for this framework
+        const frameworkQuestions = questionQueue
+          .slice(0, answeredIndex + 1)
+          .filter((q) => q.framework === current.framework);
+        const dimensions = [
+          ...new Set(frameworkQuestions.map((q) => q.scoring.dimension)),
+        ];
+
+        // Check each dimension for trigger thresholds
+        const newFollowUps: QuestionV2[] = [];
+        for (const dim of dimensions) {
+          const score = computeRealtimeScore(answers, questionQueue, dim);
+          const followUps = getFollowUpsForDimension(
+            dim,
+            score,
+            assessmentMode
+          ).filter((fu) => !questionQueue.some((q) => q.id === fu.id));
+          newFollowUps.push(...followUps);
+        }
+
+        if (newFollowUps.length > 0) {
+          setQuestionQueue((prev) => {
+            const updated = [...prev];
+            updated.splice(answeredIndex + 1, 0, ...newFollowUps);
+            return updated;
+          });
+        }
+      }
+    },
+    [depth, useV2, questionQueue, answers, assessmentMode]
+  );
+
   const goNext = useCallback(() => {
     if (currentIndex < questions.length - 1) {
+      // Check for follow-up injection before advancing
+      checkAndInjectFollowUps(currentIndex);
       setDirection(1);
       setCurrentIndex((prev) => prev + 1);
     } else {
-      // Store answers in sessionStorage and navigate to processing
+      // Read pre-knowledge from sessionStorage
+      let preKnowledge = null;
+      try {
+        const preKnowledgeStr =
+          sessionStorage.getItem("pairscope_preknowledge");
+        if (preKnowledgeStr) preKnowledge = JSON.parse(preKnowledgeStr);
+      } catch {
+        // ignore parse errors
+      }
+
+      // Store enriched payload in sessionStorage and navigate to processing
       sessionStorage.setItem(
         "pairscope_answers",
         JSON.stringify({
           mode: assessmentMode,
+          depth,
           answers,
+          freeTextResponses:
+            Object.keys(freeTextResponses).length > 0
+              ? freeTextResponses
+              : undefined,
+          preKnowledge,
           completedAt: new Date().toISOString(),
         })
       );
       router.push("/assess/processing");
     }
-  }, [currentIndex, questions.length, answers, assessmentMode, router]);
+  }, [
+    currentIndex,
+    questions.length,
+    answers,
+    assessmentMode,
+    depth,
+    freeTextResponses,
+    router,
+    checkAndInjectFollowUps,
+  ]);
 
   const goBack = useCallback(() => {
     if (currentIndex > 0) {
@@ -207,10 +325,11 @@ export default function AssessmentPage({
             </h1>
 
             <p className="text-text-secondary text-lg mb-1">
-              About {assessmentMode === "relationship" ? "10" : "8"} minutes
+              About {depth === "deep" ? "25" : "15"} minutes
             </p>
             <p className="text-text-muted text-sm mb-10">
               {questions.length} questions across five research frameworks
+              {depth === "deep" && " \u00B7 adaptive follow-ups enabled"}
             </p>
 
             <button
@@ -221,7 +340,8 @@ export default function AssessmentPage({
             </button>
 
             <p className="mt-10 text-xs text-text-tertiary max-w-xs mx-auto leading-relaxed">
-              Your answers are processed locally. We don&apos;t store personal data without your consent.
+              Your answers are processed locally. We don&apos;t store personal
+              data without your consent.
             </p>
 
             {/* Decorative line */}
@@ -337,6 +457,40 @@ export default function AssessmentPage({
                   }}
                 />
               )}
+
+              {/* Optional text box for deep mode */}
+              {depth === "deep" &&
+                currentQuestionV2?.textPrompt && (
+                  <div className="mt-6">
+                    <button
+                      onClick={() =>
+                        setShowTextBox((prev) => ({
+                          ...prev,
+                          [currentQuestion.id]: !prev[currentQuestion.id],
+                        }))
+                      }
+                      className="text-sm text-terra hover:text-terra-light transition-colors"
+                    >
+                      {showTextBox[currentQuestion.id]
+                        ? "Hide"
+                        : "Want to add context?"}
+                    </button>
+                    {showTextBox[currentQuestion.id] && (
+                      <textarea
+                        value={freeTextResponses[currentQuestion.id] || ""}
+                        onChange={(e) =>
+                          setFreeTextResponses((prev) => ({
+                            ...prev,
+                            [currentQuestion.id]: e.target.value,
+                          }))
+                        }
+                        placeholder={currentQuestionV2.textPrompt ?? undefined}
+                        maxLength={300}
+                        className="mt-3 w-full p-4 rounded-xl border border-card-border bg-card text-warm-black text-sm resize-none h-24 focus:outline-none focus:ring-2 focus:ring-terra/20 focus:border-terra transition-colors"
+                      />
+                    )}
+                  </div>
+                )}
             </motion.div>
           </AnimatePresence>
         </div>
@@ -361,5 +515,19 @@ export default function AssessmentPage({
         </div>
       </div>
     </div>
+  );
+}
+
+/* ── Page component with Suspense boundary ── */
+export default function AssessmentPage({
+  params,
+}: {
+  params: Promise<{ mode: string }>;
+}) {
+  const { mode } = use(params);
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-cream" />}>
+      <AssessmentContent mode={mode} />
+    </Suspense>
   );
 }

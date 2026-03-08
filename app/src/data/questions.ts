@@ -309,14 +309,39 @@ export const followUpQuestionsV2: QuestionV2[] = followUpV2Sorted.map((q) =>
 );
 
 /**
+ * Returns core V2 questions converted for a specific mode, sorted by sequence order.
+ */
+export function getCoreQuestionsForMode(mode: AssessmentMode): QuestionV2[] {
+  const textField = mode === "relationship" ? "text_mode_a" : "text_mode_b";
+  const orderField = mode === "relationship" ? "sequence_order_a" : "sequence_order_b";
+  return [...coreRaw]
+    .filter((q) => q[textField] !== null)
+    .sort((a, b) => (a[orderField] ?? 999) - (b[orderField] ?? 999))
+    .map((q) => convertToV2(q, mode));
+}
+
+/**
+ * Returns follow-up V2 questions converted for a specific mode.
+ */
+export function getFollowUpQuestionsForMode(mode: AssessmentMode): QuestionV2[] {
+  const textField = mode === "relationship" ? "text_mode_a" : "text_mode_b";
+  return followUpRaw
+    .filter((q) => q[textField] !== null)
+    .map((q) => convertToV2(q, mode));
+}
+
+/**
  * Returns follow-up questions whose trigger_condition matches the current
  * dimension score. Used for adaptive branching in the deep assessment.
+ * Mode-aware version.
  */
 export function getFollowUpsForDimension(
   dimension: string,
-  currentScore: number
+  currentScore: number,
+  mode: AssessmentMode = "relationship"
 ): QuestionV2[] {
-  return followUpQuestionsV2.filter((q) => {
+  const followUps = getFollowUpQuestionsForMode(mode);
+  return followUps.filter((q) => {
     if (!q.triggerCondition) return false;
     if (q.triggerCondition.dimension !== dimension) return false;
 
