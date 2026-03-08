@@ -14,12 +14,12 @@ const fadeUp = {
 
 export default function ModeSelectionPage() {
   return (
-    <div className="grain min-h-screen bg-warm-dark flex flex-col">
+    <div className="grain min-h-screen bg-cream flex flex-col">
       {/* Logo */}
       <div className="px-8 py-6">
         <Link
           href="/"
-          className="font-display italic text-xl text-text-on-dark hover:text-terra transition-colors duration-700"
+          className="font-display italic text-xl text-warm-black hover:text-terra transition-colors duration-700"
         >
           Pairscope
         </Link>
@@ -35,10 +35,10 @@ export default function ModeSelectionPage() {
             custom={0}
             variants={fadeUp}
           >
-            <h1 className="font-display text-4xl sm:text-5xl text-text-on-dark mb-4 leading-tight">
+            <h1 className="font-display text-4xl sm:text-5xl text-warm-black mb-4 leading-tight">
               Are you currently in a relationship?
             </h1>
-            <p className="text-text-on-dark-muted text-lg">
+            <p className="text-text-secondary text-lg">
               This shapes the questions you&apos;ll receive. Choose whichever feels right.
             </p>
           </motion.div>
@@ -52,7 +52,7 @@ export default function ModeSelectionPage() {
               variants={fadeUp}
             >
               <Link href="/assess/relationship" className="block group">
-                <div className="bg-card-dark border border-card-dark-border rounded-2xl p-10 text-center transition-all duration-700 group-hover:border-terra-muted group-hover:-translate-y-1 group-hover:shadow-[0_8px_40px_rgba(196,122,90,0.08)] h-full">
+                <div className="bg-card border border-card-border rounded-2xl p-10 text-center transition-all duration-700 group-hover:border-terra-muted group-hover:-translate-y-1 group-hover:shadow-[0_8px_40px_rgba(196,122,90,0.08)] h-full">
                   {/* Heart icon */}
                   <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-7">
                     <svg
@@ -69,10 +69,10 @@ export default function ModeSelectionPage() {
                       />
                     </svg>
                   </div>
-                  <h2 className="text-xl font-medium text-text-on-dark mb-3">
+                  <h2 className="text-xl font-medium text-warm-black mb-3">
                     Yes, I&apos;m in a relationship
                   </h2>
-                  <p className="text-text-on-dark-muted text-sm leading-relaxed mb-6">
+                  <p className="text-text-secondary text-sm leading-relaxed mb-6">
                     Questions about your current relationship dynamic, conflict patterns, emotional connection, and communication style.
                   </p>
                   <p className="text-xs text-text-muted">
@@ -90,7 +90,7 @@ export default function ModeSelectionPage() {
               variants={fadeUp}
             >
               <Link href="/assess/single" className="block group">
-                <div className="bg-card-dark border border-card-dark-border rounded-2xl p-10 text-center transition-all duration-700 group-hover:border-sage-muted group-hover:-translate-y-1 group-hover:shadow-[0_8px_40px_rgba(122,154,138,0.08)] h-full">
+                <div className="bg-card border border-card-border rounded-2xl p-10 text-center transition-all duration-700 group-hover:border-sage-muted group-hover:-translate-y-1 group-hover:shadow-[0_8px_40px_rgba(122,154,138,0.08)] h-full">
                   {/* Person icon */}
                   <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-7">
                     <svg
@@ -107,10 +107,10 @@ export default function ModeSelectionPage() {
                       />
                     </svg>
                   </div>
-                  <h2 className="text-xl font-medium text-text-on-dark mb-3">
+                  <h2 className="text-xl font-medium text-warm-black mb-3">
                     No, I&apos;m currently single
                   </h2>
-                  <p className="text-text-on-dark-muted text-sm leading-relaxed mb-6">
+                  <p className="text-text-secondary text-sm leading-relaxed mb-6">
                     Questions about your patterns across past relationships, attachment tendencies, and what you truly need in a partner.
                   </p>
                   <p className="text-xs text-text-muted">
@@ -122,7 +122,7 @@ export default function ModeSelectionPage() {
           </div>
 
           <motion.p
-            className="text-center text-xs text-text-on-dark-muted mt-10"
+            className="text-center text-xs text-text-secondary mt-10"
             initial="hidden"
             animate="visible"
             custom={3}

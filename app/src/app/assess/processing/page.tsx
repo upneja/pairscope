@@ -115,6 +115,7 @@ export default function ProcessingPage() {
         }
 
         const report = await response.json();
+        report.createdAt = new Date().toISOString();
 
         // Store the report in sessionStorage
         sessionStorage.setItem("pairscope_report", JSON.stringify(report));
@@ -199,10 +200,10 @@ export default function ProcessingPage() {
               />
             </svg>
           </div>
-          <h1 className="font-display text-2xl text-on-dark mb-4">
+          <h1 className="font-display text-2xl text-text-on-dark mb-4">
             Something went wrong
           </h1>
-          <p className="text-on-dark-muted text-sm mb-8">{error}</p>
+          <p className="text-text-on-dark-muted text-sm mb-8">{error}</p>
           <div className="flex flex-col gap-3">
             <button
               onClick={() => {
@@ -216,7 +217,7 @@ export default function ProcessingPage() {
             </button>
             <button
               onClick={() => router.push("/assess")}
-              className="px-6 py-3 bg-white/10 text-on-dark font-medium rounded-xl text-sm hover:bg-white/15 transition-colors duration-300"
+              className="px-6 py-3 bg-white/10 text-text-on-dark font-medium rounded-xl text-sm hover:bg-white/15 transition-colors duration-300"
             >
               Retake Assessment
             </button>
@@ -232,7 +233,7 @@ export default function ProcessingPage() {
         <OrganicBlob />
 
         <motion.h1
-          className="font-display text-3xl text-on-dark mb-4"
+          className="font-display text-3xl text-text-on-dark mb-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
@@ -244,7 +245,7 @@ export default function ProcessingPage() {
           <AnimatePresence mode="wait">
             <motion.p
               key={messageIndex}
-              className="text-on-dark-muted text-sm"
+              className="text-text-on-dark-muted text-sm"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
@@ -267,7 +268,7 @@ export default function ProcessingPage() {
           ))}
         </div>
 
-        <p className="mt-12 text-xs text-on-dark-muted">
+        <p className="mt-12 text-xs text-text-on-dark-muted">
           We&apos;re synthesizing your answers across five research frameworks
           to create a report that&apos;s truly personalized to you.
         </p>
